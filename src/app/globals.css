@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+@import "tailwindcss";
+
+.font-Tenor{
+  font-family: "Tenor Sans", sans-serif;
+}
+.font-Montserrat{
+  font-family: "Montserrat", sans-serif;
+}
+.font-Sen{
+  font-family: "Sen", sans-serif;
+}
+.font-500{
+  font-weight: 500 ;
+}
