@@ -53,10 +53,18 @@ const Question3Page = () => {
           <button className="bg-[#E5E5E5] text-black w-12 rounded-full transition-colors flex items-center justify-center">
             <ArrowLeft className="h-12" />
           </button>
-          <button className="bg-black flex items-center justify-center text-white font-500 text-[19px] py-2.5 px-10 rounded-full transition-colors font-Sen gap-2">
-            FINISH
-            <ArrowRight className="h-8 -mt-0.5" />
-          </button>
+        <button className="bg-black flex items-center justify-center text-white font-500 text-[19px] py-2.5 px-6 rounded-full transition-colors font-Sen gap-2">
+              FINISH
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M6 12L10 8L6 4"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
         </div>
       </div>
     </div>
