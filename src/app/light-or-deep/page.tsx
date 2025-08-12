@@ -4,7 +4,7 @@ import Image from "next/image";
 const Question2Page = () => {
   return (
     <div className="min-h-screen px-7 py-8">
-      <div className="max-w-md mx-auto">
+      <div className="max-w-[412px] mx-auto">
         {/* Title Section */}
         <div className="mb-6">
           <h1 className="text-[28px] font-Tenor font-normal text-black mb-3 leading-tight">
@@ -31,9 +31,9 @@ const Question2Page = () => {
             />
 
             {/* Left curved overlay */}
-            <div className="absolute -top-5 inset-0 -left-3">
+            <div className="absolute -top-5 inset-0 -left-3 md:-left-1">
               <svg
-                className="w-[250px] -rotate-2"
+                className="w-[250px] md:w-[310px] -rotate-2 md:-rotate-4"
                 viewBox="0 0 155 241"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const Question2Page = () => {
             {/* Right curved overlay */}
             <div className="absolute inset-0 -top-5">
               <svg
-                className="w-[355px] rotate-7"
+                className="w-[355px] rotate-7 md:w-[410px]"
                 viewBox="0 0 155 241"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
