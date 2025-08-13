@@ -39,7 +39,9 @@ export default function Home() {
               <div className="absolute w-full md:w-[87%] h-full top-0 left-0 pb-5">
                 <Image
                   src="/home-modal.png"
-                  alt="Keychain"
+                  alt="Modal"
+                  loading="lazy"
+                  priority={false}
                   fill
                   className="scale-[1.2] -mt-12 ml-3 md:ml-11"
                 />
