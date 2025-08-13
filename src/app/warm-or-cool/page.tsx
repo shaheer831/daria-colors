@@ -4,7 +4,7 @@ import Image from "next/image";
 const Question1Page = () => {
   return (
     <div className="min-h-screen px-7 py-8">
-      <div className="max-w-md mx-auto">
+      <div className="max-w-[412px] mx-auto">
         {/* Title Section */}
         <div className="mb-6">
           <h1 className="text-[28px] font-Tenor font-normal text-black mb-3 leading-tight">
