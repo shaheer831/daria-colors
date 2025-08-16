@@ -1,4 +1,103 @@
-const page = () => {
+"use client";
+
+import type React from "react";
+
+import { useRouter } from "next/navigation";
+import { useState, useRef } from "react";
+
+import api from "../../../utilities/axiosInstance";
+
+const Upload = () => {
+  const router = useRouter();
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+    }
+  };
+
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    if (file && file.type.startsWith("image/")) {
+      setSelectedFile(file);
+    }
+  };
+
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+  };
+
+ const handleManualTest = async () => {
+  if (!selectedFile) {
+    alert("Please select an image first")
+    return
+  }
+
+  setIsUploading(true)
+  try {
+    const formData = new FormData()
+    formData.append("file", selectedFile)
+    formData.append("testType", "manual")
+
+    const response = await api.post("/image/upload", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+
+    if (response.status === 200) {
+      const result = response.data
+      // Store manual test result (backgroundRemovedImage, grayscaleImage, contrastLevel)
+      sessionStorage.setItem("manualTestData", JSON.stringify(result))
+      sessionStorage.removeItem("quizResult") // Clear any previous quiz data
+      router.push("/warm-or-cool")
+    } else {
+      console.error("Failed to process image for manual test")
+      alert("Failed to process image. Please try again.")
+    }
+  } catch (error) {
+    console.error("Error processing image:", error)
+    alert("Error processing image. Please try again.")
+  } finally {
+    setIsUploading(false)
+  }
+}
+
+  const handleAITest = async () => {
+    if (!selectedFile) {
+      alert("Please select an image first");
+      return;
+    }
+
+    setIsUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+      formData.append("testType", "AI");
+
+      const response = await api.post("/image/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      if (response.status === 200) {
+        const result = response.data;
+        sessionStorage.setItem("quizResult", JSON.stringify(result));
+        router.push("/results");
+      } else {
+        console.error("Failed to analyze image");
+        alert("Failed to analyze image. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      alert("Error uploading image. Please try again.");
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen px-7 py-8">
       <div className="max-w-[412px] mx-auto">
@@ -7,63 +106,95 @@ const page = () => {
           <h1 className="text-[28px] font-Tenor font-normal text-black mb-3 leading-tight">
             Upload Your Photo
           </h1>
-          <p className="text-[#7E7E7E] text-[17px] leading-5 tracking-wide">
+          <p className="text-[#7E7E7E] text-[17px] leading-5 tracking-wide font-Tenor">
             Please upload a clear photo of your face. Best results are when you
             use daylight and no makeup.
           </p>
         </div>
 
         {/* Upload Area */}
-        <div className="border-2 border-dashed border-[#cccccc] rounded-[24px] bg-white p-12 mb-8 text-center">
+        <div
+          className="border-2 border-dashed border-[#cccccc] rounded-[24px] bg-white p-12 mb-8 text-center cursor-pointer hover:border-gray-400 transition-colors"
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
+          onClick={() => fileInputRef.current?.click()}
+        >
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            onChange={handleFileSelect}
+            className="hidden"
+          />
           <div className="flex flex-col items-center">
-            {/* Upload Icon */}
-            <div className="mb-4">
-              <svg
-                width="126"
-                height="126"
-                viewBox="0 0 126 126"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M47.25 56.4375C39.27 56.4375 32.8125 49.98 32.8125 42C32.8125 34.02 39.27 27.5625 47.25 27.5625C55.23 27.5625 61.6875 34.02 61.6875 42C61.6875 49.98 55.23 56.4375 47.25 56.4375ZM47.25 35.4375C43.6275 35.4375 40.6875 38.3775 40.6875 42C40.6875 45.6225 43.6275 48.5625 47.25 48.5625C50.8725 48.5625 53.8125 45.6225 53.8125 42C53.8125 38.3775 50.8725 35.4375 47.25 35.4375Z"
-                  fill="black"
-                />
-                <path
-                  d="M78.75 119.438H47.25C18.7425 119.438 6.5625 107.258 6.5625 78.75V47.25C6.5625 18.7425 18.7425 6.5625 47.25 6.5625H68.25C70.4025 6.5625 72.1875 8.3475 72.1875 10.5C72.1875 12.6525 70.4025 14.4375 68.25 14.4375H47.25C23.0475 14.4375 14.4375 23.0475 14.4375 47.25V78.75C14.4375 102.953 23.0475 111.563 47.25 111.563H78.75C102.953 111.563 111.563 102.953 111.563 78.75V52.5C111.563 50.3475 113.348 48.5625 115.5 48.5625C117.653 48.5625 119.438 50.3475 119.438 52.5V78.75C119.438 107.258 107.258 119.438 78.75 119.438Z"
-                  fill="black"
-                />
-                <path
-                  d="M94.5 45.9372C92.3475 45.9372 90.5625 44.1522 90.5625 41.9997V10.4997C90.5625 8.92468 91.5075 7.45468 92.9775 6.87718C94.4475 6.29968 96.1275 6.61468 97.2825 7.71718L107.783 18.2172C109.305 19.7397 109.305 22.2597 107.783 23.7822C106.26 25.3047 103.74 25.3047 102.217 23.7822L98.4375 20.0022V41.9997C98.4375 44.1522 96.6525 45.9372 94.5 45.9372Z"
-                  fill="black"
-                />
-                <path
-                  d="M83.9994 24.9372C83.0019 24.9372 82.0044 24.5697 81.2169 23.7822C79.6944 22.2597 79.6944 19.7397 81.2169 18.2172L91.7169 7.71719C93.2394 6.19469 95.7594 6.19469 97.2819 7.71719C98.8044 9.23969 98.8044 11.7597 97.2819 13.2822L86.7819 23.7822C85.9944 24.5697 84.9969 24.9372 83.9994 24.9372Z"
-                  fill="black"
-                />
-                <path
-                  d="M14.0165 103.426C12.7565 103.426 11.4965 102.796 10.7615 101.693C9.55397 99.908 10.0265 97.4405 11.8115 96.233L37.694 78.8555C43.364 75.0755 51.1865 75.4955 56.3315 79.853L58.064 81.3755C60.689 83.633 65.1515 83.633 67.724 81.3755L89.564 62.633C95.129 57.8555 103.896 57.8555 109.514 62.633L118.071 69.983C119.699 71.4005 119.909 73.868 118.491 75.548C117.074 77.1755 114.554 77.3855 112.926 75.968L104.369 68.618C101.744 66.3605 97.334 66.3605 94.709 68.618L72.869 87.3605C67.304 92.138 58.5365 92.138 52.919 87.3605L51.1865 85.838C48.7715 83.7905 44.7815 83.5805 42.104 85.418L16.274 102.796C15.539 103.216 14.7515 103.426 14.0165 103.426Z"
-                  fill="black"
-                />
-              </svg>
-            </div>
+            {selectedFile ? (
+              <div className="mb-4">
+                <div className="text-green-600 mb-2">✓ File selected:</div>
+                <div className="text-sm text-gray-600">{selectedFile.name}</div>
+              </div>
+            ) : (
+              <>
+                {/* Upload Icon */}
+                <div className="mb-4">
+                  <svg
+                    width="126"
+                    height="126"
+                    viewBox="0 0 126 126"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M47.25 56.4375C39.27 56.4375 32.8125 49.98 32.8125 42C32.8125 34.02 39.27 27.5625 47.25 27.5625C55.23 27.5625 61.6875 34.02 61.6875 42C61.6875 49.98 55.23 56.4375 47.25 56.4375ZM47.25 35.4375C43.6275 35.4375 40.6875 38.3775 40.6875 42C40.6875 45.6225 43.6275 48.5625 47.25 48.5625C50.8725 48.5625 53.8125 45.6225 53.8125 42C53.8125 38.3775 50.8725 35.4375 47.25 35.4375Z"
+                      fill="black"
+                    />
+                    <path
+                      d="M78.75 119.438H47.25C18.7425 119.438 6.5625 107.258 6.5625 78.75V47.25C6.5625 18.7425 18.7425 6.5625 47.25 6.5625H68.25C70.4025 6.5625 72.1875 8.3475 72.1875 10.5C72.1875 12.6525 70.4025 14.4375 68.25 14.4375H47.25C23.0475 14.4375 14.4375 23.0475 14.4375 47.25V78.75C14.4375 102.953 23.0475 111.563 47.25 111.563H78.75C102.953 111.563 111.563 102.953 111.563 78.75V52.5C111.563 50.3475 113.348 48.5625 115.5 48.5625C117.653 48.5625 119.438 50.3475 119.438 52.5V78.75C119.438 107.258 107.258 119.438 78.75 119.438Z"
+                      fill="black"
+                    />
+                    <path
+                      d="M94.5 45.9372C92.3475 45.9372 90.5625 44.1522 90.5625 41.9997V10.4997C90.5625 8.92468 91.5075 7.45468 92.9775 6.87718C94.4475 6.29968 96.1275 6.61468 97.2825 7.71718L107.783 18.2172C109.305 19.7397 109.305 22.2597 107.783 23.7822C106.26 25.3047 103.74 25.3047 102.217 23.7822L98.4375 20.0022V41.9997C98.4375 44.1522 96.6525 45.9372 94.5 45.9372Z"
+                      fill="black"
+                    />
+                    <path
+                      d="M83.9994 24.9372C83.0019 24.9372 82.0044 24.5697 81.2169 23.7822C79.6944 22.2597 79.6944 19.7397 81.2169 18.2172L91.7169 7.71719C93.2394 6.19469 95.7594 6.19469 97.2819 7.71719C98.8044 9.23969 98.8044 11.7597 97.2819 13.2822L86.7819 23.7822C85.9944 24.5697 84.9969 24.9372 83.9994 24.9372Z"
+                      fill="black"
+                    />
+                    <path
+                      d="M14.0165 103.426C12.7565 103.426 11.4965 102.796 10.7615 101.693C9.55397 99.908 10.0265 97.4405 11.8115 96.233L37.694 78.8555C43.364 75.0755 51.1865 75.4955 56.3315 79.853L58.064 81.3755C60.689 83.633 65.1515 83.633 67.724 81.3755L89.564 62.633C95.129 57.8555 103.896 57.8555 109.514 62.633L118.071 69.983C119.699 71.4005 119.909 73.868 118.491 75.548C117.074 77.1755 114.554 77.3855 112.926 75.968L104.369 68.618C101.744 66.3605 97.334 66.3605 94.709 68.618L72.869 87.3605C67.304 92.138 58.5365 92.138 52.919 87.3605L51.1865 85.838C48.7715 83.7905 44.7815 83.5805 42.104 85.418L16.274 102.796C15.539 103.216 14.7515 103.426 14.0165 103.426Z"
+                      fill="black"
+                    />
+                  </svg>
+                </div>
 
-            <div className="text-black font-500 text-[21px] tracking-wide font-Sen">
-              OR
-            </div>
-            <div className="text-black font-500 text-[19px] tracking-wide font-Sen">
-              DRAG YOUR IMAGE
-            </div>
+                <div className="text-black font-500 text-[21px] tracking-wide font-Sen">
+                  OR
+                </div>
+                <div className="text-black font-500 text-[19px] tracking-wide font-Sen">
+                  DRAG YOUR IMAGE
+                </div>
+              </>
+            )}
           </div>
         </div>
 
         {/* Buttons */}
         <div className="flex flex-col gap-4 mb-8">
-          <button className="bg-[#b794c4] hover:bg-[#a67fb5] font-500 text-[19px] py-4 rounded-full transition-colors font-Sen mx-[60px]">
+          <button
+            onClick={handleManualTest}
+            className="bg-[#D29FDC] hover:bg-[#ce89db] hover:cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen mx-[60px]"
+          >
             MANUAL TEST
           </button>
-          <button className="bg-[#f4a6a6] hover:bg-[#f19999] font-500 text-[19px] py-4 rounded-full transition-colors font-Sen mx-[60px]">
-            AI TEST
+          <button
+            onClick={handleAITest}
+            disabled={!selectedFile || isUploading}
+            className={`font-500 text-[19px] py-4 rounded-full transition-colors font-Sen mx-[60px] ${
+              selectedFile && !isUploading
+                ? "bg-[#f4a6a6] hover:bg-[#f19999]"
+                : "bg-gray-300 cursor-not-allowed"
+            }`}
+          >
+            {isUploading ? "ANALYZING..." : "AI TEST"}
           </button>
         </div>
 
@@ -77,4 +208,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Upload;
