@@ -1,7 +1,46 @@
+"use client"
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Question2Page = () => {
+  const router = useRouter();
+  const [image, setImage] = useState("/results-women.png");
+  const [lightOrDeep, setLightOrDeep] = useState<"light" | "deep" | null>(null);
+
+  useEffect(() => {
+    const storedResults = localStorage.getItem("manualData");
+    if (storedResults) {
+      try {
+        if (storedResults === "[object Object]") {
+          console.warn(
+            "Invalid data format in localStorage. Please try uploading again."
+          );
+          return;
+        }
+        const parsedResults = JSON.parse(storedResults);
+        setImage(parsedResults.backgroundRemovedImage);
+      } catch (error) {
+        console.error("Error parsing AI results:", error);
+        localStorage.removeItem("manualData");
+      }
+    }
+  }, []);
+
+  const handleNext = () => {
+    if (!lightOrDeep) {
+      alert("Please select either LIGHT or DEEP before continuing.");
+      return;
+    }
+    localStorage.setItem("lightOrDeep", lightOrDeep);
+    router.push("/contrast"); // go to Q3
+  };
+
+  const handleBack = () => {
+    router.push("/warm-or-cool"); // go back to Q1
+  };
+
   return (
     <div className="min-h-screen px-7 py-8">
       <div className="max-w-[412px] mx-auto">
@@ -19,14 +58,14 @@ const Question2Page = () => {
 
         {/* Image with Color Overlay */}
         <div className="border-2 border-dashed border-[#cccccc] rounded-2xl sm:rounded-[24px] bg-white mb-6 sm:mb-8 overflow-hidden relative">
-          <Image
-            src="/results-women.png"
-            alt="Face for color analysis"
-            width={300}
-            height={300}
-            className="w-full h-full object-cover"
-            priority
-          />
+       <Image
+                src={image}
+                alt="Face for color analysis"
+                width={300}
+                height={300}
+                className="w-full h-full object-cover"
+                priority
+              />
           <div className="absolute w-[110%] -translate-x-1/2 h-full top-0 left-1/2 flex justify-between">
             {/* Left curved overlay - Responsive */}
             <div className="">
@@ -59,22 +98,42 @@ const Question2Page = () => {
             </div>
           </div>
         </div>
-  <div className="flex flex-col gap-4 px-16">
+         <div className="flex flex-col gap-4 px-16">
           <div className="flex gap-2">
-            <button className="flex-1 bg-[#FFD6F7] font-black text-[17px] py-[9px] rounded-full transition-colors font-Sen">
+            <button
+              onClick={() => setLightOrDeep("light")}
+              className={`flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#FFD6F7] text-black font-black ${
+                lightOrDeep === "light"
+                  ? "scale-105"
+                  : ""
+              }`}
+            >
               LIGHT
             </button>
-            <button className="flex-1 bg-[#571249] text-white font-500 text-[17px] py-[9px] rounded-full transition-colors font-Sen">
+            <button
+              onClick={() => setLightOrDeep("deep")}
+              className={`flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#571249] text-white ${
+                lightOrDeep === "deep"
+                  ? "scale-105"
+                  : ""
+              }`}
+            >
               DEEP
             </button>
           </div>
 
           {/* Navigation */}
           <div className="flex justify-between gap-2">
-            <button className="bg-[#E5E5E5] text-black w-12 rounded-full transition-colors flex items-center justify-center">
-              <ArrowLeft className="h-12" />
+            <button
+              onClick={handleBack}
+              className="bg-[#E5E5E5] text-black w-12 h-12 rounded-full transition-colors flex items-center justify-center"
+            >
+              <ArrowLeft className="h-6 w-6" />
             </button>
-            <button className="bg-black flex items-center justify-center text-white font-500 text-[19px] py-2.5 px-6 rounded-full transition-colors font-Sen gap-2">
+            <button
+              onClick={handleNext}
+              className="bg-black flex items-center justify-center text-white font-500 text-[19px] py-2.5 px-6 rounded-full transition-colors font-Sen gap-2"
+            >
               NEXT
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path

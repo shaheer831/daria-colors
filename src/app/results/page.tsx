@@ -1,16 +1,94 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+interface Result {
+  name: string;
+  description: string;
+  heroColor: string;
+  neutrals: string[];
+  midTones: string[];
+  accents: string[];
+  shopifyUrl: string;
+  backgroundRemovedImage: string;
+}
 
 const ResultsPage = () => {
+  const [result, setResult] = useState<Result | null>(null);
+
+  const [image, setImage] = useState("/results-women.png");
+
+  useEffect(() => {
+    const storedResults = localStorage.getItem("Result");
+    if (storedResults) {
+      try {
+        if (storedResults === "[object Object]") {
+          console.warn(
+            "Invalid data format in localStorage. Please try uploading again."
+          );
+          return;
+        }
+        const parsedResults = JSON.parse(storedResults);
+        console.log("[v0] Successfully parsed AI results:", parsedResults);
+        if (parsedResults.backgroundRemovedImage) {
+          setImage(parsedResults.backgroundRemovedImage);
+        } else {
+          const storedResults = localStorage.getItem("manualData");
+          if (storedResults) {
+            try {
+              if (storedResults === "[object Object]") {
+                console.warn(
+                  "Invalid data format in localStorage. Please try uploading again."
+                );
+                return;
+              }
+              const parsedResults = JSON.parse(storedResults);
+              setImage(parsedResults.backgroundRemovedImage);
+            } catch (error) {
+              console.error("Error parsing AI results:", error);
+              localStorage.removeItem("manualData");
+            }
+          }
+        }
+        setResult(parsedResults);
+      } catch (error) {
+        console.error("Error parsing AI results:", error);
+        localStorage.removeItem("aiResults");
+      }
+    }
+  }, []);
+
+  const displayName = result?.name || "Light Summer";
+  const displayDescription =
+    result?.description || "Wow! You look stunning. Your best colors are:";
+
+  const allColors = result
+    ? [...result.neutrals, ...result.midTones, ...result.accents]
+    : [
+        "#DD819A",
+        "#BCA7D0",
+        "#EA9EA8",
+        "#DFCBE4",
+        "#EDC3AB",
+        "#E9DFD6",
+        "#FBEDBE",
+        "#B5D7C9",
+        "#D9EEE7",
+        "#A1C9EC",
+        "#F4F3F1",
+      ];
+
   return (
     <div className="min-h-screen px-7 py-8">
       <div className="max-w-[412px] mx-auto">
         {/* Title Section */}
         <div className="mb-6">
           <h1 className="text-[28px] font-Tenor font-normal text-black mb-3 leading-tight">
-            Light Summer
+            {displayName}
           </h1>
           <p className="text-[#7E7E7E] text-[17px] leading-5 tracking-wide w-[85%]">
-            Wow! You look stunning. Your best colors are:
+            {result ? result.description : displayDescription}
           </p>
         </div>
 
@@ -20,32 +98,34 @@ const ResultsPage = () => {
             {/* Color swatches arranged around the face */}
             <div className="grid grid-cols-5 grid-rows-4 h-full">
               {/* Row 1 - columns 1 and 5 only */}
-              <div className="bg-[#DD819A]"></div>
+              <div style={{ backgroundColor: allColors[0] || "#DD819A" }}></div>
               <div className="col-span-3 row-span-3 relative overflow-hidden">
-                {/* Face image spanning center area across 3 rows */}{" "}
+                {/* Face image spanning center area across 3 rows */}
                 <Image
-                  src="/results-women.png"
+                  src={image}
                   alt="Your face"
                   fill
                   className="object-cover"
                 />
               </div>
-              <div className="bg-[#BCA7D0]"></div>
+              <div style={{ backgroundColor: allColors[1] || "#BCA7D0" }}></div>
 
               {/* Row 2 - columns 1 and 5 only */}
-              <div className="bg-[#EA9EA8]"></div>
-              <div className="bg-[#DFCBE4]"></div>
+              <div style={{ backgroundColor: allColors[2] || "#EA9EA8" }}></div>
+              <div style={{ backgroundColor: allColors[3] || "#DFCBE4" }}></div>
 
               {/* Row 3 - columns 1 and 5 only */}
-              <div className="bg-[#EDC3AB]"></div>
-              <div className="bg-[#E9DFD6]"></div>
+              <div style={{ backgroundColor: allColors[4] || "#EDC3AB" }}></div>
+              <div style={{ backgroundColor: allColors[5] || "#E9DFD6" }}></div>
 
               {/* Row 4 - all columns */}
-              <div className="bg-[#FBEDBE]"></div>
-              <div className="bg-[#B5D7C9]"></div>
-              <div className="bg-[#D9EEE7]"></div>
-              <div className="bg-[#A1C9EC]"></div>
-              <div className="bg-[#F4F3F1]"></div>
+              <div style={{ backgroundColor: allColors[6] || "#FBEDBE" }}></div>
+              <div style={{ backgroundColor: allColors[7] || "#B5D7C9" }}></div>
+              <div style={{ backgroundColor: allColors[8] || "#D9EEE7" }}></div>
+              <div style={{ backgroundColor: allColors[9] || "#A1C9EC" }}></div>
+              <div
+                style={{ backgroundColor: allColors[10] || "#F4F3F1" }}
+              ></div>
             </div>
           </div>
         </div>
