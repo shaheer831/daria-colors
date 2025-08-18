@@ -115,7 +115,7 @@ const Upload = () => {
 
         {/* Upload Area */}
         <div
-          className="border-2 border-dashed border-[#cccccc] rounded-[24px] bg-white p-12 mb-8 text-center cursor-pointer hover:border-gray-400 transition-colors relative h-[270px]  [@media(min-width:415px)]:h-[300px]"
+          className="border-2 border-dashed border-[#cccccc] rounded-[24px] overflow-hidden bg-white p-12 mb-8 text-center cursor-pointer hover:border-gray-400 transition-colors relative h-[270px]  [@media(min-width:415px)]:h-[300px]"
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onClick={() => fileInputRef.current?.click()}
@@ -128,13 +128,13 @@ const Upload = () => {
             className="hidden"
           />
           <div className="flex flex-col items-center">
-            {selectedFile ? (
-                <Image
-                  src={previewUrl}
-                  alt="Preview"
-                  fill
-                  className="object-contain"
-                />
+            {selectedFile && previewUrl ? (
+              <Image
+                src={previewUrl}
+                alt="Preview"
+                fill
+                className="object-cover"
+              />
             ) : (
               <>
                 {/* Upload Icon */}
@@ -184,7 +184,11 @@ const Upload = () => {
         <div className="flex flex-col gap-4 mb-8">
           <button
             onClick={handleManualTest}
-            className="bg-[#D29FDC] hover:bg-[#ce89db] hover:cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen mx-[60px]"
+            className={`bg-[#D29FDC]  font-500 text-[19px] py-4 rounded-full font-Sen mx-[60px] ${
+              selectedFile && !isUploading
+                ? "hover:bg-[#ce89db]"
+                : "bg-gray-300 cursor-not-allowed"
+            }`}
           >
             MANUAL TEST
           </button>

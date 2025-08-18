@@ -1,5 +1,5 @@
-"use client"
-import { ArrowLeft } from "lucide-react";
+"use client";
+import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -58,14 +58,14 @@ const Question2Page = () => {
 
         {/* Image with Color Overlay */}
         <div className="border-2 border-dashed border-[#cccccc] rounded-2xl sm:rounded-[24px] bg-white mb-6 sm:mb-8 overflow-hidden relative w-full h-[270px]  [@media(min-width:415px)]:h-[300px]">
-                  <Image
-                    src={image}
-                    alt="Face for color analysis"
-                    fill
-                    className="object-contain"
-                    priority
-                  />
-                   <div className="absolute [@media(min-width:415px)]:w-[110%] -translate-x-1/2 h-full top-0 left-1/2 flex justify-between">
+          <Image
+            src={image}
+            alt="Face for color analysis"
+            fill
+            className="object-contain"
+            priority
+          />
+          <div className="absolute [@media(min-width:415px)]:w-[110%] -translate-x-1/2 h-full top-0 left-1/2 flex justify-between">
             {/* Left curved overlay - Responsive */}
             <div className="">
               <svg
@@ -97,26 +97,23 @@ const Question2Page = () => {
             </div>
           </div>
         </div>
-         <div className="flex flex-col gap-4 px-16">
-          <div className="flex gap-2">
+        <div className="flex flex-col gap-4 px-16">
+          <div className="flex gap-2 text-white">
+            {/* LIGHT button */}
             <button
               onClick={() => setLightOrDeep("light")}
-              className={`flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#FFD6F7] text-black font-black ${
-                lightOrDeep === "light"
-                  ? "scale-105"
-                  : ""
-              }`}
+              className={`flex items-center justify-center gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#FFD6F7] text-black`}
             >
+              {lightOrDeep === "light" && <Check size={18} />}
               LIGHT
             </button>
+
+            {/* DEEP button */}
             <button
               onClick={() => setLightOrDeep("deep")}
-              className={`flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#571249] text-white ${
-                lightOrDeep === "deep"
-                  ? "scale-105"
-                  : ""
-              }`}
+              className={`flex items-center justify-center gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#571249] text-white`}
             >
+              {lightOrDeep === "deep" && <Check size={18} />}
               DEEP
             </button>
           </div>

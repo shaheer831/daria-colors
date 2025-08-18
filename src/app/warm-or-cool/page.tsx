@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -63,10 +63,10 @@ const Question1Page = () => {
             src={image}
             alt="Face for color analysis"
             fill
-            className="object-contain"
+            className="object-contain h-full"
             priority
           />
-           <div className="absolute [@media(min-width:415px)]:w-[110%] -translate-x-1/2 h-full top-0 left-1/2 flex justify-between">
+          <div className="absolute [@media(min-width:415px)]:w-[110%] -translate-x-1/2 h-full top-0 left-1/2 flex justify-between">
             {/* Left curved overlay - Responsive */}
             <div className="">
               <svg
@@ -101,25 +101,25 @@ const Question1Page = () => {
 
         {/* Choice Buttons */}
         <div className="flex flex-col gap-4 px-16">
-          <div className="flex gap-2">
+          <div className="flex gap-2 text-white">
+            {/* BLUE button */}
             <button
               onClick={() => setWarmOrCool("blue")}
-              className={`flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#004FCC] text-white ${
-                warmOrCool === "blue" ? "scale-105" : ""
-              }`}
+              className={`flex items-center justify-center gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#004FCC]`}
             >
+              {warmOrCool === "blue" && <Check size={18} />}
               BLUE
             </button>
+
+            {/* ORANGE button */}
             <button
               onClick={() => setWarmOrCool("orange")}
-              className={`flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#FF8500] text-white ${
-                warmOrCool === "orange" ? "scale-105" : ""
-              }`}
+              className={`flex items-center justify-center gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#FF8500]`}
             >
+              {warmOrCool === "orange" && <Check size={18} />}
               ORANGE
             </button>
           </div>
-
           {/* Navigation */}
           <div className="flex justify-center">
             <button

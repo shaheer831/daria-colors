@@ -1,5 +1,5 @@
 "use client";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -102,28 +102,30 @@ const Question3Page = () => {
 
         {/* Choice Buttons */}
         <div className="flex gap-3 mb-4 px-1">
+          {/* LOW */}
           <button
             onClick={() => setContrast("low")}
-            className={`flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#A6A6A6] text-white font-black ${
-              contrast === "low" ? "scale-105" : ""
-            }`}
+            className={`flex items-center justify-center gap-2 flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#A6A6A6] text-white font-black`}
           >
+            {contrast === "low" && <Check size={18} />}
             LOW
           </button>
+
+          {/* MEDIUM */}
           <button
             onClick={() => setContrast("medium")}
-            className={`flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#595959] text-white font-black ${
-              contrast === "medium" ? "scale-105" : ""
-            }`}
+            className={`flex items-center justify-center gap-2 flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#595959] text-white font-black`}
           >
+            {contrast === "medium" && <Check size={18} />}
             MEDIUM
           </button>
+
+          {/* HIGH */}
           <button
             onClick={() => setContrast("high")}
-            className={`flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#262626] text-white font-black ${
-              contrast === "high" ? "scale-105" : ""
-            }`}
+            className={`flex items-center justify-center gap-2 flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#262626] text-white font-black`}
           >
+            {contrast === "high" && <Check size={18} />}
             HIGH
           </button>
         </div>
