@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState, useRef } from "react";
 
 import api from "../../../utilities/axiosInstance";
+import Loader from "../components/loader";
 
 const Upload = () => {
   const router = useRouter();
@@ -181,35 +182,43 @@ const Upload = () => {
         </div>
 
         {/* Buttons */}
-        <div className="flex flex-col gap-4 mb-8">
-          <button
-            onClick={handleManualTest}
-            className={`bg-[#D29FDC]  font-500 text-[19px] py-4 rounded-full font-Sen mx-[60px] ${
-              selectedFile && !isUploading
-                ? "hover:bg-[#ce89db]"
-                : "bg-gray-300 cursor-not-allowed"
-            }`}
-          >
-            MANUAL TEST
-          </button>
-          <button
-            onClick={handleAITest}
-            disabled={!selectedFile || isUploading}
-            className={`font-500 text-[19px] py-4 rounded-full transition-colors font-Sen mx-[60px] ${
-              selectedFile && !isUploading
-                ? "bg-[#f4a6a6] hover:bg-[#f19999]"
-                : "bg-gray-300 cursor-not-allowed"
-            }`}
-          >
-            {isUploading ? "ANALYZING..." : "AI TEST"}
-          </button>
-        </div>
-
-        {/* Bottom Text */}
+        {isUploading ? (
+          <div className="w-full flex justify-center h-[130px] items-center">
+            <Loader />
+          </div>
+        ) : (
+          <div className="flex flex-col gap-4 mb-8">
+            <button
+              onClick={handleManualTest}
+              className={`bg-[#D29FDC]  font-500 text-[19px] py-4 rounded-full font-Sen mx-[60px] ${
+                selectedFile && !isUploading
+                  ? "hover:bg-[#ce89db]"
+                  : "bg-gray-300 cursor-not-allowed"
+              }`}
+            >
+              MANUAL TEST
+            </button>
+            <button
+              onClick={handleAITest}
+              disabled={!selectedFile || isUploading}
+              className={`font-500 text-[19px] py-4 rounded-full transition-colors font-Sen mx-[60px] ${
+                selectedFile && !isUploading
+                  ? "bg-[#f4a6a6] hover:bg-[#f19999]"
+                  : "bg-gray-300 cursor-not-allowed"
+              }`}
+            >
+              {isUploading ? "ANALYZING..." : "AI TEST"}
+            </button>
+          </div>
+        )}
+<br />
+       <div>
+         {/* Bottom Text */}
         <p className="text-center font-Tenor text-[17px] leading-5 tracking-normal px-2">
           Go through a simple 3 questions quiz to manually determine your season
           or let AI decide for you automatically.
         </p>
+       </div>
       </div>
     </div>
   );
