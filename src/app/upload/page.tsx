@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type React from "react";
 
 import { useRouter } from "next/navigation";
@@ -12,11 +13,13 @@ const Upload = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       setSelectedFile(file);
+      setPreviewUrl(URL.createObjectURL(file));
     }
   };
 
@@ -112,7 +115,7 @@ const Upload = () => {
 
         {/* Upload Area */}
         <div
-          className="border-2 border-dashed border-[#cccccc] rounded-[24px] bg-white p-12 mb-8 text-center cursor-pointer hover:border-gray-400 transition-colors"
+          className="border-2 border-dashed border-[#cccccc] rounded-[24px] bg-white p-12 mb-8 text-center cursor-pointer hover:border-gray-400 transition-colors relative h-[270px]  [@media(min-width:415px)]:h-[300px]"
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onClick={() => fileInputRef.current?.click()}
@@ -126,10 +129,12 @@ const Upload = () => {
           />
           <div className="flex flex-col items-center">
             {selectedFile ? (
-              <div className="mb-4">
-                <div className="text-green-600 mb-2">✓ File selected:</div>
-                <div className="text-sm text-gray-600">{selectedFile.name}</div>
-              </div>
+                <Image
+                  src={previewUrl}
+                  alt="Preview"
+                  fill
+                  className="object-contain"
+                />
             ) : (
               <>
                 {/* Upload Icon */}

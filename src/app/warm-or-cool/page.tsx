@@ -58,16 +58,15 @@ const Question1Page = () => {
         </div>
 
         {/* Image with Color Overlay */}
-        <div className="border-2 border-dashed border-[#cccccc] rounded-2xl sm:rounded-[24px] bg-white mb-6 sm:mb-8 overflow-hidden relative">
+        <div className="border-2 border-dashed border-[#cccccc] rounded-2xl sm:rounded-[24px] bg-white mb-6 sm:mb-8 overflow-hidden relative w-full h-[270px]  [@media(min-width:415px)]:h-[300px]">
           <Image
             src={image}
             alt="Face for color analysis"
-            width={300}
-            height={300}
-            className="w-full h-full object-cover"
+            fill
+            className="object-contain"
             priority
           />
-          <div className="absolute w-[110%] -translate-x-1/2 h-full top-0 left-1/2 flex justify-between">
+           <div className="absolute [@media(min-width:415px)]:w-[110%] -translate-x-1/2 h-full top-0 left-1/2 flex justify-between">
             {/* Left curved overlay - Responsive */}
             <div className="">
               <svg

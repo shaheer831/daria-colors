@@ -85,19 +85,18 @@ const Question3Page = () => {
         </div>
 
         {/* Image with Contrast Analysis */}
-        <div className="border-2 border-dashed border-[#cccccc] rounded-[24px] bg-white mb-8 overflow-hidden relative">
-          <div className="relative w-full h-[300px]">
-            <Image
-              src={image}
-              alt="Your face"
-              fill
-              className="object-cover grayscale hover:grayscale-0 transition duration-300"
-            />
-            <div className="absolute bottom-0 left-0 right-0 h-12 flex">
-              <div className="w-full h-full bg-[#A6A6A6]"></div>
-              <div className="w-full h-full bg-[#595959]"></div>
-              <div className="w-full h-full bg-[#262626]"></div>
-            </div>
+        <div className="border-2 border-dashed border-[#cccccc] rounded-2xl sm:rounded-[24px] bg-white mb-6 sm:mb-8 overflow-hidden relative w-full h-[270px]  [@media(min-width:415px)]:h-[300px]">
+          <Image
+            src={image}
+            alt="Face for color analysis"
+            fill
+            className="object-contain grayscale hover:grayscale-0"
+            priority
+          />
+          <div className="absolute bottom-0 left-0 right-0 h-12 flex">
+            <div className="w-full h-full bg-[#A6A6A6]"></div>
+            <div className="w-full h-full bg-[#595959]"></div>
+            <div className="w-full h-full bg-[#262626]"></div>
           </div>
         </div>
 
