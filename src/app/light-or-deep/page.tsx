@@ -102,7 +102,7 @@ const Question2Page = () => {
             {/* LIGHT button */}
             <button
               onClick={() => setLightOrDeep("light")}
-              className={`flex items-center justify-center gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#FFD6F7] text-black`}
+              className={`flex items-center justify-center cursor-pointer gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#FFD6F7] text-black`}
             >
               {lightOrDeep === "light" && <Check size={18} />}
               LIGHT
@@ -111,7 +111,7 @@ const Question2Page = () => {
             {/* DEEP button */}
             <button
               onClick={() => setLightOrDeep("deep")}
-              className={`flex items-center justify-center gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#571249] text-white`}
+              className={`flex items-center cursor-pointer justify-center gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#571249] text-white`}
             >
               {lightOrDeep === "deep" && <Check size={18} />}
               DEEP
@@ -122,13 +122,13 @@ const Question2Page = () => {
           <div className="flex justify-between gap-2">
             <button
               onClick={handleBack}
-              className="bg-[#E5E5E5] text-black w-12 h-12 rounded-full transition-colors flex items-center justify-center"
+              className="bg-[#E5E5E5] text-black cursor-pointer w-12 h-12 rounded-full transition-colors flex items-center justify-center"
             >
               <ArrowLeft className="h-6 w-6" />
             </button>
             <button
               onClick={handleNext}
-              className="bg-black flex items-center justify-center text-white font-500 text-[19px] py-2.5 px-6 rounded-full transition-colors font-Sen gap-2"
+              className="bg-black cursor-pointer flex items-center justify-center text-white font-500 text-[19px] py-2.5 px-6 rounded-full transition-colors font-Sen gap-2"
             >
               NEXT
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

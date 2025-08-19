@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "./components/Footer";
+import Slider from "./components/Slider";
 
 export default function Home() {
   return (
@@ -50,12 +51,12 @@ export default function Home() {
                 />
               </div>
               <div className="absolute w-full h-full flex flex-col justify-center items-center gap-4">
-                <button className="bg-[#b794c4] font-500 text-[19px] py-4 rounded-full font-Sen px-7">
+                <button className="bg-[#D29FDC] hover:bg-[#af87bd] cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen px-7">
                   SHOP COLOR SWATCHES
                 </button>
 
                 <Link href="/upload">
-                  <button className="bg-[#f4a6a6] font-500 text-[19px] py-4 rounded-full font-Sen px-6">
+                  <button className="bg-[#F7CACD] hover:bg-[#f19898] cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen px-6">
                     FIND YOUR SEASON
                   </button>
                 </Link>
@@ -236,32 +237,7 @@ export default function Home() {
             />
           </span>
         </span>
-        <span
-          style={{
-            display: "inline-block",
-            background: "linear-gradient(to bottom right, #F1BDC3, #a56a71)", // darker shade
-          }}
-          className="w-full rounded-4xl mt-5 text-white overflow-hidden"
-        >
-          <div className="w-full px-5 pt-7">
-            <p className="font-Sen text-3xl">Modish Look</p>
-            <p className="font-Sen text-[17px] mt-2.5 tracking-wider">
-              Find Your Perfect Look by Dressing Up with Daira Colors, Get the
-              Special Price!
-            </p>
-            <button className="bg-black px-8 mt-4 py-3 rounded-full text-[17px]">
-              SHOP COLOR SWATCHES
-            </button>
-          </div>
-          <div className="w-full h-[280px] relative overflow-hidden">
-            <Image
-              src="/family-home.png"
-              alt="modal-cutted"
-              fill
-              className="object-cover scale-[1.02]"
-            />
-          </div>
-        </span>
+      <Slider />
         <div className="w-full bg-[#f2f2f298] pt-7 mt-8">
           <div className="w-full flex justify-center">
             <svg
@@ -417,9 +393,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-         <div className="flex justify-center gap-10 mt-9">
+        <div className="flex justify-center gap-10 mt-9">
           <svg
-          className="scale-125"
+            className="scale-125"
             width="22"
             height="17"
             viewBox="0 0 22 17"
@@ -432,7 +408,7 @@ export default function Home() {
             />
           </svg>
           <svg
-          className="scale-125"
+            className="scale-125"
             width="20"
             height="19"
             viewBox="0 0 20 19"
@@ -459,7 +435,7 @@ export default function Home() {
             />
           </svg>
         </div>
-       
+
         <div className="text-center w-full font-Tenor text-[17px] mt-4">
           <p>hello@daria.design</p>
           <p>+971 50 187</p>

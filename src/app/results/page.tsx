@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import ShopifyBuyButton from "../components/shopify-btn";
 
 interface Result {
   name: string;
@@ -12,7 +13,23 @@ interface Result {
   accents: string[];
   shopifyUrl: string;
   backgroundRemovedImage: string;
+  key: string;
 }
+
+const colorSeasons = [
+  { key: "bright-spring", value: "8677937250435" },
+  { key: "bright-winter", value: "8677950193795" },
+  { key: "dark-autumn", value: "8677950947459" },
+  { key: "dark-winter", value: "8677948588163" },
+  { key: "light-spring", value: "8677940494467" },
+  { key: "light-summer", value: "8677934596227" },
+  { key: "soft-autumn", value: "8677951930499" },
+  { key: "soft-summer", value: "8677935349891" },
+  { key: "true-autumn", value: "8677952782467" },
+  { key: "true-spring", value: "8677945049219" },
+  { key: "true-summer", value: "8677936332931" },
+  { key: "true-winter", value: "8677932826755" },
+];
 
 const ResultsPage = () => {
   const [result, setResult] = useState<Result | null>(null);
@@ -79,6 +96,11 @@ const ResultsPage = () => {
         "#F4F3F1",
       ];
 
+  const getProductId = (key: string) => {
+    const season = colorSeasons.find((s) => s.key === key);
+    return season ? season.value : null;
+  };
+
   return (
     <div className="min-h-screen px-7 py-8">
       <div className="max-w-[412px] mx-auto">
@@ -131,10 +153,13 @@ const ResultsPage = () => {
         </div>
 
         {/* Shop Button */}
-        <div className="mb-1 flex justify-center">
-          <button className=" bg-[#D29FDC] text-black px-6 tracking-tight text-[17px] py-3 rounded-full transition-colors font-Sen">
-            SHOP COLOR SWATCHES
-          </button>
+        <div className="mb-1 flex justify-center -mt-6">
+          {result && (
+            <ShopifyBuyButton
+              productId={getProductId(result.key) || ""}
+              buttonText="SHOP COLOR SWATCHES"
+            />
+          )}
         </div>
 
         {/* Product Image */}

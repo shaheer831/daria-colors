@@ -105,7 +105,7 @@ const Question3Page = () => {
           {/* LOW */}
           <button
             onClick={() => setContrast("low")}
-            className={`flex items-center justify-center gap-2 flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#A6A6A6] text-white font-black`}
+            className={`flex items-center cursor-pointer justify-center gap-2 flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#A6A6A6] text-white font-black`}
           >
             {contrast === "low" && <Check size={18} />}
             LOW
@@ -114,7 +114,7 @@ const Question3Page = () => {
           {/* MEDIUM */}
           <button
             onClick={() => setContrast("medium")}
-            className={`flex items-center justify-center gap-2 flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#595959] text-white font-black`}
+            className={`flex items-center cursor-pointer justify-center gap-2 flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#595959] text-white font-black`}
           >
             {contrast === "medium" && <Check size={18} />}
             MEDIUM
@@ -123,7 +123,7 @@ const Question3Page = () => {
           {/* HIGH */}
           <button
             onClick={() => setContrast("high")}
-            className={`flex items-center justify-center gap-2 flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#262626] text-white font-black`}
+            className={`flex items-center cursor-pointer justify-center gap-2 flex-1 py-[10px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#262626] text-white font-black`}
           >
             {contrast === "high" && <Check size={18} />}
             HIGH
@@ -134,13 +134,13 @@ const Question3Page = () => {
         <div className="flex justify-center gap-2">
           <button
             onClick={handleBack}
-            className="bg-[#E5E5E5] text-black w-12 h-12 rounded-full transition-colors flex items-center justify-center"
+            className="bg-[#E5E5E5] cursor-pointer text-black w-12 h-12 rounded-full transition-colors flex items-center justify-center"
           >
             <ArrowLeft className="h-6 w-6" />
           </button>
           <button
             onClick={handleFinish}
-            className="bg-black flex items-center justify-center text-white font-500 text-[19px] py-2.5 px-6 rounded-full transition-colors font-Sen gap-2"
+            className="bg-black flex cursor-pointer items-center justify-center text-white font-500 text-[19px] py-2.5 px-6 rounded-full transition-colors font-Sen gap-2"
           >
             FINISH
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

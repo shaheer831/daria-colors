@@ -105,7 +105,7 @@ const Question1Page = () => {
             {/* BLUE button */}
             <button
               onClick={() => setWarmOrCool("blue")}
-              className={`flex items-center justify-center gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#004FCC]`}
+              className={`flex items-center cursor-pointer justify-center gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#004FCC]`}
             >
               {warmOrCool === "blue" && <Check size={18} />}
               BLUE
@@ -114,7 +114,7 @@ const Question1Page = () => {
             {/* ORANGE button */}
             <button
               onClick={() => setWarmOrCool("orange")}
-              className={`flex items-center justify-center gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#FF8500]`}
+              className={`flex cursor-pointer items-center justify-center gap-2 flex-1 py-[9px] rounded-full transition-colors font-Sen text-[17px] font-500 bg-[#FF8500]`}
             >
               {warmOrCool === "orange" && <Check size={18} />}
               ORANGE
@@ -124,7 +124,7 @@ const Question1Page = () => {
           <div className="flex justify-center">
             <button
               onClick={handleNext}
-              className="bg-black w-full flex items-center justify-center text-white font-500 text-[19px] py-2.5 px-12 rounded-full transition-colors font-Sen gap-2"
+              className="bg-black cursor-pointer w-full flex items-center justify-center text-white font-500 text-[19px] py-2.5 px-12 rounded-full transition-colors font-Sen gap-2"
             >
               NEXT
               <ArrowRight className="h-8 -mt-0.5" />
