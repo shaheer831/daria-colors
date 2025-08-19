@@ -22,3 +22,42 @@
   font-weight: 500;
 }
 
+/* Defensive styles to prevent Shopify widget conflicts */
+.shopify-buy__cart-wrapper,
+.shopify-buy__cart {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  z-index: 999999 !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 400px !important;
+  max-height: 90vh !important;
+  overflow: visible !important;
+}
+
+.shopify-buy__cart-toggle {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 999998 !important;
+  width: 60px !important;
+  height: 60px !important;
+}
+
+/* Ensure Shopify widgets don't interfere with our layout */
+.shopify-buy__layout-horizontal {
+  display: none !important;
+}
+
+/* Reset any potential conflicts */
+body {
+  position: relative !important;
+  overflow-x: visible !important;
+}
+
+/* Ensure our content stays properly positioned */
+.min-h-screen {
+  position: relative;
+  z-index: 1;
+}

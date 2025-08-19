@@ -103,7 +103,7 @@ export default function ShopifyBuyButton({
                   },
                 },
               },
-              buttonDestination: "checkout",
+              buttonDestination: "cart",
               contents: {
                 img: false,
                 title: false,

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Footer from "./components/Footer";
 import Slider from "./components/Slider";
+import ShopifyBuyButton from "./components/ShopifyBuyButton";
 
 export default function Home() {
   return (
@@ -41,19 +42,21 @@ export default function Home() {
               </div>
               {/* elevated image with buttons */}
               <div className="absolute w-full md:w-[87%] h-full top-0 left-0 pb-5">
-                <Image
-                  src="/home-modal.png"
-                  alt="Modal"
-                  loading="lazy"
-                  priority={false}
-                  fill
-                  className="scale-[1.2] -mt-12 ml-3 md:ml-11"
-                />
+              <Image
+                src="/home-modal.png"
+                alt="Modal"
+                priority
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 87vw, 87vw"
+                className="scale-[1.2] -mt-12 ml-3 md:ml-11"
+              />
               </div>
               <div className="absolute w-full h-full flex flex-col justify-center items-center gap-4">
-                <button className="bg-[#D29FDC] hover:bg-[#af87bd] cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen px-7">
-                  SHOP COLOR SWATCHES
-                </button>
+                <Link href="/products-collection">
+                  <button className="bg-[#D29FDC] hover:bg-[#af87bd] cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen px-7">
+                    SHOP COLOR SWATCHES
+                  </button>
+                </Link>
 
                 <Link href="/upload">
                   <button className="bg-[#F7CACD] hover:bg-[#f19898] cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen px-6">
@@ -94,6 +97,7 @@ export default function Home() {
             src="/home-twins.png"
             alt="twins"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"
           />
         </span>
@@ -115,9 +119,9 @@ export default function Home() {
               d="M64.3935 4.24751C49.864 9.39846 35.7344 16.5932 24.5811 27.6444C13.4278 38.6955 5.46883 53.9754 5.08711 70.2533C4.72389 85.7333 11.1612 100.809 20.1888 113.144C28.8241 124.945 39.744 134.602 50.6674 144.064"
               stroke="#100F0D"
               strokeWidth="1.9"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               strokeLinecap="round"
-              stroke-dasharray="13.33 13.33"
+              strokeDasharray="13.33 13.33"
             />
             <path
               d="M47.0498 130.516C46.6346 130.655 46.4108 131.129 46.5501 131.571L50.3928 143.811L38.3383 142.157C37.9023 142.097 37.5076 142.421 37.4582 142.88C37.4088 143.34 37.7253 143.762 38.1568 143.822L51.4489 145.646C51.7174 145.682 51.9842 145.571 52.1553 145.352C52.3256 145.131 52.3766 144.831 52.292 144.559L48.0551 131.063C48.0039 130.904 47.9149 130.772 47.802 130.673C47.5984 130.495 47.3172 130.426 47.0498 130.516Z"
@@ -148,13 +152,16 @@ export default function Home() {
             src="/home-chains.png"
             alt="Keychain"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"
           />
         </span>
         <span className="w-full flex justify-center mt-8">
-          <button className="font-San text-[18px] p-3 px-8 border rounded-full flex items-center gap-2">
-            <p className="font-500">SHOP YOUR SWATCH</p> <ArrowRight />
-          </button>
+          <Link href="/products-collection">
+            <button className="font-San text-[18px] p-3 px-8 border rounded-full flex items-center gap-2">
+              <p className="font-500">SHOP YOUR SWATCH</p> <ArrowRight />
+            </button>
+          </Link>
         </span>
         <span className="w-full flex justify-center mt-6 font-Tenor text-2xl tracking-widest relative">
           <svg
@@ -169,9 +176,9 @@ export default function Home() {
               d="M1 1C14.4844 7.28393 27.4984 15.6242 37.5271 27.6872C47.5559 39.7501 54.3768 55.9001 53.9981 72.5309C53.6381 88.3466 46.8757 103.268 37.7921 115.21C29.1031 126.635 18.3545 135.711 7.61128 144.588"
               stroke="#100F0D"
               strokeWidth="1.9"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               strokeLinecap="round"
-              stroke-dasharray="13.33 13.33"
+              strokeDasharray="13.33 13.33"
             />
             <path
               d="M11.269 132.821L11.27 132.821L11.27 132.82L11.269 132.821Z"
@@ -190,6 +197,7 @@ export default function Home() {
             src="/modal-twisted.png"
             alt="modal-twisted"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"
             style={{ objectPosition: "center 0px" }} // 20px down
           />
@@ -233,6 +241,7 @@ export default function Home() {
               src="/half-women.png"
               alt="modal-cutted"
               fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 25vw"
               className="object-cover "
             />
           </span>
@@ -338,9 +347,11 @@ export default function Home() {
               </p>
             </div>
             <div className="font-Tenor w-1/2 pt-5">
-              <button className="p-2 rounded-full font-500 w-[95%] text-[12px] bg-[#D29FDC]">
-                Shop color swatches
-              </button>
+              <Link href="/products-simple">
+                <button className="p-2 rounded-full font-500 w-[95%] text-[12px] bg-[#D29FDC]">
+                  Shop color swatches
+                </button>
+              </Link>
               <button className="p-2 rounded-full font-500 w-[95%] text-[12px] bg-[#F7CACD] mt-2">
                 Find your season
               </button>
@@ -362,6 +373,7 @@ export default function Home() {
                 src="/mia2.png"
                 alt="modal-cutted"
                 fill
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
                 className="object-cover object-top filter grayscale"
               />
             </div>
@@ -370,6 +382,7 @@ export default function Home() {
                 src="/img.png"
                 alt="modal-cutted"
                 fill
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
                 className="object-cover object-top filter grayscale"
               />
             </div>
@@ -380,6 +393,7 @@ export default function Home() {
                 src="/mia.png"
                 alt="modal-cutted"
                 fill
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
                 className="object-cover object-top filter grayscale"
               />
             </div>
@@ -388,6 +402,7 @@ export default function Home() {
                 src="/jihyn.png"
                 alt="modal-cutted"
                 fill
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
                 className="object-cover object-top filter grayscale"
               />
             </div>

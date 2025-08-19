@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Tenor_Sans, Montserrat, Sen } from "next/font/google";
 import Header from "./components/Header";
+import GlobalShopifyCart from "./components/GlobalShopifyCart";
+import { ShopifyCartProvider } from "./contexts/ShopifyCartContext";
+import { CartProvider } from "./contexts/CartContext";
 import "./globals.css";
-
 
 const tenor = Tenor_Sans({
   weight: "400", // or whichever weight Figma shows
@@ -37,8 +39,13 @@ export default function RootLayout({
       <body
         className={`${tenor.variable} ${montserrat.variable} ${sen.variable} antialiased`}
       >
-        <Header />
-        {children}
+        <ShopifyCartProvider>
+          <CartProvider>
+            <Header />
+            {children}
+            {/* <GlobalShopifyCart /> */}
+          </CartProvider>
+        </ShopifyCartProvider>
       </body>
     </html>
   );

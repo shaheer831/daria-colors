@@ -23,6 +23,7 @@ const Slider = () => {
           src="/family-home.png"
           alt="modal-cutted"
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover scale-[1.02]"
         />
       </div>

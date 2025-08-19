@@ -127,6 +127,7 @@ const ResultsPage = () => {
                   src={image}
                   alt="Your face"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
                 />
               </div>
@@ -170,6 +171,7 @@ const ResultsPage = () => {
                 src="/results-keychain.png"
                 alt="Keychain"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="rounded-[16px] object-cover"
               />
             </div>

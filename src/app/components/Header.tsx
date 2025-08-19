@@ -1,5 +1,97 @@
+"use client";
+
 import Link from "next/link";
+import { useShopifyCart } from "../contexts/ShopifyCartContext";
+import { useShopifyBuyCart } from "../hooks/useShopifyBuyCart";
+import { ShoppingBag } from "lucide-react";
+
+declare global {
+  interface Window {
+    ShopifyCartComponent: any;
+  }
+}
+
 const header = () => {
+  const { getTotalItems } = useShopifyCart();
+  const { buyCart } = useShopifyBuyCart();
+
+  const totalItems = getTotalItems();
+  const buyCartItems = buyCart?.lineItems.length || 0;
+  const allItemsCount = totalItems + buyCartItems;
+
+  const openShopifyCart = () => {
+    console.log('🛒 Toggling Shopify cart widget...');
+    
+    // Method 1: Direct toggle via global cart component (most reliable)
+    if (window.ShopifyBuy) {
+      try {
+        // Access the cart component's toggle method directly
+        const cartComponent = window.ShopifyCartComponent;
+        
+        // Check if cart has toggle method
+        if (cartComponent.toggle) {
+          cartComponent.toggle();
+          console.log('✅ Cart toggled via cart component toggle method');
+          return;
+        }
+        
+        // Check if cart has toggles array (older API)
+        if (cartComponent.toggles && cartComponent.toggles.length > 0) {
+          cartComponent.toggles[0].click();
+          console.log('✅ Cart toggled via cart component toggles array');
+          return;
+        }
+        
+        // Try to access the model directly
+        if (cartComponent.model && cartComponent.model.toggle) {
+          cartComponent.model.toggle();
+          console.log('✅ Cart toggled via cart model toggle');
+          return;
+        }
+      } catch (error) {
+        console.warn('⚠️ Error with direct cart component access:', error);
+      }
+    }
+    
+    // Method 2: Find and click the floating toggle button
+    const toggleSelectors = [
+      '[data-element="toggle"]',
+      '.shopify-buy__btn--cart-toggle',
+      '.shopify-buy__cart-toggle', 
+      '#shopify-cart-widget [data-element="toggle"]',
+      '[class*="shopify-buy"][class*="toggle"]'
+    ];
+    
+    for (const selector of toggleSelectors) {
+      const toggle = document.querySelector(selector) as HTMLElement;
+      if (toggle && toggle.style.display !== 'none') {
+        toggle.click();
+        console.log(`✅ Cart toggled by clicking: ${selector}`);
+        return;
+      }
+    }
+    
+    // Method 3: Try to programmatically show/hide the cart
+    const cartContainers = [
+      '.shopify-buy__cart',
+      '#shopify-cart-widget .shopify-buy__cart',
+      '[data-element="cart"]'
+    ];
+    
+    for (const selector of cartContainers) {
+      const cart = document.querySelector(selector) as HTMLElement;
+      if (cart) {
+        // Toggle visibility
+        const isVisible = cart.style.display !== 'none' && cart.offsetParent !== null;
+        cart.style.display = isVisible ? 'none' : 'block';
+        console.log(`✅ Cart ${isVisible ? 'hidden' : 'shown'} via direct style manipulation`);
+        return;
+      }
+    }
+    
+    console.warn('❌ Could not find cart to toggle');
+    console.log('💡 Cart widget may not be initialized yet. Try adding an item to cart first.');
+  };
   return (
     <div className="bg-[#F1F1F1] flex justify-between rounded-xl m-4 items-center px-5 pr-6 py-4">
       <svg
@@ -79,30 +171,19 @@ const header = () => {
           />
         </svg>
       </Link>
-      <svg
-        width="23"
-        height="25"
-        viewBox="0 0 20 21"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+
+      <button
+        id="shopify-floating-cart"
+        onClick={openShopifyCart}
+        className="relative p-2 hover:bg-gray-200 rounded-full transition-colors"
       >
-        <path
-          d="M13.7998 7.95208V4.99325C13.8048 2.95563 12.1158 1.29958 10.0278 1.2947C7.93879 1.2908 6.24279 2.93904 6.23779 4.97666V7.95208"
-          stroke="black"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M1 12.5736C1 7.40739 3.255 5.68498 10.019 5.68498C16.783 5.68498 19.038 7.40739 19.038 12.5736C19.038 17.7389 16.783 19.4613 10.019 19.4613C3.255 19.4613 1 17.7389 1 12.5736Z"
-          stroke="black"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+        <ShoppingBag className="w-6 h-6 text-black" />
+        {allItemsCount > 0 && (
+          <div className="absolute -top-1 -right-1 bg-[#D29FDC] text-black text-xs font-Sen font-bold rounded-full w-5 h-5 flex items-center justify-center">
+            {allItemsCount > 9 ? "9+" : allItemsCount}
+          </div>
+        )}
+      </button>
     </div>
   );
 };

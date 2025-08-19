@@ -1,0 +1,171 @@
+{
+  "products": [
+    {
+      "id": "bright-spring",
+      "name": "Bright Spring Seasonal Color keychain",
+      "price": 15.00,
+      "currency": "AED",
+      "season": "Spring",
+      "subtype": "Bright",
+      "description": "Perfect for individuals with warm undertones and high contrast features. Bright Spring colors are clear, vibrant, and energetic.",
+      "colors": ["#FF6B35", "#FFD23F", "#06FFA5", "#4ECDC4", "#45B7D1", "#96CEB4", "#FECA57", "#FF9FF3"],
+      "shopifyProductId": "8677937250435",
+      "variantId": "46781479706819",
+      "tags": ["spring", "bright", "warm", "clear", "vibrant"]
+    },
+    {
+      "id": "light-spring",
+      "name": "Light Spring Seasonal Color keychain", 
+      "price": 15.00,
+      "currency": "AED",
+      "season": "Spring",
+      "subtype": "Light",
+      "description": "Ideal for those with light, warm undertones. Light Spring colors are soft, fresh, and delicate with a warm base.",
+      "colors": ["#FFE5B4", "#PEACH", "#FFCCCB", "#E6E6FA", "#F0E68C", "#DDA0DD", "#98FB98", "#87CEEB"],
+      "shopifyProductId": "8677940494467",
+      "variantId": "46781493699779",
+      "tags": ["spring", "light", "warm", "soft", "delicate"]
+    },
+    {
+      "id": "true-spring",
+      "name": "True Spring Seasonal Color keychain",
+      "price": 15.00,
+      "currency": "AED", 
+      "season": "Spring",
+      "subtype": "True",
+      "description": "The quintessential Spring palette with pure warm colors. True Spring colors are clear, warm, and fresh.",
+      "colors": ["#FF7F50", "#32CD32", "#FFD700", "#FF69B4", "#00CED1", "#FFA500", "#ADFF2F", "#FF1493"],
+      "shopifyProductId": "8677945049219",
+      "variantId": "46781514341571",
+      "tags": ["spring", "true", "warm", "clear", "fresh"]
+    },
+    {
+      "id": "light-summer", 
+      "name": "Light Summer Seasonal Color keychain",
+      "price": 15.00,
+      "currency": "AED",
+      "season": "Summer", 
+      "subtype": "Light",
+      "description": "Perfect for fair complexions with cool undertones. Light Summer colors are soft, muted, and cool.",
+      "colors": ["#E6E6FA", "#F0F8FF", "#FFF8DC", "#F5F5DC", "#FFFACD", "#E0E0E0", "#D3D3D3", "#C0C0C0"],
+      "shopifyProductId": "8677934596227",
+      "variantId": "46781482852547",
+      "tags": ["summer", "light", "cool", "soft", "muted"]
+    },
+    {
+      "id": "soft-summer",
+      "name": "Soft Summer Seasonal Key chain",
+      "price": 15.00,
+      "currency": "AED",
+      "season": "Summer",
+      "subtype": "Soft", 
+      "description": "Ideal for medium complexions with neutral-cool undertones. Soft Summer colors are muted and sophisticated.",
+      "colors": ["#B0C4DE", "#D8BFD8", "#DDA0DD", "#F0E68C", "#BDB76B", "#CD853F", "#D2691E", "#BC8F8F"],
+      "shopifyProductId": "8677935349891",
+      "variantId": "46781484393667",
+      "tags": ["summer", "soft", "cool", "muted", "sophisticated"]
+    },
+    {
+      "id": "true-summer",
+      "name": "True Summer Seasonal Color keychain",
+      "price": 15.00,
+      "currency": "AED",
+      "season": "Summer",
+      "subtype": "True",
+      "description": "Classic Summer palette with pure cool colors. True Summer colors are soft, cool, and elegant.",
+      "colors": ["#4169E1", "#6495ED", "#87CEEB", "#B0E0E6", "#ADD8E6", "#E0E0E0", "#D8BFD8", "#DDA0DD"],
+      "shopifyProductId": "8677936332931",
+      "variantId": "46781486489795",
+      "tags": ["summer", "true", "cool", "soft", "elegant"]
+    },
+    {
+      "id": "dark-autumn",
+      "name": "Dark Autumn Seasonal Color key chain", 
+      "price": 15.00,
+      "currency": "AED",
+      "season": "Autumn",
+      "subtype": "Dark",
+      "description": "Perfect for deep, rich complexions with warm undertones. Dark Autumn colors are intense, warm, and sophisticated.",
+      "colors": ["#8B4513", "#A0522D", "#CD853F", "#D2691E", "#B22222", "#800080", "#4B0082", "#2F4F4F"],
+      "shopifyProductId": "8677950947459",
+      "variantId": "46781545959619",
+      "tags": ["autumn", "dark", "warm", "intense", "rich"]
+    },
+    {
+      "id": "soft-autumn",
+      "name": "Soft Autumn Seasonal Color key chain",
+      "price": 15.00,
+      "currency": "AED",
+      "season": "Autumn", 
+      "subtype": "Soft",
+      "description": "Ideal for muted complexions with warm undertones. Soft Autumn colors are earthy, muted, and warm.",
+      "colors": ["#D2691E", "#CD853F", "#BDB76B", "#F0E68C", "#BC8F8F", "#A0522D", "#8FBC8F", "#9ACD32"],
+      "shopifyProductId": "8677951930499",
+      "variantId": "46781547431107",
+      "tags": ["autumn", "soft", "warm", "muted", "earthy"]
+    },
+    {
+      "id": "true-autumn", 
+      "name": "True Autumn Seasonal Color key chain",
+      "price": 15.00,
+      "currency": "AED",
+      "season": "Autumn",
+      "subtype": "True",
+      "description": "Classic Autumn palette with pure warm colors. True Autumn colors are rich, warm, and vibrant.",
+      "colors": ["#FF4500", "#FF8C00", "#FFA500", "#FFD700", "#B22222", "#8B4513", "#A0522D", "#228B22"],
+      "shopifyProductId": "8677952782467",
+      "variantId": "46781548511427",
+      "tags": ["autumn", "true", "warm", "rich", "vibrant"]
+    },
+    {
+      "id": "bright-winter",
+      "name": "Bright Winter Seasonal Color key chain",
+      "price": 15.00, 
+      "currency": "AED",
+      "season": "Winter",
+      "subtype": "Bright",
+      "description": "Perfect for high contrast features with cool undertones. Bright Winter colors are vivid, clear, and dramatic.",
+      "colors": ["#FF1493", "#DC143C", "#0000FF", "#4169E1", "#32CD32", "#00FFFF", "#FF00FF", "#FFFF00"],
+      "shopifyProductId": "8677950193795",
+      "variantId": "46781545533635",
+      "tags": ["winter", "bright", "cool", "vivid", "dramatic"]
+    },
+    {
+      "id": "dark-winter",
+      "name": "Dark Winter Seasonal Color key chain",
+      "price": 15.00,
+      "currency": "AED", 
+      "season": "Winter",
+      "subtype": "Dark",
+      "description": "Ideal for deep, cool complexions. Dark Winter colors are intense, cool, and sophisticated.",
+      "colors": ["#000080", "#191970", "#4B0082", "#800080", "#8B0000", "#2F4F4F", "#708090", "#000000"],
+      "shopifyProductId": "8677948588163",
+      "variantId": "46781534330051",
+      "tags": ["winter", "dark", "cool", "intense", "sophisticated"]
+    },
+    {
+      "id": "true-winter",
+      "name": "True Winter Seasonal key chain",
+      "price": 15.00,
+      "currency": "AED",
+      "season": "Winter", 
+      "subtype": "True",
+      "description": "Classic Winter palette with pure cool colors. True Winter colors are clear, cool, and striking.",
+      "colors": ["#FF1493", "#0000FF", "#FFFFFF", "#000000", "#DC143C", "#32CD32", "#00FFFF", "#FF00FF"],
+      "shopifyProductId": "8677932826755",
+      "variantId": "46781475184835",
+      "tags": ["winter", "true", "cool", "clear", "striking"]
+    }
+  ],
+  "categories": {
+    "seasons": ["Spring", "Summer", "Autumn", "Winter"],
+    "subtypes": ["Bright", "Light", "True", "Dark", "Soft"]
+  },
+  "metadata": {
+    "totalProducts": 12,
+    "uniformPrice": 15.00,
+    "currency": "AED", 
+    "lastUpdated": "2025-01-19",
+    "source": "https://shop.dariacolors.com/"
+  }
+}
