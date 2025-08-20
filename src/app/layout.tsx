@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Tenor_Sans, Montserrat, Sen } from "next/font/google";
 import Header from "./components/Header";
-import GlobalShopifyCart from "./components/GlobalShopifyCart";
 import { ShopifyCartProvider } from "./contexts/ShopifyCartContext";
 import { CartProvider } from "./contexts/CartContext";
 import "./globals.css";

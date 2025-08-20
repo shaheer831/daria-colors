@@ -8,90 +8,23 @@ import { ShoppingBag } from "lucide-react";
 declare global {
   interface Window {
     ShopifyCartComponent: any;
+    ShopifyCart: any;
   }
 }
 
 const header = () => {
-  const { getTotalItems } = useShopifyCart();
-  const { buyCart } = useShopifyBuyCart();
+  // const { getTotalItems } = useShopifyCart();
+  // const { buyCart } = useShopifyBuyCart();
 
-  const totalItems = getTotalItems();
-  const buyCartItems = buyCart?.lineItems.length || 0;
-  const allItemsCount = totalItems + buyCartItems;
+  // const totalItems = getTotalItems();
+  // const buyCartItems = buyCart?.lineItems.length || 0;
+  // const allItemsCount = totalItems + buyCartItems;
 
-  const openShopifyCart = () => {
-    console.log('🛒 Toggling Shopify cart widget...');
-    
-    // Method 1: Direct toggle via global cart component (most reliable)
-    if (window.ShopifyBuy) {
-      try {
-        // Access the cart component's toggle method directly
-        const cartComponent = window.ShopifyCartComponent;
-        
-        // Check if cart has toggle method
-        if (cartComponent.toggle) {
-          cartComponent.toggle();
-          console.log('✅ Cart toggled via cart component toggle method');
-          return;
-        }
-        
-        // Check if cart has toggles array (older API)
-        if (cartComponent.toggles && cartComponent.toggles.length > 0) {
-          cartComponent.toggles[0].click();
-          console.log('✅ Cart toggled via cart component toggles array');
-          return;
-        }
-        
-        // Try to access the model directly
-        if (cartComponent.model && cartComponent.model.toggle) {
-          cartComponent.model.toggle();
-          console.log('✅ Cart toggled via cart model toggle');
-          return;
-        }
-      } catch (error) {
-        console.warn('⚠️ Error with direct cart component access:', error);
-      }
-    }
-    
-    // Method 2: Find and click the floating toggle button
-    const toggleSelectors = [
-      '[data-element="toggle"]',
-      '.shopify-buy__btn--cart-toggle',
-      '.shopify-buy__cart-toggle', 
-      '#shopify-cart-widget [data-element="toggle"]',
-      '[class*="shopify-buy"][class*="toggle"]'
-    ];
-    
-    for (const selector of toggleSelectors) {
-      const toggle = document.querySelector(selector) as HTMLElement;
-      if (toggle && toggle.style.display !== 'none') {
-        toggle.click();
-        console.log(`✅ Cart toggled by clicking: ${selector}`);
-        return;
-      }
-    }
-    
-    // Method 3: Try to programmatically show/hide the cart
-    const cartContainers = [
-      '.shopify-buy__cart',
-      '#shopify-cart-widget .shopify-buy__cart',
-      '[data-element="cart"]'
-    ];
-    
-    for (const selector of cartContainers) {
-      const cart = document.querySelector(selector) as HTMLElement;
-      if (cart) {
-        // Toggle visibility
-        const isVisible = cart.style.display !== 'none' && cart.offsetParent !== null;
-        cart.style.display = isVisible ? 'none' : 'block';
-        console.log(`✅ Cart ${isVisible ? 'hidden' : 'shown'} via direct style manipulation`);
-        return;
-      }
-    }
-    
-    console.warn('❌ Could not find cart to toggle');
-    console.log('💡 Cart widget may not be initialized yet. Try adding an item to cart first.');
-  };
+  // const openShopifyCart = () => {
+  //   if (window?.ShopifyCart) {
+  //     window.ShopifyCart.open();
+  //   }
+  // };
   return (
     <div className="bg-[#F1F1F1] flex justify-between rounded-xl m-4 items-center px-5 pr-6 py-4">
       <svg
@@ -171,8 +104,8 @@ const header = () => {
           />
         </svg>
       </Link>
-
-      <button
+      <div></div>
+      {/* <button
         id="shopify-floating-cart"
         onClick={openShopifyCart}
         className="relative p-2 hover:bg-gray-200 rounded-full transition-colors"
@@ -183,7 +116,7 @@ const header = () => {
             {allItemsCount > 9 ? "9+" : allItemsCount}
           </div>
         )}
-      </button>
+      </button> */}
     </div>
   );
 };
