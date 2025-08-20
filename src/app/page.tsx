@@ -107,9 +107,9 @@ export default function Home() {
               <p className="font-500">FIND YOUR SEASON</p> <ArrowRight />
             </button>
           </span>
-          <span className="w-full flex justify-center mt-6 font-Tenor text-2xl tracking-widest relative">
+          <span className="w-full flex justify-center mt-6 font-Tenor text-[20px] tracking-widest relative">
             <svg
-              className="absolute -top-6 -left-3"
+              className="absolute -top-7 -left-3"
               width="83"
               height="197"
               viewBox="0 0 66 147"
@@ -129,7 +129,7 @@ export default function Home() {
                 fill="#100F0D"
               />
             </svg>
-            SWATCH & STYLE
+            <p className="-mt-1">SWATCH & STYLE</p>
           </span>
           <span className="w-full flex justify-center -mt-3.5">
             <svg
@@ -144,11 +144,11 @@ export default function Home() {
               />
             </svg>
           </span>
-          <span className="w-full flex justify-center text-center mt-3 text-[16px]">
+          <span className="w-full flex justify-center text-center mt-3 text-[14px]">
             Each DariaColors keychain holds your <br /> personal color palette,
             based on the science <br /> of the 12 seasons.
           </span>
-          <span className="relative w-full h-[300px] mt-5 rounded-4xl overflow-hidden block">
+          <span className="relative w-full h-[300px] mt-8 rounded-4xl overflow-hidden block">
             <Image
               src="/home-chains.png"
               alt="Keychain"
@@ -166,30 +166,24 @@ export default function Home() {
           </span>
           <span className="w-full flex justify-center mt-6 font-Tenor text-2xl tracking-widest relative">
             <svg
-              className="absolute -top-6 right-3 z-20"
-              width="83"
-              height="197"
-              viewBox="0 0 55 148"
+              className="absolute -top-4 -right-2 z-20"
+              width="70"
+              height="150"
+              viewBox="0 0 55 149"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M1 1C14.4844 7.28393 27.4984 15.6242 37.5271 27.6872C47.5559 39.7501 54.3768 55.9001 53.9981 72.5309C53.6381 88.3466 46.8757 103.268 37.7921 115.21C29.1031 126.635 18.3545 135.711 7.61128 144.588"
-                stroke="#100F0D"
-                strokeWidth="1.9"
-                strokeMiterlimit="10"
-                strokeLinecap="round"
-                strokeDasharray="13.33 13.33"
+                d="M18.056 148.149c.021-.437-.34-.817-.802-.848l-12.8-.853 5.909-10.636c.214-.384.054-.87-.355-1.082-.41-.213-.919-.071-1.131.31l-3.258 5.864-3.258 5.864a.77.77 0 0 0 .018.765.88.88 0 0 0 .69.414l14.113.941a.86.86 0 0 0 .455-.095.77.77 0 0 0 .42-.644"
+                fill="#100F0D"
               />
               <path
-                d="M11.269 132.821L11.27 132.821L11.27 132.82L11.269 132.821Z"
+                d="M12.4 140.607a.95.95 0 0 0-1.338-.119 822 822 0 0 1-4.056 3.367.95.95 0 0 0 1.21 1.465 808 808 0 0 0 4.065-3.375.95.95 0 0 0 .119-1.338m15.619-14.187a.95.95 0 0 0-1.343.003 180 180 0 0 1-7.637 7.201.95.95 0 0 0 1.264 1.417 181 181 0 0 0 7.719-7.277.95.95 0 0 0-.003-1.344m13.662-16.725a.95.95 0 0 0-1.317.265 91 91 0 0 1-3.328 4.675v.001a105 105 0 0 1-3.27 4.08.95.95 0 1 0 1.453 1.224 109 109 0 0 0 2.514-3.096l.815-1.059a93 93 0 0 0 3.399-4.773.95.95 0 0 0-.266-1.317m9.763-20.959a.95.95 0 0 0-1.187.631 74.4 74.4 0 0 1-4.197 10.646.95.95 0 1 0 1.71.827 76 76 0 0 0 4.305-10.917.95.95 0 0 0-.631-1.187m2.3-23.245a.95.95 0 0 0-.872 1.024A58 58 0 0 1 52.64 78.2a.95.95 0 0 0 1.887.227 60 60 0 0 0 .24-12.066.95.95 0 0 0-1.024-.87m-5.516-22.848a.95.95 0 0 0-1.714.819 69 69 0 0 1 4.235 11.245.95.95 0 1 0 1.83-.51 71 71 0 0 0-4.351-11.554M34.414 22.779a.95.95 0 1 0-1.37 1.315 80 80 0 0 1 3.752 4.2 73 73 0 0 1 3.652 4.784.95.95 0 0 0 1.556-1.09 75 75 0 0 0-3.747-4.908 81 81 0 0 0-3.843-4.3M16.537 8.342a.95.95 0 0 0-1.018 1.604c3.17 2.01 6.25 4.184 9.2 6.55a.95.95 0 1 0 1.188-1.482 103 103 0 0 0-9.37-6.672M1.402.139A.95.95 0 0 0 .599 1.86a150 150 0 0 1 5.09 2.488.95.95 0 0 0 .867-1.69A152 152 0 0 0 1.402.138"
                 fill="#100F0D"
-                stroke="black"
-                strokeWidth="2"
               />
             </svg>
           </span>
-          <span className="w-full flex justify-center text-center mt-3 text-[16px]">
+          <span className="w-full flex justify-center text-center mt-3 text-[14px]">
             When you wear the right shades, your natural <br /> beauty does the
             rest. No filters needed.
           </span>
