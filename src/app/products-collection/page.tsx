@@ -21,7 +21,7 @@ const ShopifyCollection = () => {
 
   useEffect(() => {
     if (isInitialized.current) return;
-    
+
     setIsLoading(true);
     setError(null);
 
@@ -29,8 +29,8 @@ const ShopifyCollection = () => {
       if (!window.ShopifyBuy || isInitialized.current) return;
 
       const client = window.ShopifyBuy.buildClient({
-        domain: 'v1ydcw-0r.myshopify.com',
-        storefrontAccessToken: 'c4c57221667b9c125e1976c34b1846c3',
+        domain: "v1ydcw-0r.myshopify.com",
+        storefrontAccessToken: "c4c57221667b9c125e1976c34b1846c3",
       });
 
       // Store client globally
@@ -39,136 +39,158 @@ const ShopifyCollection = () => {
       // Initialize cart
       client.checkout.create().then((checkout: any) => {
         window.ShopifyCheckout = checkout;
-        localStorage.setItem('shopify-checkout-id', checkout.id);
-        
-        window.dispatchEvent(new CustomEvent('shopify-cart-ready', {
-          detail: { client, checkout }
-        }));
+        localStorage.setItem("shopify-checkout-id", checkout.id);
+
+        window.dispatchEvent(
+          new CustomEvent("shopify-cart-ready", {
+            detail: { client, checkout },
+          })
+        );
       });
 
-      window.ShopifyBuy.UI.onReady(client).then((ui: any) => {
-        if (isInitialized.current || !componentRef.current) return;
+      window.ShopifyBuy.UI.onReady(client)
+        .then((ui: any) => {
+          if (isInitialized.current || !componentRef.current) return;
 
-        shopifyComponent.current = ui.createComponent('collection', {
-          id: '433612062851',
-          node: componentRef.current,
-          moneyFormat: 'Dhs.%20%7B%7Bamount%7D%7D',
-          options: {
-            product: {
-              styles: {
-                product: {
-                  "@media (min-width: 601px)": {
-                    "max-width": "calc(25% - 20px)",
-                    "margin-left": "20px",
-                    "margin-bottom": "50px",
-                    "width": "calc(25% - 20px)"
+          shopifyComponent.current = ui.createComponent("collection", {
+            id: "433612062851",
+            node: componentRef.current,
+            moneyFormat: "Dhs.%20%7B%7Bamount%7D%7D",
+            options: {
+              product: {
+                styles: {
+                  product: {
+                    "@media (min-width: 601px)": {
+                      "max-width": "calc(25% - 20px)",
+                      "margin-left": "20px",
+                      "margin-bottom": "50px",
+                      width: "calc(25% - 20px)",
+                    },
+                    img: {
+                      height: "calc(100% - 15px)",
+                      position: "absolute",
+                      left: "0",
+                      right: "0",
+                      top: "0",
+                    },
+                    imgWrapper: {
+                      "padding-top": "calc(75% + 15px)",
+                      position: "relative",
+                      height: "0",
+                    },
                   },
-                  img: {
-                    height: "calc(100% - 15px)",
-                    position: "absolute",
-                    left: "0",
-                    right: "0",
-                    top: "0"
+                  button: {
+                    "background-color": "#000000",
+                    "border-radius": "40px",
+                    color: "#FFFFFF",
+                    ":hover": {
+                      "background-color": "#333333",
+                    },
+                    ":focus": {
+                      "background-color": "#333333",
+                    },
                   },
-                  imgWrapper: {
-                    "padding-top": "calc(75% + 15px)",
-                    position: "relative",
-                    height: "0"
-                  }
                 },
-                button: {
-                  "background-color": "#000000",
-                  "border-radius": "40px",
-                  color: "#FFFFFF",
-                  ":hover": {
-                    "background-color": "#333333"
-                  },
-                  ":focus": {
-                    "background-color": "#333333"
-                  }
-                }
-              },
-              buttonDestination: "modal",
-              contents: {
-                options: false
-              },
-              text: {
-                button: "View product"
-              }
-            },
-            productSet: {
-              styles: {
-                products: {
-                  "@media (min-width: 601px)": {
-                    "margin-left": "-20px"
-                  }
-                }
-              }
-            },
-            modalProduct: {
-              contents: {
-                img: false,
-                imgWithCarousel: true,
-                button: false,
-                buttonWithQuantity: true
-              },
-              styles: {
-                product: {
-                  "@media (min-width: 601px)": {
-                    "max-width": "100%",
-                    "margin-left": "0px",
-                    "margin-bottom": "0px"
-                  }
+                buttonDestination: "modal",
+                contents: {
+                  options: false,
                 },
-                button: {
-                  "background-color": "#000000",
-                  "border-radius": "40px",
-                  color: "#FFFFFF",
-                  ":hover": {
-                    "background-color": "#333333"
+                text: {
+                  button: "View product",
+                },
+              },
+              productSet: {
+                styles: {
+                  products: {
+                    "@media (min-width: 601px)": {
+                      "margin-left": "-20px",
+                    },
                   },
-                  ":focus": {
-                    "background-color": "#333333"
-                  }
-                }
+                },
               },
-              text: {
-                button: "Add to cart"
-              }
-            },
-            option: {},
-            cart: {
-              styles: {
-                button: {
-                  "background-color": "#000000",
-                  "border-radius": "40px",
-                  color: "#FFFFFF",
-                  ":hover": {
-                    "background-color": "#333333"
+              modalProduct: {
+                contents: {
+                  img: false,
+                  imgWithCarousel: true,
+                  button: false,
+                  buttonWithQuantity: true,
+                },
+                styles: {
+                  product: {
+                    "@media (min-width: 601px)": {
+                      "max-width": "100%",
+                      "margin-left": "0px",
+                      "margin-bottom": "0px",
+                    },
                   },
-                  ":focus": {
-                    "background-color": "#333333"
-                  }
-                }
+                  button: {
+                    "background-color": "#000000",
+                    "border-radius": "40px",
+                    color: "#FFFFFF",
+                    ":hover": {
+                      "background-color": "#333333",
+                    },
+                    ":focus": {
+                      "background-color": "#333333",
+                    },
+                  },
+                },
+                text: {
+                  button: "Add to cart",
+                },
               },
-              text: {
-                button: "Checkout"
+              option: {},
+              cart: {
+                styles: {
+                  button: {
+                    "background-color": "#000000",
+                    "border-radius": "40px",
+                    color: "#FFFFFF",
+                    ":hover": {
+                      "background-color": "#333333",
+                    },
+                    ":focus": {
+                      "background-color": "#333333",
+                    },
+                  },
+                },
+                text: {
+                  button: "Checkout",
+                },
+                isVisible: true,
               },
-              isVisible: true
+              toggle: {
+                isVisible: true,
+                styles: {
+                  toggle: {
+                    "background-color": "#000000",
+                    color: "#FFFFFF",
+                    ":hover": {
+                      "background-color": "#333333",
+                    },
+                    ":focus": {
+                      "background-color": "#333333",
+                    },
+                  },
+                  count: {
+                    color: "#FFFFFF",
+                  },
+                  iconPath: {
+                    fill: "#FFFFFF",
+                  },
+                },
+              },
             },
-            toggle: {
-              isVisible: false
-            }
-          }
+          });
+
+          isInitialized.current = true;
+          setIsLoading(false);
+        })
+        .catch((error: any) => {
+          console.error("Error initializing Shopify UI:", error);
+          setError("Failed to load products. Please try refreshing the page.");
+          setIsLoading(false);
         });
-
-        isInitialized.current = true;
-        setIsLoading(false);
-      }).catch((error: any) => {
-        console.error('Error initializing Shopify UI:', error);
-        setError('Failed to load products. Please try refreshing the page.');
-        setIsLoading(false);
-      });
     };
 
     const loadScript = () => {
@@ -176,24 +198,25 @@ const ShopifyCollection = () => {
         const existingScript = document.querySelector(
           'script[src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"]'
         );
-        
+
         if (existingScript) {
           if (window.ShopifyBuy) {
             resolve();
           } else {
-            existingScript.addEventListener('load', () => resolve());
-            existingScript.addEventListener('error', reject);
+            existingScript.addEventListener("load", () => resolve());
+            existingScript.addEventListener("error", reject);
           }
           return;
         }
 
-        const script = document.createElement('script');
+        const script = document.createElement("script");
         script.async = true;
-        script.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-        
+        script.src =
+          "https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
+
         script.onload = () => resolve();
         script.onerror = reject;
-        
+
         document.head.appendChild(script);
       });
     };
@@ -205,8 +228,8 @@ const ShopifyCollection = () => {
       loadScript()
         .then(() => initializeShopifyBuy())
         .catch((error) => {
-          console.error('Failed to load Shopify script:', error);
-          setError('Failed to load Shopify SDK. Please check your connection.');
+          console.error("Failed to load Shopify script:", error);
+          setError("Failed to load Shopify SDK. Please check your connection.");
           setIsLoading(false);
         });
     }
@@ -217,7 +240,7 @@ const ShopifyCollection = () => {
         shopifyComponent.current.destroy();
       }
       if (componentRef.current) {
-        componentRef.current.innerHTML = '';
+        componentRef.current.innerHTML = "";
       }
       isInitialized.current = false;
     };
@@ -234,19 +257,31 @@ const ShopifyCollection = () => {
           <p className="text-gray-600 font-Sen text-sm">Loading products...</p>
         </div>
       )}
-      
+
       {error && (
         <div className="flex flex-col items-center justify-center py-16">
           <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md text-center">
             <div className="text-red-600 mb-2">
-              <svg className="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+              <svg
+                className="w-8 h-8 mx-auto"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+                />
               </svg>
             </div>
-            <h3 className="font-Sen font-semibold text-red-800 mb-2">Loading Error</h3>
+            <h3 className="font-Sen font-semibold text-red-800 mb-2">
+              Loading Error
+            </h3>
             <p className="text-red-600 text-sm mb-4">{error}</p>
-            <button 
-              onClick={() => window.location.reload()} 
+            <button
+              onClick={() => window.location.reload()}
               className="bg-red-600 hover:bg-red-700 text-white font-Sen font-semibold py-2 px-4 rounded-full transition-colors duration-200"
             >
               Retry
@@ -254,10 +289,14 @@ const ShopifyCollection = () => {
           </div>
         </div>
       )}
-      
-      <div 
-        ref={componentRef} 
-        className={isLoading || error ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}
+
+      <div
+        ref={componentRef}
+        className={
+          isLoading || error
+            ? "opacity-0"
+            : "opacity-100 transition-opacity duration-300"
+        }
       />
     </div>
   );
