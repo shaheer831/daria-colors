@@ -347,7 +347,7 @@ export default function Home() {
               </p>
             </div>
             <div className="font-Tenor w-1/2 pt-5">
-              <Link href="/products-simple">
+              <Link href="/products-collection">
                 <button className="p-2 rounded-full font-500 w-[95%] text-[12px] bg-[#D29FDC]">
                   Shop color swatches
                 </button>
