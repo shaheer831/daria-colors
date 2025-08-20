@@ -130,7 +130,7 @@ const Slider = () => {
           </div>
         </div>
       </div>
-      <div className="flex gap-1 mt-1">
+      <div className="flex gap-1 mt-2">
         {slides.map((_, index) => (
           <button
             key={index}

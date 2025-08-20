@@ -7,310 +7,462 @@ import ShopifyBuyButton from "./components/ShopifyBuyButton";
 
 export default function Home() {
   return (
-    <div className="min-h-screen px-7 py-8">
-      <div className="max-w-[412px] mx-auto">
-        <div>
-          {/* Title Section */}
-          <div className="mb-6">
-            <h1 className="text-[28px] font-Tenor font-normal text-black mb-3 leading-tight">
-              Find your perfect colors in seconds
-            </h1>
-            <p className="text-[#7E7E7E] text-[17px] leading-5 tracking-wide w-[85%]">
-              Discover your season and shop with your personal cheat sheet -
-              never buy the wrong color again.
-            </p>
-            <div className="w-full mt-14 flex flex-col relative">
-              <div className="flex justify-between gap-2.5 p-1">
-                <div className="w-1/3 h-28 bg-[#EFCa93] rounded-2xl"></div>
-                <div className="w-1/3 h-28 bg-[#F6D041] rounded-2xl"></div>
-                <div className="w-1/3 h-28 bg-[#f6cf4100] rounded-2xl"></div>
-              </div>
-              <div className="flex justify-between gap-2 p-1">
-                <div className="w-1/3 h-28 bg-[#278A66] rounded-2xl"></div>
-                <div className="w-1/3 h-28 bg-[#E65762] rounded-2xl"></div>
-                <div className="w-1/3 h-28 bg-[#e6576300] rounded-2xl"></div>
-              </div>
-              <div className="flex justify-between gap-2 p-1">
-                <div className="w-1/3 h-28 bg-[#109C9E] rounded-2xl"></div>
-                <div className="w-1/3 h-28 bg-[#109c9e00] rounded-2xl"></div>
-                <div className="w-1/3 h-28 bg-[#109c9e00] rounded-2xl"></div>
-              </div>
-              <div className="flex justify-between gap-2 p-1 pb-0">
-                <div className="w-1/3 h-28 bg-[#B9D26E] rounded-2xl"></div>
-                <div className="w-1/3 h-28 bg-[#489aff00] rounded-2xl"></div>
-                <div className="w-1/3 h-28 bg-[#4899FF] rounded-2xl"></div>
-              </div>
-              {/* elevated image with buttons */}
-              <div className="absolute w-full md:w-[87%] h-full top-0 left-0 pb-5">
-              <Image
-                src="/home-modal.png"
-                alt="Modal"
-                priority
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 87vw, 87vw"
-                className="scale-[1.2] -mt-12 ml-3 md:ml-11"
-              />
-              </div>
-              <div className="absolute w-full h-full flex flex-col justify-center items-center gap-4">
-                <Link href="/products-collection">
-                  <button className="bg-[#D29FDC] hover:bg-[#af87bd] cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen px-7">
-                    SHOP COLOR SWATCHES
-                  </button>
-                </Link>
+    <>
+      <div className="min-h-screen px-4 py-8 overflow-x-hidden">
+        <div className="max-w-[412px] mx-auto">
+          <div>
+            {/* Title Section */}
+            <div className="mb-6 ml-2">
+              <h1 className="text-[28px] font-Tenor font-normal text-black mb-3 leading-tight">
+                Find your perfect colors in seconds
+              </h1>
+              <p className="text-[#7E7E7E] text-[17px] leading-5 tracking-wide w-[85%]">
+                Discover your season and shop with your personal cheat sheet -
+                never buy the wrong color again.
+              </p>
+              <div className="w-full mt-14 flex flex-col relative">
+                <div className="flex justify-between gap-2.5 p-1">
+                  <div className="w-1/3 h-28 bg-[#EFCa93] rounded-2xl"></div>
+                  <div className="w-1/3 h-28 bg-[#F6D041] rounded-2xl"></div>
+                  <div className="w-1/3 h-28 bg-[#f6cf4100] rounded-2xl"></div>
+                </div>
+                <div className="flex justify-between gap-2 p-1">
+                  <div className="w-1/3 h-28 bg-[#278A66] rounded-2xl"></div>
+                  <div className="w-1/3 h-28 bg-[#E65762] rounded-2xl"></div>
+                  <div className="w-1/3 h-28 bg-[#e6576300] rounded-2xl"></div>
+                </div>
+                <div className="flex justify-between gap-2 p-1">
+                  <div className="w-1/3 h-28 bg-[#109C9E] rounded-2xl"></div>
+                  <div className="w-1/3 h-28 bg-[#109c9e00] rounded-2xl"></div>
+                  <div className="w-1/3 h-28 bg-[#109c9e00] rounded-2xl"></div>
+                </div>
+                <div className="flex justify-between gap-2 p-1 pb-0">
+                  <div className="w-1/3 h-28 bg-[#B9D26E] rounded-2xl"></div>
+                  <div className="w-1/3 h-28 bg-[#489aff00] rounded-2xl"></div>
+                  <div className="w-1/3 h-28 bg-[#4899FF] rounded-2xl"></div>
+                </div>
+                {/* elevated image with buttons */}
+                <div className="absolute w-full md:w-[87%] h-full top-0 left-0 pb-5">
+                  <Image
+                    src="/home-modal.png"
+                    alt="Modal"
+                    priority
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 87vw, 87vw"
+                    className="scale-[1.2] -mt-12 ml-3 md:ml-11"
+                  />
+                </div>
+                <div className="absolute w-full h-full flex flex-col justify-center items-center gap-4">
+                  <Link href="/products-collection">
+                    <button className="bg-[#D29FDC] hover:bg-[#af87bd] cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen px-7">
+                      SHOP COLOR SWATCHES
+                    </button>
+                  </Link>
 
-                <Link href="/upload">
-                  <button className="bg-[#F7CACD] hover:bg-[#f19898] cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen px-6">
-                    FIND YOUR SEASON
-                  </button>
-                </Link>
+                  <Link href="/upload">
+                    <button className="bg-[#F7CACD] hover:bg-[#f19898] cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen px-6">
+                      FIND YOUR SEASON
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <span className="w-full flex justify-center font-Montserrat">
-          <p className="font-500">Works for all 12 color seasons</p>
-        </span>
-        <span className="w-full flex justify-center font-Tenor">
-          <p className="font-500 text-2xl tracking-widest mt-3">
-            FIND YOUR SEASON
-          </p>
-        </span>
-        <span className="w-full flex justify-center -mt-3">
-          <svg
-            width="395"
-            viewBox="0 0 375 53"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M188.115 45.2543L192.665 40.7047H250.517V40.4979H192.665L188.115 36L183.617 40.4979H125.558V40.7047H183.617L188.115 45.2543ZM188.115 36.3102L192.458 40.6013L188.115 44.9441L183.772 40.6013L188.115 36.3102Z"
-              fill="#555555"
-            />
-          </svg>
-        </span>
-        <span className="font-Tenor text-center w-full block mt-2 text-[15px]">
-          The secret to looking radiant isn’t more makeup or expensive clothes —
-          it’s wearing the colors that love you back.
-        </span>
-        <span className="relative w-full h-[380px] mt-5 rounded-4xl overflow-hidden block">
-          <Image
-            src="/home-twins.png"
-            alt="twins"
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover"
-          />
-        </span>
-        <span className="w-full flex justify-center mt-8">
-          <button className="font-San text-[18px] p-3 px-8 border rounded-full flex items-center gap-2">
-            <p className="font-500">FIND YOUR SEASON</p> <ArrowRight />
-          </button>
-        </span>
-        <span className="w-full flex justify-center mt-6 font-Tenor text-2xl tracking-widest relative">
-          <svg
-            className="absolute -top-6 -left-3"
-            width="83"
-            height="197"
-            viewBox="0 0 66 147"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M64.3935 4.24751C49.864 9.39846 35.7344 16.5932 24.5811 27.6444C13.4278 38.6955 5.46883 53.9754 5.08711 70.2533C4.72389 85.7333 11.1612 100.809 20.1888 113.144C28.8241 124.945 39.744 134.602 50.6674 144.064"
-              stroke="#100F0D"
-              strokeWidth="1.9"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeDasharray="13.33 13.33"
-            />
-            <path
-              d="M47.0498 130.516C46.6346 130.655 46.4108 131.129 46.5501 131.571L50.3928 143.811L38.3383 142.157C37.9023 142.097 37.5076 142.421 37.4582 142.88C37.4088 143.34 37.7253 143.762 38.1568 143.822L51.4489 145.646C51.7174 145.682 51.9842 145.571 52.1553 145.352C52.3256 145.131 52.3766 144.831 52.292 144.559L48.0551 131.063C48.0039 130.904 47.9149 130.772 47.802 130.673C47.5984 130.495 47.3172 130.426 47.0498 130.516Z"
-              fill="#100F0D"
-            />
-          </svg>
-          SWATCH & STYLE
-        </span>
-        <span className="w-full flex justify-center -mt-3.5">
-          <svg
-            width="395"
-            viewBox="0 0 375 53"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M188.115 45.2543L192.665 40.7047H250.517V40.4979H192.665L188.115 36L183.617 40.4979H125.558V40.7047H183.617L188.115 45.2543ZM188.115 36.3102L192.458 40.6013L188.115 44.9441L183.772 40.6013L188.115 36.3102Z"
-              fill="#555555"
-            />
-          </svg>
-        </span>
-        <span className="w-full flex justify-center text-center mt-3 text-[16px]">
-          Each DariaColors keychain holds your <br /> personal color palette,
-          based on the science <br /> of the 12 seasons.
-        </span>
-        <span className="relative w-full h-[300px] mt-5 rounded-4xl overflow-hidden block">
-          <Image
-            src="/home-chains.png"
-            alt="Keychain"
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover"
-          />
-        </span>
-        <span className="w-full flex justify-center mt-8">
-          <Link href="/products-collection">
-            <button className="font-San text-[18px] p-3 px-8 border rounded-full flex items-center gap-2">
-              <p className="font-500">SHOP YOUR SWATCH</p> <ArrowRight />
-            </button>
-          </Link>
-        </span>
-        <span className="w-full flex justify-center mt-6 font-Tenor text-2xl tracking-widest relative">
-          <svg
-            className="absolute -top-6 right-3 z-20"
-            width="83"
-            height="197"
-            viewBox="0 0 55 148"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1 1C14.4844 7.28393 27.4984 15.6242 37.5271 27.6872C47.5559 39.7501 54.3768 55.9001 53.9981 72.5309C53.6381 88.3466 46.8757 103.268 37.7921 115.21C29.1031 126.635 18.3545 135.711 7.61128 144.588"
-              stroke="#100F0D"
-              strokeWidth="1.9"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeDasharray="13.33 13.33"
-            />
-            <path
-              d="M11.269 132.821L11.27 132.821L11.27 132.82L11.269 132.821Z"
-              fill="#100F0D"
-              stroke="black"
-              strokeWidth="2"
-            />
-          </svg>
-        </span>
-        <span className="w-full flex justify-center text-center mt-3 text-[16px]">
-          When you wear the right shades, your natural <br /> beauty does the
-          rest. No filters needed.
-        </span>
-        <span className="relative w-full h-[430px] bg-red-500 mt-6 rounded-4xl overflow-hidden block">
-          <Image
-            src="/modal-twisted.png"
-            alt="modal-twisted"
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover"
-            style={{ objectPosition: "center 0px" }} // 20px down
-          />
-          <svg
-            className="absolute top-1/2 left-1/2 w-[90%] -translate-x-1/2 -translate-y-1/2 z-10"
-            viewBox="0 0 309 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="289.5" cy="20.3826" r="19.5" fill="white" />
-            <path
-              d="M294 18.196L288 24.0448L285 21.1204M289.5 34.2803C282.044 34.2803 276 28.3884 276 21.1204C276 13.8524 282.044 7.96045 289.5 7.96045C296.956 7.96045 303 13.8524 303 21.1204C303 28.3884 296.956 34.2803 289.5 34.2803Z"
-              stroke="#7CB342"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <circle cx="19.5" cy="20.3826" r="19.5" fill="white" />
-            <path
-              d="M10.125 11.9815L28.875 30.2592M19.5 34.2803C12.0442 34.2803 6 28.3884 6 21.1204C6 13.8524 12.0442 7.96045 19.5 7.96045C26.9558 7.96045 33 13.8524 33 21.1204C33 28.3884 26.9558 34.2803 19.5 34.2803Z"
-              stroke="#D40000"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
-        <span className="w-full flex mt-7">
-          <span className="w-full font-Tenor text-[35px]">
-            Use this <br />
-            <span className="text-[#F86672] text-[43px] tracking-wider">
-              keychain
-            </span>
-            <br /> as your secret <br />
-            <span className="text-[#9E69CD]">cheat sheet</span>
-            <br /> when you <br /> go
-            <br /> shopping.
+          <span className="w-full flex justify-center font-Montserrat">
+            <p className="font-500">Works for all 12 color seasons</p>
           </span>
-          <span className="w-full relative ml-4 rounded-tl-4xl rounded-bl-4xl overflow-hidden">
-            <Image
-              src="/half-women.png"
-              alt="modal-cutted"
-              fill
-              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 25vw"
-              className="object-cover "
-            />
+          <span className="w-full flex justify-center font-Tenor">
+            <p className="font-500 text-2xl tracking-widest mt-3">
+              FIND YOUR SEASON
+            </p>
           </span>
-        </span>
-      <Slider />
-        <div className="w-full bg-[#f2f2f298] pt-7 mt-8">
-          <div className="w-full flex justify-center">
+          <span className="w-full flex justify-center -mt-3">
             <svg
-              width="165"
-              height="42"
-              viewBox="0 0 165 42"
+              width="395"
+              viewBox="0 0 375 53"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M39.2018 21.0623C39.2017 13.7689 37.9747 9.19767 35.1871 6.40927C32.3995 3.62088 27.8294 2.39343 20.5376 2.39343C13.2458 2.39343 8.67572 3.62088 5.88808 6.40927C3.10051 9.19767 1.87349 13.7689 1.87342 21.0623C1.87342 28.1585 3.03551 32.679 5.66578 35.4859C8.28507 38.2808 12.5667 39.5929 19.3902 39.7216C19.8968 39.7313 20.2994 40.1498 20.2902 40.6563C20.2806 41.1631 19.8623 41.5669 19.3555 41.5575C12.3987 41.4262 7.47129 40.0966 4.32716 36.742C1.19426 33.3991 0.0375977 28.2599 0.0375977 21.0623C0.037663 13.667 1.25823 8.44406 4.5901 5.1113C7.92213 1.77843 13.1439 0.557617 20.5376 0.557617C27.9313 0.557617 33.1531 1.77843 36.4851 5.1113C39.817 8.44406 41.0375 13.667 41.0376 21.0623C41.0376 27.2635 40.1789 31.9276 37.9456 35.2373C35.6767 38.5995 32.1033 40.4051 27.0801 41.1499C26.5789 41.2241 26.1124 40.8778 26.0379 40.3766C25.9635 39.8751 26.3097 39.4076 26.8112 39.3332C31.5276 38.6339 34.5412 37.0009 36.4241 34.2106C38.3428 31.3672 39.2018 27.162 39.2018 21.0623Z"
-                fill="black"
+                d="M188.115 45.2543L192.665 40.7047H250.517V40.4979H192.665L188.115 36L183.617 40.4979H125.558V40.7047H183.617L188.115 45.2543ZM188.115 36.3102L192.458 40.6013L188.115 44.9441L183.772 40.6013L188.115 36.3102Z"
+                fill="#555555"
+              />
+            </svg>
+          </span>
+          <span className="font-Tenor text-center w-full block mt-2 text-[15px]">
+            The secret to looking radiant isn’t more makeup or expensive clothes
+            — it’s wearing the colors that love you back.
+          </span>
+          <span className="relative w-full h-[380px] mt-5 rounded-4xl overflow-hidden block">
+            <Image
+              src="/home-twins.png"
+              alt="twins"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover"
+            />
+          </span>
+          <span className="w-full flex justify-center mt-8">
+            <button className="font-San text-[18px] p-3 px-8 border rounded-full flex items-center gap-2">
+              <p className="font-500">FIND YOUR SEASON</p> <ArrowRight />
+            </button>
+          </span>
+          <span className="w-full flex justify-center mt-6 font-Tenor text-2xl tracking-widest relative">
+            <svg
+              className="absolute -top-6 -left-3"
+              width="83"
+              height="197"
+              viewBox="0 0 66 147"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M64.3935 4.24751C49.864 9.39846 35.7344 16.5932 24.5811 27.6444C13.4278 38.6955 5.46883 53.9754 5.08711 70.2533C4.72389 85.7333 11.1612 100.809 20.1888 113.144C28.8241 124.945 39.744 134.602 50.6674 144.064"
+                stroke="#100F0D"
+                strokeWidth="1.9"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeDasharray="13.33 13.33"
               />
               <path
-                d="M14.7976 30.0777V13.6777H20.4088C21.7588 13.6777 22.9949 13.8886 24.1171 14.3103C25.2394 14.7164 26.199 15.2865 26.996 16.0206C27.8092 16.7391 28.4354 17.5981 28.8745 18.5977C29.3299 19.5974 29.5576 20.6751 29.5576 21.8309C29.5576 23.0335 29.3218 24.1425 28.8501 25.1577C28.3947 26.1574 27.7604 27.0242 26.9472 27.7583C26.1502 28.4924 25.215 29.0625 24.1415 29.4686C23.0681 29.8747 21.9214 30.0777 20.7016 30.0777H14.7976ZM17.0177 29.0469H19.7013C21.035 29.0469 22.1654 28.836 23.0925 28.4143C24.0358 27.977 24.8084 27.4147 25.4102 26.7274C26.012 26.0402 26.4511 25.2749 26.7276 24.4314C27.0041 23.5724 27.1423 22.7212 27.1423 21.8777C27.1423 20.9406 26.9797 20.0425 26.6544 19.1834C26.3291 18.3088 25.8493 17.5434 25.215 16.8874C24.5969 16.2158 23.8244 15.6848 22.8973 15.2943C21.9702 14.9038 20.9049 14.7086 19.7013 14.7086H17.0177V29.0469Z"
-                fill="black"
+                d="M47.0498 130.516C46.6346 130.655 46.4108 131.129 46.5501 131.571L50.3928 143.811L38.3383 142.157C37.9023 142.097 37.5076 142.421 37.4582 142.88C37.4088 143.34 37.7253 143.762 38.1568 143.822L51.4489 145.646C51.7174 145.682 51.9842 145.571 52.1553 145.352C52.3256 145.131 52.3766 144.831 52.292 144.559L48.0551 131.063C48.0039 130.904 47.9149 130.772 47.802 130.673C47.5984 130.495 47.3172 130.426 47.0498 130.516Z"
+                fill="#100F0D"
+              />
+            </svg>
+            SWATCH & STYLE
+          </span>
+          <span className="w-full flex justify-center -mt-3.5">
+            <svg
+              width="395"
+              viewBox="0 0 375 53"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M188.115 45.2543L192.665 40.7047H250.517V40.4979H192.665L188.115 36L183.617 40.4979H125.558V40.7047H183.617L188.115 45.2543ZM188.115 36.3102L192.458 40.6013L188.115 44.9441L183.772 40.6013L188.115 36.3102Z"
+                fill="#555555"
+              />
+            </svg>
+          </span>
+          <span className="w-full flex justify-center text-center mt-3 text-[16px]">
+            Each DariaColors keychain holds your <br /> personal color palette,
+            based on the science <br /> of the 12 seasons.
+          </span>
+          <span className="relative w-full h-[300px] mt-5 rounded-4xl overflow-hidden block">
+            <Image
+              src="/home-chains.png"
+              alt="Keychain"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover"
+            />
+          </span>
+          <span className="w-full flex justify-center mt-8">
+            <Link href="/products-collection">
+              <button className="font-San text-[18px] p-3 px-8 border rounded-full flex items-center gap-2">
+                <p className="font-500">SHOP YOUR SWATCH</p> <ArrowRight />
+              </button>
+            </Link>
+          </span>
+          <span className="w-full flex justify-center mt-6 font-Tenor text-2xl tracking-widest relative">
+            <svg
+              className="absolute -top-6 right-3 z-20"
+              width="83"
+              height="197"
+              viewBox="0 0 55 148"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1C14.4844 7.28393 27.4984 15.6242 37.5271 27.6872C47.5559 39.7501 54.3768 55.9001 53.9981 72.5309C53.6381 88.3466 46.8757 103.268 37.7921 115.21C29.1031 126.635 18.3545 135.711 7.61128 144.588"
+                stroke="#100F0D"
+                strokeWidth="1.9"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeDasharray="13.33 13.33"
               />
               <path
-                d="M163.524 21.4193H162.399C162.399 21.2482 162.353 21.064 162.261 20.8665C162.169 20.6691 162.024 20.4914 161.826 20.3334C161.629 20.1623 161.385 20.0241 161.096 19.9188C160.806 19.8004 160.464 19.7411 160.069 19.7411C159.674 19.7411 159.345 19.8004 159.082 19.9188C158.819 20.0241 158.608 20.1623 158.45 20.3334C158.292 20.4914 158.18 20.6691 158.115 20.8665C158.049 21.0508 158.016 21.2285 158.016 21.3996C158.016 21.8076 158.161 22.1235 158.45 22.3473C158.753 22.571 159.128 22.7619 159.576 22.9198C160.023 23.0778 160.504 23.2291 161.017 23.3739C161.543 23.5187 162.03 23.7096 162.478 23.9465C162.925 24.1702 163.294 24.473 163.584 24.8547C163.886 25.2364 164.038 25.7431 164.038 26.3749C164.038 27.2436 163.728 27.9478 163.11 28.4874C162.504 29.0139 161.596 29.2772 160.385 29.2772C159.714 29.2772 159.122 29.1982 158.608 29.0403C158.108 28.8691 157.68 28.6454 157.325 28.369C156.983 28.0926 156.726 27.7833 156.555 27.441C156.384 27.0857 156.298 26.7237 156.298 26.3552H157.582C157.582 26.5131 157.628 26.7105 157.72 26.9475C157.825 27.1844 157.99 27.4213 158.213 27.6582C158.45 27.882 158.746 28.0794 159.102 28.2505C159.47 28.4085 159.918 28.4874 160.444 28.4874C160.866 28.4874 161.214 28.4348 161.491 28.3295C161.767 28.211 161.984 28.0728 162.142 27.9149C162.3 27.7438 162.405 27.5595 162.458 27.3621C162.524 27.1646 162.557 26.9738 162.557 26.7895C162.557 26.3552 162.412 26.0129 162.123 25.7629C161.833 25.5128 161.471 25.3088 161.037 25.1508C160.602 24.9797 160.128 24.8283 159.615 24.6967C159.115 24.5519 158.648 24.3677 158.213 24.1439C157.779 23.9202 157.417 23.624 157.127 23.2555C156.838 22.8869 156.693 22.3868 156.693 21.755C156.693 21.2943 156.779 20.8928 156.95 20.5506C157.121 20.1952 157.351 19.8991 157.641 19.6622C157.943 19.4253 158.292 19.2476 158.687 19.1291C159.095 19.0106 159.53 18.9514 159.99 18.9514C160.477 18.9514 160.931 19.0172 161.353 19.1488C161.787 19.2673 162.162 19.4384 162.478 19.6622C162.807 19.8728 163.064 20.1294 163.248 20.4322C163.432 20.7349 163.524 21.064 163.524 21.4193Z"
-                fill="black"
+                d="M11.269 132.821L11.27 132.821L11.27 132.82L11.269 132.821Z"
+                fill="#100F0D"
+                stroke="black"
+                strokeWidth="2"
               />
+            </svg>
+          </span>
+          <span className="w-full flex justify-center text-center mt-3 text-[16px]">
+            When you wear the right shades, your natural <br /> beauty does the
+            rest. No filters needed.
+          </span>
+          <span className="relative w-full h-[430px] bg-red-500 mt-6 rounded-4xl overflow-hidden block">
+            <Image
+              src="/modal-twisted.png"
+              alt="modal-twisted"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover"
+              style={{ objectPosition: "center 0px" }} // 20px down
+            />
+            <svg
+              className="absolute top-1/2 left-1/2 w-[90%] -translate-x-1/2 -translate-y-1/2 z-10"
+              viewBox="0 0 309 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="289.5" cy="20.3826" r="19.5" fill="white" />
               <path
-                d="M149.688 19.1686H151.366V20.7481H151.484C151.721 20.1558 152.024 19.7082 152.392 19.4055C152.761 19.1028 153.222 18.9514 153.774 18.9514C153.84 18.9514 153.939 18.9646 154.071 18.9909C154.215 19.0041 154.367 19.0436 154.525 19.1094C154.696 19.162 154.86 19.241 155.018 19.3463C155.189 19.4516 155.334 19.5832 155.453 19.7411L154.781 20.9652C154.663 20.7941 154.472 20.6099 154.209 20.4124C153.959 20.215 153.682 20.1163 153.38 20.1163C153.156 20.1163 152.925 20.1689 152.689 20.2742C152.452 20.3795 152.234 20.5506 152.037 20.7875C151.84 21.0245 151.675 21.3338 151.543 21.7155C151.425 22.084 151.366 22.5381 151.366 23.0778V29.0403H149.688V19.1686Z"
-                fill="black"
+                d="M294 18.196L288 24.0448L285 21.1204M289.5 34.2803C282.044 34.2803 276 28.3884 276 21.1204C276 13.8524 282.044 7.96045 289.5 7.96045C296.956 7.96045 303 13.8524 303 21.1204C303 28.3884 296.956 34.2803 289.5 34.2803Z"
+                stroke="#7CB342"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
+              <circle cx="19.5" cy="20.3826" r="19.5" fill="white" />
               <path
-                d="M147.118 24.1242C147.118 24.8086 146.999 25.4667 146.762 26.0985C146.525 26.7171 146.183 27.2634 145.736 27.7372C145.301 28.211 144.768 28.5862 144.136 28.8626C143.518 29.139 142.82 29.2772 142.044 29.2772C141.254 29.2772 140.537 29.139 139.892 28.8626C139.26 28.573 138.72 28.1913 138.273 27.7175C137.838 27.2436 137.496 26.6974 137.246 26.0788C137.009 25.447 136.891 24.7954 136.891 24.1242C136.891 23.4397 137.009 22.7882 137.246 22.1696C137.496 21.5378 137.838 20.985 138.273 20.5111C138.72 20.0373 139.26 19.6622 139.892 19.3858C140.537 19.0962 141.254 18.9514 142.044 18.9514C142.82 18.9514 143.518 19.0962 144.136 19.3858C144.768 19.6622 145.301 20.0373 145.736 20.5111C146.183 20.985 146.525 21.5378 146.762 22.1696C146.999 22.7882 147.118 23.4397 147.118 24.1242ZM145.242 24.1242C145.242 23.2028 145.143 22.4591 144.946 21.8932C144.748 21.314 144.492 20.8665 144.176 20.5506C143.86 20.2347 143.511 20.0241 143.13 19.9188C142.748 19.8004 142.379 19.7411 142.024 19.7411C141.669 19.7411 141.3 19.8004 140.918 19.9188C140.537 20.0241 140.181 20.2347 139.852 20.5506C139.536 20.8665 139.273 21.314 139.062 21.8932C138.865 22.4591 138.766 23.2028 138.766 24.1242C138.766 25.0324 138.865 25.776 139.062 26.3552C139.273 26.9211 139.536 27.3621 139.852 27.678C140.181 27.9939 140.537 28.211 140.918 28.3295C141.3 28.4348 141.669 28.4874 142.024 28.4874C142.379 28.4874 142.748 28.4348 143.13 28.3295C143.511 28.211 143.86 27.9939 144.176 27.678C144.492 27.3621 144.748 26.9211 144.946 26.3552C145.143 25.776 145.242 25.0324 145.242 24.1242Z"
-                fill="black"
+                d="M10.125 11.9815L28.875 30.2592M19.5 34.2803C12.0442 34.2803 6 28.3884 6 21.1204C6 13.8524 12.0442 7.96045 19.5 7.96045C26.9558 7.96045 33 13.8524 33 21.1204C33 28.3884 26.9558 34.2803 19.5 34.2803Z"
+                stroke="#D40000"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <span className="w-full max-w-[412px] mx-auto flex mt-7 pl-4">
+        <span className="w-full font-Tenor text-[35px]">
+          Use this <br />
+          <span className="text-[#F86672] text-[43px] tracking-wider">
+            keychain
+          </span>
+          <br /> as your secret <br />
+          <span className="text-[#9E69CD]">cheat sheet</span>
+          <br /> when you <br /> go
+          <br /> shopping.
+        </span>
+        <span className="w-full relative ml-4 rounded-tl-4xl rounded-bl-4xl overflow-hidden">
+          <Image
+            src="/half-women.png"
+            alt="modal-cutted"
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 25vw"
+            className="object-cover "
+          />
+        </span>
+      </span>
+      <div className="max-w-[412px] mx-auto px-4 py-8">
+        <Slider />
+      </div>
+      <div className="w-full max-w-[412px] mx-auto bg-[#f2f2f298] pt-7 -mt-9">
+        <div className="w-full flex justify-center">
+          <svg
+            width="165"
+            height="42"
+            viewBox="0 0 165 42"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M39.2018 21.0623C39.2017 13.7689 37.9747 9.19767 35.1871 6.40927C32.3995 3.62088 27.8294 2.39343 20.5376 2.39343C13.2458 2.39343 8.67572 3.62088 5.88808 6.40927C3.10051 9.19767 1.87349 13.7689 1.87342 21.0623C1.87342 28.1585 3.03551 32.679 5.66578 35.4859C8.28507 38.2808 12.5667 39.5929 19.3902 39.7216C19.8968 39.7313 20.2994 40.1498 20.2902 40.6563C20.2806 41.1631 19.8623 41.5669 19.3555 41.5575C12.3987 41.4262 7.47129 40.0966 4.32716 36.742C1.19426 33.3991 0.0375977 28.2599 0.0375977 21.0623C0.037663 13.667 1.25823 8.44406 4.5901 5.1113C7.92213 1.77843 13.1439 0.557617 20.5376 0.557617C27.9313 0.557617 33.1531 1.77843 36.4851 5.1113C39.817 8.44406 41.0375 13.667 41.0376 21.0623C41.0376 27.2635 40.1789 31.9276 37.9456 35.2373C35.6767 38.5995 32.1033 40.4051 27.0801 41.1499C26.5789 41.2241 26.1124 40.8778 26.0379 40.3766C25.9635 39.8751 26.3097 39.4076 26.8112 39.3332C31.5276 38.6339 34.5412 37.0009 36.4241 34.2106C38.3428 31.3672 39.2018 27.162 39.2018 21.0623Z"
+              fill="black"
+            />
+            <path
+              d="M14.7976 30.0777V13.6777H20.4088C21.7588 13.6777 22.9949 13.8886 24.1171 14.3103C25.2394 14.7164 26.199 15.2865 26.996 16.0206C27.8092 16.7391 28.4354 17.5981 28.8745 18.5977C29.3299 19.5974 29.5576 20.6751 29.5576 21.8309C29.5576 23.0335 29.3218 24.1425 28.8501 25.1577C28.3947 26.1574 27.7604 27.0242 26.9472 27.7583C26.1502 28.4924 25.215 29.0625 24.1415 29.4686C23.0681 29.8747 21.9214 30.0777 20.7016 30.0777H14.7976ZM17.0177 29.0469H19.7013C21.035 29.0469 22.1654 28.836 23.0925 28.4143C24.0358 27.977 24.8084 27.4147 25.4102 26.7274C26.012 26.0402 26.4511 25.2749 26.7276 24.4314C27.0041 23.5724 27.1423 22.7212 27.1423 21.8777C27.1423 20.9406 26.9797 20.0425 26.6544 19.1834C26.3291 18.3088 25.8493 17.5434 25.215 16.8874C24.5969 16.2158 23.8244 15.6848 22.8973 15.2943C21.9702 14.9038 20.9049 14.7086 19.7013 14.7086H17.0177V29.0469Z"
+              fill="black"
+            />
+            <path
+              d="M163.524 21.4193H162.399C162.399 21.2482 162.353 21.064 162.261 20.8665C162.169 20.6691 162.024 20.4914 161.826 20.3334C161.629 20.1623 161.385 20.0241 161.096 19.9188C160.806 19.8004 160.464 19.7411 160.069 19.7411C159.674 19.7411 159.345 19.8004 159.082 19.9188C158.819 20.0241 158.608 20.1623 158.45 20.3334C158.292 20.4914 158.18 20.6691 158.115 20.8665C158.049 21.0508 158.016 21.2285 158.016 21.3996C158.016 21.8076 158.161 22.1235 158.45 22.3473C158.753 22.571 159.128 22.7619 159.576 22.9198C160.023 23.0778 160.504 23.2291 161.017 23.3739C161.543 23.5187 162.03 23.7096 162.478 23.9465C162.925 24.1702 163.294 24.473 163.584 24.8547C163.886 25.2364 164.038 25.7431 164.038 26.3749C164.038 27.2436 163.728 27.9478 163.11 28.4874C162.504 29.0139 161.596 29.2772 160.385 29.2772C159.714 29.2772 159.122 29.1982 158.608 29.0403C158.108 28.8691 157.68 28.6454 157.325 28.369C156.983 28.0926 156.726 27.7833 156.555 27.441C156.384 27.0857 156.298 26.7237 156.298 26.3552H157.582C157.582 26.5131 157.628 26.7105 157.72 26.9475C157.825 27.1844 157.99 27.4213 158.213 27.6582C158.45 27.882 158.746 28.0794 159.102 28.2505C159.47 28.4085 159.918 28.4874 160.444 28.4874C160.866 28.4874 161.214 28.4348 161.491 28.3295C161.767 28.211 161.984 28.0728 162.142 27.9149C162.3 27.7438 162.405 27.5595 162.458 27.3621C162.524 27.1646 162.557 26.9738 162.557 26.7895C162.557 26.3552 162.412 26.0129 162.123 25.7629C161.833 25.5128 161.471 25.3088 161.037 25.1508C160.602 24.9797 160.128 24.8283 159.615 24.6967C159.115 24.5519 158.648 24.3677 158.213 24.1439C157.779 23.9202 157.417 23.624 157.127 23.2555C156.838 22.8869 156.693 22.3868 156.693 21.755C156.693 21.2943 156.779 20.8928 156.95 20.5506C157.121 20.1952 157.351 19.8991 157.641 19.6622C157.943 19.4253 158.292 19.2476 158.687 19.1291C159.095 19.0106 159.53 18.9514 159.99 18.9514C160.477 18.9514 160.931 19.0172 161.353 19.1488C161.787 19.2673 162.162 19.4384 162.478 19.6622C162.807 19.8728 163.064 20.1294 163.248 20.4322C163.432 20.7349 163.524 21.064 163.524 21.4193Z"
+              fill="black"
+            />
+            <path
+              d="M149.688 19.1686H151.366V20.7481H151.484C151.721 20.1558 152.024 19.7082 152.392 19.4055C152.761 19.1028 153.222 18.9514 153.774 18.9514C153.84 18.9514 153.939 18.9646 154.071 18.9909C154.215 19.0041 154.367 19.0436 154.525 19.1094C154.696 19.162 154.86 19.241 155.018 19.3463C155.189 19.4516 155.334 19.5832 155.453 19.7411L154.781 20.9652C154.663 20.7941 154.472 20.6099 154.209 20.4124C153.959 20.215 153.682 20.1163 153.38 20.1163C153.156 20.1163 152.925 20.1689 152.689 20.2742C152.452 20.3795 152.234 20.5506 152.037 20.7875C151.84 21.0245 151.675 21.3338 151.543 21.7155C151.425 22.084 151.366 22.5381 151.366 23.0778V29.0403H149.688V19.1686Z"
+              fill="black"
+            />
+            <path
+              d="M147.118 24.1242C147.118 24.8086 146.999 25.4667 146.762 26.0985C146.525 26.7171 146.183 27.2634 145.736 27.7372C145.301 28.211 144.768 28.5862 144.136 28.8626C143.518 29.139 142.82 29.2772 142.044 29.2772C141.254 29.2772 140.537 29.139 139.892 28.8626C139.26 28.573 138.72 28.1913 138.273 27.7175C137.838 27.2436 137.496 26.6974 137.246 26.0788C137.009 25.447 136.891 24.7954 136.891 24.1242C136.891 23.4397 137.009 22.7882 137.246 22.1696C137.496 21.5378 137.838 20.985 138.273 20.5111C138.72 20.0373 139.26 19.6622 139.892 19.3858C140.537 19.0962 141.254 18.9514 142.044 18.9514C142.82 18.9514 143.518 19.0962 144.136 19.3858C144.768 19.6622 145.301 20.0373 145.736 20.5111C146.183 20.985 146.525 21.5378 146.762 22.1696C146.999 22.7882 147.118 23.4397 147.118 24.1242ZM145.242 24.1242C145.242 23.2028 145.143 22.4591 144.946 21.8932C144.748 21.314 144.492 20.8665 144.176 20.5506C143.86 20.2347 143.511 20.0241 143.13 19.9188C142.748 19.8004 142.379 19.7411 142.024 19.7411C141.669 19.7411 141.3 19.8004 140.918 19.9188C140.537 20.0241 140.181 20.2347 139.852 20.5506C139.536 20.8665 139.273 21.314 139.062 21.8932C138.865 22.4591 138.766 23.2028 138.766 24.1242C138.766 25.0324 138.865 25.776 139.062 26.3552C139.273 26.9211 139.536 27.3621 139.852 27.678C140.181 27.9939 140.537 28.211 140.918 28.3295C141.3 28.4348 141.669 28.4874 142.024 28.4874C142.379 28.4874 142.748 28.4348 143.13 28.3295C143.511 28.211 143.86 27.9939 144.176 27.678C144.492 27.3621 144.748 26.9211 144.946 26.3552C145.143 25.776 145.242 25.0324 145.242 24.1242Z"
+              fill="black"
+            />
+            <path
+              d="M133.926 15.2197V29.0401H132.248V15.2197H133.926Z"
+              fill="black"
+            />
+            <path
+              d="M129.283 24.1242C129.283 24.8086 129.165 25.4667 128.928 26.0985C128.691 26.7171 128.349 27.2634 127.901 27.7372C127.467 28.211 126.934 28.5862 126.302 28.8626C125.683 29.139 124.986 29.2772 124.209 29.2772C123.419 29.2772 122.702 29.139 122.057 28.8626C121.425 28.573 120.886 28.1913 120.438 27.7175C120.004 27.2436 119.662 26.6974 119.412 26.0788C119.175 25.447 119.056 24.7954 119.056 24.1242C119.056 23.4397 119.175 22.7882 119.412 22.1696C119.662 21.5378 120.004 20.985 120.438 20.5111C120.886 20.0373 121.425 19.6622 122.057 19.3858C122.702 19.0962 123.419 18.9514 124.209 18.9514C124.986 18.9514 125.683 19.0962 126.302 19.3858C126.934 19.6622 127.467 20.0373 127.901 20.5111C128.349 20.985 128.691 21.5378 128.928 22.1696C129.165 22.7882 129.283 23.4397 129.283 24.1242ZM127.408 24.1242C127.408 23.2028 127.309 22.4591 127.111 21.8932C126.914 21.314 126.657 20.8665 126.341 20.5506C126.026 20.2347 125.677 20.0241 125.295 19.9188C124.913 19.8004 124.545 19.7411 124.189 19.7411C123.834 19.7411 123.465 19.8004 123.084 19.9188C122.702 20.0241 122.347 20.2347 122.018 20.5506C121.702 20.8665 121.439 21.314 121.228 21.8932C121.03 22.4591 120.932 23.2028 120.932 24.1242C120.932 25.0324 121.03 25.776 121.228 26.3552C121.439 26.9211 121.702 27.3621 122.018 27.678C122.347 27.9939 122.702 28.211 123.084 28.3295C123.465 28.4348 123.834 28.4874 124.189 28.4874C124.545 28.4874 124.913 28.4348 125.295 28.3295C125.677 28.211 126.026 27.9939 126.341 27.678C126.657 27.3621 126.914 26.9211 127.111 26.3552C127.309 25.776 127.408 25.0324 127.408 24.1242Z"
+              fill="black"
+            />
+            <path
+              d="M117.086 26.4933L117.678 27.0263C117.507 27.2238 117.257 27.4541 116.928 27.7174C116.599 27.9806 116.184 28.2307 115.684 28.4676C115.197 28.6914 114.618 28.8822 113.947 29.0402C113.289 29.1981 112.538 29.2771 111.696 29.2771C110.367 29.2771 109.222 29.0731 108.261 28.665C107.3 28.2438 106.51 27.6976 105.892 27.0263C105.273 26.3419 104.812 25.5653 104.51 24.6966C104.22 23.8148 104.075 22.9131 104.075 21.9918C104.075 20.9257 104.259 19.9648 104.628 19.1093C104.997 18.2406 105.516 17.5035 106.188 16.898C106.859 16.2794 107.662 15.8055 108.596 15.4765C109.544 15.1474 110.59 14.9829 111.736 14.9829C112.525 14.9829 113.229 15.0619 113.848 15.2198C114.467 15.3778 115.006 15.595 115.467 15.8714C115.928 16.1478 116.309 16.4768 116.612 16.8585C116.928 17.2402 117.185 17.6548 117.382 18.1024H115.921C115.829 17.8259 115.664 17.5561 115.428 17.2929C115.204 17.0165 114.908 16.773 114.539 16.5624C114.184 16.3518 113.769 16.1807 113.295 16.049C112.835 15.9174 112.321 15.8516 111.755 15.8516C110.926 15.8516 110.156 16.003 109.445 16.3057C108.748 16.6084 108.142 17.0296 107.629 17.5693C107.116 18.1089 106.714 18.7539 106.425 19.5041C106.148 20.2412 106.01 21.0573 106.01 21.9523C106.01 22.7947 106.142 23.6042 106.405 24.3807C106.681 25.1573 107.083 25.8417 107.609 26.434C108.136 27.0263 108.794 27.5002 109.584 27.8556C110.373 28.2109 111.281 28.3886 112.308 28.3886C114.151 28.3886 115.743 27.7568 117.086 26.4933Z"
+              fill="black"
+            />
+            <path
+              d="M90.7355 18.9514C91.6963 18.9514 92.44 19.0896 92.9665 19.366C93.493 19.6293 93.8747 19.9781 94.1116 20.4124C94.3617 20.8468 94.5065 21.3469 94.546 21.9129C94.5854 22.4789 94.6052 23.058 94.6052 23.6503V29.0403H93.006V28.0728C92.6243 28.4414 92.1373 28.7375 91.545 28.9613C90.9527 29.1719 90.3604 29.2772 89.7681 29.2772C89.2021 29.2772 88.7019 29.1785 88.2676 28.981C87.8332 28.7836 87.4713 28.5269 87.1817 28.211C86.8921 27.8951 86.675 27.5398 86.5302 27.1449C86.3854 26.75 86.313 26.3486 86.313 25.9406C86.313 25.5194 86.392 25.0982 86.5499 24.677C86.7079 24.2558 86.9448 23.8807 87.2607 23.5516C87.5766 23.2094 87.9648 22.933 88.4255 22.7224C88.8862 22.5118 89.4127 22.4065 90.005 22.4065C90.5973 22.4065 91.1567 22.525 91.6832 22.7619C92.2228 22.9856 92.6638 23.3081 93.006 23.7293V22.8803C93.006 21.801 92.8415 20.9981 92.5124 20.4717C92.1965 19.9452 91.6108 19.6819 90.7552 19.6819C90.3867 19.6819 90.0642 19.728 89.7878 19.8201C89.5114 19.9123 89.2613 20.0439 89.0376 20.215C88.827 20.3729 88.6295 20.577 88.4453 20.827C88.261 21.064 88.0767 21.3338 87.8925 21.6365L86.8658 20.6099C87.0501 20.4124 87.2409 20.215 87.4384 20.0176C87.649 19.8201 87.899 19.6424 88.1886 19.4845C88.4913 19.3265 88.8467 19.2015 89.2547 19.1094C89.6628 19.0041 90.1564 18.9514 90.7355 18.9514ZM93.006 25.1311C92.9402 24.9731 92.8415 24.7889 92.7098 24.5783C92.5914 24.3677 92.4334 24.1637 92.236 23.9662C92.0386 23.7688 91.8016 23.6043 91.5252 23.4726C91.2488 23.3279 90.9198 23.2555 90.5381 23.2555C90.1564 23.2555 89.8076 23.3344 89.4917 23.4924C89.1758 23.6372 88.9059 23.8346 88.6822 24.0847C88.4716 24.3216 88.3071 24.6046 88.1886 24.9336C88.0701 25.2627 88.0109 25.6049 88.0109 25.9603C88.0109 26.3815 88.0833 26.75 88.2281 27.0659C88.386 27.3687 88.5835 27.6319 88.8204 27.8557C89.0573 28.0663 89.3206 28.2242 89.6101 28.3295C89.8997 28.4348 90.1761 28.4874 90.4393 28.4874C90.6894 28.4874 90.9395 28.4414 91.1896 28.3492C91.4528 28.2571 91.6963 28.1321 91.9201 27.9741C92.157 27.803 92.3676 27.6056 92.5519 27.3818C92.7362 27.1581 92.8875 26.9146 93.006 26.6513V25.1311Z"
+              fill="black"
+            />
+            <path
+              d="M81.661 19.1685H83.3392V29.0402H81.661V19.1685ZM81.4241 16.049C81.4241 15.7595 81.5294 15.5094 81.74 15.2988C81.9506 15.0882 82.2007 14.9829 82.4903 14.9829C82.7798 14.9829 83.0299 15.0882 83.2405 15.2988C83.4511 15.5094 83.5564 15.7595 83.5564 16.049C83.5564 16.3386 83.4511 16.5887 83.2405 16.7993C83.0299 17.0099 82.7798 17.1152 82.4903 17.1152C82.2007 17.1152 81.9506 17.0099 81.74 16.7993C81.5294 16.5887 81.4241 16.3386 81.4241 16.049Z"
+              fill="black"
+            />
+            <path
+              d="M73.4906 19.1686H75.1688V20.7481H75.2873C75.5242 20.1558 75.8269 19.7082 76.1955 19.4055C76.564 19.1028 77.0247 18.9514 77.5775 18.9514C77.6433 18.9514 77.742 18.9646 77.8737 18.9909C78.0184 19.0041 78.1698 19.0436 78.3277 19.1094C78.4989 19.162 78.6634 19.241 78.8213 19.3463C78.9924 19.4516 79.1372 19.5832 79.2557 19.7411L78.5844 20.9652C78.466 20.7941 78.2751 20.6099 78.0119 20.4124C77.7618 20.215 77.4854 20.1163 77.1826 20.1163C76.9589 20.1163 76.7285 20.1689 76.4916 20.2742C76.2547 20.3795 76.0375 20.5506 75.8401 20.7875C75.6427 21.0245 75.4781 21.3338 75.3465 21.7155C75.228 22.084 75.1688 22.5381 75.1688 23.0778V29.0403H73.4906V19.1686Z"
+              fill="black"
+            />
+            <path
+              d="M66.4612 18.9514C67.422 18.9514 68.1657 19.0896 68.6922 19.366C69.2187 19.6293 69.6004 19.9781 69.8373 20.4124C70.0874 20.8468 70.2322 21.3469 70.2717 21.9129C70.3112 22.4789 70.3309 23.058 70.3309 23.6503V29.0403H68.7317V28.0728C68.35 28.4414 67.863 28.7375 67.2707 28.9613C66.6784 29.1719 66.0861 29.2772 65.4938 29.2772C64.9278 29.2772 64.4276 29.1785 63.9933 28.981C63.5589 28.7836 63.197 28.5269 62.9074 28.211C62.6178 27.8951 62.4007 27.5398 62.2559 27.1449C62.1111 26.75 62.0387 26.3486 62.0387 25.9406C62.0387 25.5194 62.1177 25.0982 62.2756 24.677C62.4336 24.2558 62.6705 23.8807 62.9864 23.5516C63.3023 23.2094 63.6906 22.933 64.1512 22.7224C64.6119 22.5118 65.1384 22.4065 65.7307 22.4065C66.323 22.4065 66.8824 22.525 67.4089 22.7619C67.9485 22.9856 68.3895 23.3081 68.7317 23.7293V22.8803C68.7317 21.801 68.5672 20.9981 68.2381 20.4717C67.9222 19.9452 67.3365 19.6819 66.4809 19.6819C66.1124 19.6819 65.7899 19.728 65.5135 19.8201C65.2371 19.9123 64.987 20.0439 64.7633 20.215C64.5527 20.3729 64.3552 20.577 64.171 20.827C63.9867 21.064 63.8024 21.3338 63.6182 21.6365L62.5915 20.6099C62.7758 20.4124 62.9666 20.215 63.1641 20.0176C63.3747 19.8201 63.6247 19.6424 63.9143 19.4845C64.217 19.3265 64.5724 19.2015 64.9805 19.1094C65.3885 19.0041 65.8821 18.9514 66.4612 18.9514ZM68.7317 25.1311C68.6659 24.9731 68.5672 24.7889 68.4355 24.5783C68.3171 24.3677 68.1591 24.1637 67.9617 23.9662C67.7643 23.7688 67.5273 23.6043 67.2509 23.4726C66.9745 23.3279 66.6455 23.2555 66.2638 23.2555C65.8821 23.2555 65.5333 23.3344 65.2174 23.4924C64.9015 23.6372 64.6317 23.8346 64.4079 24.0847C64.1973 24.3216 64.0328 24.6046 63.9143 24.9336C63.7959 25.2627 63.7366 25.6049 63.7366 25.9603C63.7366 26.3815 63.809 26.75 63.9538 27.0659C64.1117 27.3687 64.3092 27.6319 64.5461 27.8557C64.783 28.0663 65.0463 28.2242 65.3358 28.3295C65.6254 28.4348 65.9018 28.4874 66.1651 28.4874C66.4151 28.4874 66.6652 28.4414 66.9153 28.3492C67.1785 28.2571 67.422 28.1321 67.6458 27.9741C67.8827 27.803 68.0933 27.6056 68.2776 27.3818C68.4619 27.1581 68.6132 26.9146 68.7317 26.6513V25.1311Z"
+              fill="black"
+            />
+            <path
+              d="M48.7189 29.0401V15.2197H53.2598C54.3523 15.2197 55.3526 15.3974 56.2608 15.7528C57.169 16.095 57.9456 16.5754 58.5905 17.1941C59.2486 17.7995 59.7554 18.5234 60.1108 19.3658C60.4793 20.2082 60.6636 21.1164 60.6636 22.0904C60.6636 23.1039 60.4727 24.0384 60.091 24.894C59.7225 25.7363 59.2092 26.4668 58.5511 27.0855C57.9061 27.7041 57.1493 28.1845 56.2806 28.5267C55.4119 28.8689 54.4839 29.0401 53.4968 29.0401H48.7189ZM50.5155 28.1713H52.6873C53.7666 28.1713 54.6814 27.9937 55.4316 27.6383C56.195 27.2697 56.8202 26.7959 57.3072 26.2168C57.7942 25.6376 58.1496 24.9927 58.3734 24.2819C58.5971 23.558 58.709 22.8407 58.709 22.1299C58.709 21.3402 58.5774 20.5833 58.3141 19.8594C58.0509 19.1223 57.6626 18.4774 57.1493 17.9246C56.6491 17.3586 56.0239 16.9111 55.2737 16.582C54.5234 16.253 53.6613 16.0884 52.6873 16.0884H50.5155V28.1713Z"
+              fill="black"
+            />
+          </svg>
+        </div>
+        <div className="w-full flex justify-center mt-4">
+          <svg
+            width="126"
+            height="10"
+            viewBox="0 0 126 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M63.1151 9.81191L67.6646 5.26231H125.517V5.05551H67.6646L63.1151 0.557617L58.6172 5.05551H0.558105V5.26231H58.6172L63.1151 9.81191ZM63.1151 0.867817L67.4578 5.15891L63.1151 9.50171L58.7723 5.15891L63.1151 0.867817Z"
+              fill="#555555"
+            />
+          </svg>
+        </div>
+        <div className="flex py-7 px-4 pl-8 gap-8">
+          <div className="font-Tenor w-1/2">
+            <p>Over</p>
+            <p className="font-Tenor text-3xl">10,000</p>
+            <p className="text-[12px]">
+              women have already discovered their glow with DariaColors
+            </p>
+          </div>
+          <div className="font-Tenor w-1/2">
+            <p>Almost</p>
+            <p className="font-Tenor text-3xl">94%</p>
+            <p className="text-[12px]">say they shop faster and waste less</p>
+          </div>
+        </div>
+        <div className="flex px-4 pl-8 gap-8">
+          <div className="font-Tenor w-1/2">
+            <p>Only</p>
+            <p className="font-Tenor text-3xl">38</p>
+            <p className="text-[12px]">
+              pieces left in the limited handmade stock
+            </p>
+          </div>
+          <div className="font-Tenor w-1/2 pt-5">
+            <Link href="/products-collection">
+              <button className="p-2 rounded-full font-500 w-full text-[12px] bg-[#D29FDC]">
+                Shop color swatches
+              </button>
+            </Link>
+            <button className="p-2 rounded-full font-500 w-full text-[12px] bg-[#F7CACD] mt-2">
+              Find your season
+            </button>
+          </div>
+        </div>
+
+        <div className="text-center text-[13px] mt-8 pb-6">
+          Your perfect shades are waiting. Don’t miss <br /> out elevate your
+          style effortlessly today.
+        </div>
+      </div>
+      <div className="px-4 py-8">
+        <div className="max-w-[412px] mx-auto">
+          <div className="text-center font-Tenor mt-9 text-[18px]">
+            <p className="tracking-widest">OFF PALLETE VS.</p>
+            <p>PERFECT MATCH</p>
+            <div className="flex gap-4 mt-6">
+              <div className="w-full h-44 relative overflow-hidden">
+                <Image
+                  src="/mia2.png"
+                  alt="modal-cutted"
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                  className="object-cover object-top filter grayscale"
+                />
+                {/* Overlay */}{" "}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/60 flex items-end">
+                  <p className="text-white text-[18px] p-3 font-Tenor tracking-wider">
+                    @mia
+                  </p>
+                </div>
+              </div>
+              <div className="w-full h-44 relative overflow-hidden">
+                <Image
+                  src="/img.png"
+                  alt="modal-cutted"
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                  className="object-cover object-top filter grayscale"
+                />
+                {/* Overlay */}{" "}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/60 flex items-end"></div>
+              </div>
+            </div>
+            <div className="flex gap-4 mt-2">
+              <div className="w-full h-44 relative overflow-hidden">
+                <Image
+                  src="/mia.png"
+                  alt="modal-cutted"
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                  className="object-cover object-top filter grayscale"
+                />
+                {/* Overlay */}{" "}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/60 flex items-end">
+                  <p className="text-white text-[18px] p-3 font-Tenor tracking-wider">
+                    @mia
+                  </p>
+                </div>
+              </div>
+              <div className="w-full h-44 relative overflow-hidden">
+                <Image
+                  src="/jihyn.png"
+                  alt="modal-cutted"
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                  className="object-cover object-top filter grayscale"
+                />
+                {/* Overlay */}{" "}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/60 flex items-end">
+                  <p className="text-white text-[18px] p-3 font-Tenor tracking-wider">
+                    @_jihyn
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center gap-10 mt-9">
+            <svg
+              className="scale-125"
+              width="22"
+              height="17"
+              viewBox="0 0 22 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
-                d="M133.926 15.2197V29.0401H132.248V15.2197H133.926Z"
-                fill="black"
+                d="M21.1375 2.33216C20.3645 2.66234 19.5342 2.88453 18.6628 2.98475C19.5528 2.472 20.2353 1.66015 20.5567 0.692148C19.7249 1.16683 18.8025 1.51177 17.8204 1.69822C17.0345 0.892586 15.9151 0.38916 14.6762 0.38916C12.2968 0.38916 10.3681 2.24515 10.3681 4.5331C10.3681 4.85784 10.4069 5.17481 10.4796 5.47702C6.89919 5.30455 3.72508 3.65443 1.59932 1.14663C1.22941 1.75882 1.01699 2.47045 1.01699 3.23103C1.01699 4.66828 1.777 5.93694 2.93277 6.67965C2.22687 6.65789 1.56217 6.47144 0.981457 6.16146C0.981457 6.17933 0.981457 6.19564 0.981457 6.21351C0.981457 8.22177 2.46594 9.89675 4.43744 10.2767C4.07642 10.3714 3.6952 10.4219 3.30187 10.4219C3.02484 10.4219 2.75427 10.3955 2.49178 10.3481C3.04019 11.9944 4.63128 13.1931 6.51636 13.2265C5.04238 14.3382 3.18476 15.0009 1.1656 15.0009C0.81831 15.0009 0.475054 14.9815 0.137451 14.9427C2.04434 16.1181 4.30821 16.8041 6.7417 16.8041C14.6665 16.8041 18.9988 10.4895 18.9988 5.01321C18.9988 4.83375 18.9947 4.65507 18.9867 4.47716C19.829 3.89216 20.56 3.16266 21.1375 2.33216Z"
+                fill="#333333"
               />
+            </svg>
+            <svg
+              className="scale-125"
+              width="20"
+              height="19"
+              viewBox="0 0 20 19"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
-                d="M129.283 24.1242C129.283 24.8086 129.165 25.4667 128.928 26.0985C128.691 26.7171 128.349 27.2634 127.901 27.7372C127.467 28.211 126.934 28.5862 126.302 28.8626C125.683 29.139 124.986 29.2772 124.209 29.2772C123.419 29.2772 122.702 29.139 122.057 28.8626C121.425 28.573 120.886 28.1913 120.438 27.7175C120.004 27.2436 119.662 26.6974 119.412 26.0788C119.175 25.447 119.056 24.7954 119.056 24.1242C119.056 23.4397 119.175 22.7882 119.412 22.1696C119.662 21.5378 120.004 20.985 120.438 20.5111C120.886 20.0373 121.425 19.6622 122.057 19.3858C122.702 19.0962 123.419 18.9514 124.209 18.9514C124.986 18.9514 125.683 19.0962 126.302 19.3858C126.934 19.6622 127.467 20.0373 127.901 20.5111C128.349 20.985 128.691 21.5378 128.928 22.1696C129.165 22.7882 129.283 23.4397 129.283 24.1242ZM127.408 24.1242C127.408 23.2028 127.309 22.4591 127.111 21.8932C126.914 21.314 126.657 20.8665 126.341 20.5506C126.026 20.2347 125.677 20.0241 125.295 19.9188C124.913 19.8004 124.545 19.7411 124.189 19.7411C123.834 19.7411 123.465 19.8004 123.084 19.9188C122.702 20.0241 122.347 20.2347 122.018 20.5506C121.702 20.8665 121.439 21.314 121.228 21.8932C121.03 22.4591 120.932 23.2028 120.932 24.1242C120.932 25.0324 121.03 25.776 121.228 26.3552C121.439 26.9211 121.702 27.3621 122.018 27.678C122.347 27.9939 122.702 28.211 123.084 28.3295C123.465 28.4348 123.834 28.4874 124.189 28.4874C124.545 28.4874 124.913 28.4348 125.295 28.3295C125.677 28.211 126.026 27.9939 126.341 27.678C126.657 27.3621 126.914 26.9211 127.111 26.3552C127.309 25.776 127.408 25.0324 127.408 24.1242Z"
-                fill="black"
-              />
-              <path
-                d="M117.086 26.4933L117.678 27.0263C117.507 27.2238 117.257 27.4541 116.928 27.7174C116.599 27.9806 116.184 28.2307 115.684 28.4676C115.197 28.6914 114.618 28.8822 113.947 29.0402C113.289 29.1981 112.538 29.2771 111.696 29.2771C110.367 29.2771 109.222 29.0731 108.261 28.665C107.3 28.2438 106.51 27.6976 105.892 27.0263C105.273 26.3419 104.812 25.5653 104.51 24.6966C104.22 23.8148 104.075 22.9131 104.075 21.9918C104.075 20.9257 104.259 19.9648 104.628 19.1093C104.997 18.2406 105.516 17.5035 106.188 16.898C106.859 16.2794 107.662 15.8055 108.596 15.4765C109.544 15.1474 110.59 14.9829 111.736 14.9829C112.525 14.9829 113.229 15.0619 113.848 15.2198C114.467 15.3778 115.006 15.595 115.467 15.8714C115.928 16.1478 116.309 16.4768 116.612 16.8585C116.928 17.2402 117.185 17.6548 117.382 18.1024H115.921C115.829 17.8259 115.664 17.5561 115.428 17.2929C115.204 17.0165 114.908 16.773 114.539 16.5624C114.184 16.3518 113.769 16.1807 113.295 16.049C112.835 15.9174 112.321 15.8516 111.755 15.8516C110.926 15.8516 110.156 16.003 109.445 16.3057C108.748 16.6084 108.142 17.0296 107.629 17.5693C107.116 18.1089 106.714 18.7539 106.425 19.5041C106.148 20.2412 106.01 21.0573 106.01 21.9523C106.01 22.7947 106.142 23.6042 106.405 24.3807C106.681 25.1573 107.083 25.8417 107.609 26.434C108.136 27.0263 108.794 27.5002 109.584 27.8556C110.373 28.2109 111.281 28.3886 112.308 28.3886C114.151 28.3886 115.743 27.7568 117.086 26.4933Z"
-                fill="black"
-              />
-              <path
-                d="M90.7355 18.9514C91.6963 18.9514 92.44 19.0896 92.9665 19.366C93.493 19.6293 93.8747 19.9781 94.1116 20.4124C94.3617 20.8468 94.5065 21.3469 94.546 21.9129C94.5854 22.4789 94.6052 23.058 94.6052 23.6503V29.0403H93.006V28.0728C92.6243 28.4414 92.1373 28.7375 91.545 28.9613C90.9527 29.1719 90.3604 29.2772 89.7681 29.2772C89.2021 29.2772 88.7019 29.1785 88.2676 28.981C87.8332 28.7836 87.4713 28.5269 87.1817 28.211C86.8921 27.8951 86.675 27.5398 86.5302 27.1449C86.3854 26.75 86.313 26.3486 86.313 25.9406C86.313 25.5194 86.392 25.0982 86.5499 24.677C86.7079 24.2558 86.9448 23.8807 87.2607 23.5516C87.5766 23.2094 87.9648 22.933 88.4255 22.7224C88.8862 22.5118 89.4127 22.4065 90.005 22.4065C90.5973 22.4065 91.1567 22.525 91.6832 22.7619C92.2228 22.9856 92.6638 23.3081 93.006 23.7293V22.8803C93.006 21.801 92.8415 20.9981 92.5124 20.4717C92.1965 19.9452 91.6108 19.6819 90.7552 19.6819C90.3867 19.6819 90.0642 19.728 89.7878 19.8201C89.5114 19.9123 89.2613 20.0439 89.0376 20.215C88.827 20.3729 88.6295 20.577 88.4453 20.827C88.261 21.064 88.0767 21.3338 87.8925 21.6365L86.8658 20.6099C87.0501 20.4124 87.2409 20.215 87.4384 20.0176C87.649 19.8201 87.899 19.6424 88.1886 19.4845C88.4913 19.3265 88.8467 19.2015 89.2547 19.1094C89.6628 19.0041 90.1564 18.9514 90.7355 18.9514ZM93.006 25.1311C92.9402 24.9731 92.8415 24.7889 92.7098 24.5783C92.5914 24.3677 92.4334 24.1637 92.236 23.9662C92.0386 23.7688 91.8016 23.6043 91.5252 23.4726C91.2488 23.3279 90.9198 23.2555 90.5381 23.2555C90.1564 23.2555 89.8076 23.3344 89.4917 23.4924C89.1758 23.6372 88.9059 23.8346 88.6822 24.0847C88.4716 24.3216 88.3071 24.6046 88.1886 24.9336C88.0701 25.2627 88.0109 25.6049 88.0109 25.9603C88.0109 26.3815 88.0833 26.75 88.2281 27.0659C88.386 27.3687 88.5835 27.6319 88.8204 27.8557C89.0573 28.0663 89.3206 28.2242 89.6101 28.3295C89.8997 28.4348 90.1761 28.4874 90.4393 28.4874C90.6894 28.4874 90.9395 28.4414 91.1896 28.3492C91.4528 28.2571 91.6963 28.1321 91.9201 27.9741C92.157 27.803 92.3676 27.6056 92.5519 27.3818C92.7362 27.1581 92.8875 26.9146 93.006 26.6513V25.1311Z"
-                fill="black"
-              />
-              <path
-                d="M81.661 19.1685H83.3392V29.0402H81.661V19.1685ZM81.4241 16.049C81.4241 15.7595 81.5294 15.5094 81.74 15.2988C81.9506 15.0882 82.2007 14.9829 82.4903 14.9829C82.7798 14.9829 83.0299 15.0882 83.2405 15.2988C83.4511 15.5094 83.5564 15.7595 83.5564 16.049C83.5564 16.3386 83.4511 16.5887 83.2405 16.7993C83.0299 17.0099 82.7798 17.1152 82.4903 17.1152C82.2007 17.1152 81.9506 17.0099 81.74 16.7993C81.5294 16.5887 81.4241 16.3386 81.4241 16.049Z"
-                fill="black"
-              />
-              <path
-                d="M73.4906 19.1686H75.1688V20.7481H75.2873C75.5242 20.1558 75.8269 19.7082 76.1955 19.4055C76.564 19.1028 77.0247 18.9514 77.5775 18.9514C77.6433 18.9514 77.742 18.9646 77.8737 18.9909C78.0184 19.0041 78.1698 19.0436 78.3277 19.1094C78.4989 19.162 78.6634 19.241 78.8213 19.3463C78.9924 19.4516 79.1372 19.5832 79.2557 19.7411L78.5844 20.9652C78.466 20.7941 78.2751 20.6099 78.0119 20.4124C77.7618 20.215 77.4854 20.1163 77.1826 20.1163C76.9589 20.1163 76.7285 20.1689 76.4916 20.2742C76.2547 20.3795 76.0375 20.5506 75.8401 20.7875C75.6427 21.0245 75.4781 21.3338 75.3465 21.7155C75.228 22.084 75.1688 22.5381 75.1688 23.0778V29.0403H73.4906V19.1686Z"
-                fill="black"
-              />
-              <path
-                d="M66.4612 18.9514C67.422 18.9514 68.1657 19.0896 68.6922 19.366C69.2187 19.6293 69.6004 19.9781 69.8373 20.4124C70.0874 20.8468 70.2322 21.3469 70.2717 21.9129C70.3112 22.4789 70.3309 23.058 70.3309 23.6503V29.0403H68.7317V28.0728C68.35 28.4414 67.863 28.7375 67.2707 28.9613C66.6784 29.1719 66.0861 29.2772 65.4938 29.2772C64.9278 29.2772 64.4276 29.1785 63.9933 28.981C63.5589 28.7836 63.197 28.5269 62.9074 28.211C62.6178 27.8951 62.4007 27.5398 62.2559 27.1449C62.1111 26.75 62.0387 26.3486 62.0387 25.9406C62.0387 25.5194 62.1177 25.0982 62.2756 24.677C62.4336 24.2558 62.6705 23.8807 62.9864 23.5516C63.3023 23.2094 63.6906 22.933 64.1512 22.7224C64.6119 22.5118 65.1384 22.4065 65.7307 22.4065C66.323 22.4065 66.8824 22.525 67.4089 22.7619C67.9485 22.9856 68.3895 23.3081 68.7317 23.7293V22.8803C68.7317 21.801 68.5672 20.9981 68.2381 20.4717C67.9222 19.9452 67.3365 19.6819 66.4809 19.6819C66.1124 19.6819 65.7899 19.728 65.5135 19.8201C65.2371 19.9123 64.987 20.0439 64.7633 20.215C64.5527 20.3729 64.3552 20.577 64.171 20.827C63.9867 21.064 63.8024 21.3338 63.6182 21.6365L62.5915 20.6099C62.7758 20.4124 62.9666 20.215 63.1641 20.0176C63.3747 19.8201 63.6247 19.6424 63.9143 19.4845C64.217 19.3265 64.5724 19.2015 64.9805 19.1094C65.3885 19.0041 65.8821 18.9514 66.4612 18.9514ZM68.7317 25.1311C68.6659 24.9731 68.5672 24.7889 68.4355 24.5783C68.3171 24.3677 68.1591 24.1637 67.9617 23.9662C67.7643 23.7688 67.5273 23.6043 67.2509 23.4726C66.9745 23.3279 66.6455 23.2555 66.2638 23.2555C65.8821 23.2555 65.5333 23.3344 65.2174 23.4924C64.9015 23.6372 64.6317 23.8346 64.4079 24.0847C64.1973 24.3216 64.0328 24.6046 63.9143 24.9336C63.7959 25.2627 63.7366 25.6049 63.7366 25.9603C63.7366 26.3815 63.809 26.75 63.9538 27.0659C64.1117 27.3687 64.3092 27.6319 64.5461 27.8557C64.783 28.0663 65.0463 28.2242 65.3358 28.3295C65.6254 28.4348 65.9018 28.4874 66.1651 28.4874C66.4151 28.4874 66.6652 28.4414 66.9153 28.3492C67.1785 28.2571 67.422 28.1321 67.6458 27.9741C67.8827 27.803 68.0933 27.6056 68.2776 27.3818C68.4619 27.1581 68.6132 26.9146 68.7317 26.6513V25.1311Z"
-                fill="black"
-              />
-              <path
-                d="M48.7189 29.0401V15.2197H53.2598C54.3523 15.2197 55.3526 15.3974 56.2608 15.7528C57.169 16.095 57.9456 16.5754 58.5905 17.1941C59.2486 17.7995 59.7554 18.5234 60.1108 19.3658C60.4793 20.2082 60.6636 21.1164 60.6636 22.0904C60.6636 23.1039 60.4727 24.0384 60.091 24.894C59.7225 25.7363 59.2092 26.4668 58.5511 27.0855C57.9061 27.7041 57.1493 28.1845 56.2806 28.5267C55.4119 28.8689 54.4839 29.0401 53.4968 29.0401H48.7189ZM50.5155 28.1713H52.6873C53.7666 28.1713 54.6814 27.9937 55.4316 27.6383C56.195 27.2697 56.8202 26.7959 57.3072 26.2168C57.7942 25.6376 58.1496 24.9927 58.3734 24.2819C58.5971 23.558 58.709 22.8407 58.709 22.1299C58.709 21.3402 58.5774 20.5833 58.3141 19.8594C58.0509 19.1223 57.6626 18.4774 57.1493 17.9246C56.6491 17.3586 56.0239 16.9111 55.2737 16.582C54.5234 16.253 53.6613 16.0884 52.6873 16.0884H50.5155V28.1713Z"
-                fill="black"
+                d="M5.67757 0.424316C2.62253 0.424316 0.137451 2.82609 0.137451 5.77675V13.421C0.137451 16.3709 2.62483 18.7704 5.68066 18.7704H13.5973C16.6524 18.7704 19.1375 16.3686 19.1375 13.418V5.77377C19.1375 2.82387 16.6501 0.424316 13.5942 0.424316H5.67757ZM15.1791 3.482C15.6161 3.482 15.9708 3.82446 15.9708 4.24642C15.9708 4.66838 15.6161 5.01084 15.1791 5.01084C14.7421 5.01084 14.3875 4.66838 14.3875 4.24642C14.3875 3.82446 14.7421 3.482 15.1791 3.482ZM9.63745 5.01084C12.2571 5.01084 14.3875 7.0679 14.3875 9.59736C14.3875 12.1268 12.2571 14.1839 9.63745 14.1839C7.01783 14.1839 4.88745 12.1268 4.88745 9.59736C4.88745 7.0679 7.01783 5.01084 9.63745 5.01084ZM9.63745 6.53968C8.7976 6.53968 7.99215 6.86183 7.39828 7.43526C6.80441 8.00868 6.47078 8.78642 6.47078 9.59736C6.47078 10.4083 6.80441 11.186 7.39828 11.7595C7.99215 12.3329 8.7976 12.655 9.63745 12.655C10.4773 12.655 11.2828 12.3329 11.8766 11.7595C12.4705 11.186 12.8041 10.4083 12.8041 9.59736C12.8041 8.78642 12.4705 8.00868 11.8766 7.43526C11.2828 6.86183 10.4773 6.53968 9.63745 6.53968Z"
+                fill="#333333"
               />
             </svg>
           </div>
-          <div className="w-full flex justify-center mt-4">
+          <div className="flex justify-center mt-5">
             <svg
               width="126"
               height="10"
@@ -324,159 +476,34 @@ export default function Home() {
               />
             </svg>
           </div>
-          <div className="flex py-7 px-4 pl-8 gap-8">
-            <div className="font-Tenor w-1/2">
-              <p>Over</p>
-              <p className="font-Tenor text-3xl">10,000</p>
-              <p className="text-[12px]">
-                women have already discovered their glow with DariaColors
-              </p>
-            </div>
-            <div className="font-Tenor w-1/2">
-              <p>Almost</p>
-              <p className="font-Tenor text-3xl">94%</p>
-              <p className="text-[12px]">say they shop faster and waste less</p>
-            </div>
-          </div>
-          <div className="flex px-4 pl-8 gap-8">
-            <div className="font-Tenor w-1/2">
-              <p>Only</p>
-              <p className="font-Tenor text-3xl">38</p>
-              <p className="text-[12px]">
-                pieces left in the limited handmade stock
-              </p>
-            </div>
-            <div className="font-Tenor w-1/2 pt-5">
-              <Link href="/products-collection">
-                <button className="p-2 rounded-full font-500 w-[95%] text-[12px] bg-[#D29FDC]">
-                  Shop color swatches
-                </button>
-              </Link>
-              <button className="p-2 rounded-full font-500 w-[95%] text-[12px] bg-[#F7CACD] mt-2">
-                Find your season
-              </button>
-            </div>
-          </div>
 
-          <div className="text-center text-[13px] mt-8 pb-6">
-            Your perfect shades are waiting. Don’t miss <br /> out elevate your
-            style effortlessly today.
+          <div className="text-center w-full font-Tenor text-[17px] mt-4">
+            <p>hello@daria.design</p>
+            <p>+971 50 187</p>
+            <p>08:00 - 22:00 - Everyday</p>
+          </div>
+          <div className="flex justify-center mt-4">
+            <svg
+              width="126"
+              height="10"
+              viewBox="0 0 126 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M63.1151 9.81191L67.6646 5.26231H125.517V5.05551H67.6646L63.1151 0.557617L58.6172 5.05551H0.558105V5.26231H58.6172L63.1151 9.81191ZM63.1151 0.867817L67.4578 5.15891L63.1151 9.50171L58.7723 5.15891L63.1151 0.867817Z"
+                fill="#555555"
+              />
+            </svg>
+          </div>
+          <div className="flex font-Tenor justify-between mt-5 text-[18px] px-8">
+            <span>About</span>
+            <span>Contact</span>
+            <span>Blog</span>
           </div>
         </div>
-
-        <div className="text-center font-Tenor mt-9 text-[18px]">
-          <p className="tracking-widest">OFF PALLETE VS.</p>
-          <p>PERFECT MATCH</p>
-          <div className="flex gap-4 mt-6">
-            <div className="w-full h-44 relative overflow-hidden">
-              <Image
-                src="/mia2.png"
-                alt="modal-cutted"
-                fill
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-                className="object-cover object-top filter grayscale"
-              />
-            </div>
-            <div className="w-full h-44 relative overflow-hidden">
-              <Image
-                src="/img.png"
-                alt="modal-cutted"
-                fill
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-                className="object-cover object-top filter grayscale"
-              />
-            </div>
-          </div>
-          <div className="flex gap-4 mt-2">
-            <div className="w-full h-44 relative overflow-hidden">
-              <Image
-                src="/mia.png"
-                alt="modal-cutted"
-                fill
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-                className="object-cover object-top filter grayscale"
-              />
-            </div>
-            <div className="w-full h-44 relative overflow-hidden">
-              <Image
-                src="/jihyn.png"
-                alt="modal-cutted"
-                fill
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-                className="object-cover object-top filter grayscale"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-center gap-10 mt-9">
-          <svg
-            className="scale-125"
-            width="22"
-            height="17"
-            viewBox="0 0 22 17"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M21.1375 2.33216C20.3645 2.66234 19.5342 2.88453 18.6628 2.98475C19.5528 2.472 20.2353 1.66015 20.5567 0.692148C19.7249 1.16683 18.8025 1.51177 17.8204 1.69822C17.0345 0.892586 15.9151 0.38916 14.6762 0.38916C12.2968 0.38916 10.3681 2.24515 10.3681 4.5331C10.3681 4.85784 10.4069 5.17481 10.4796 5.47702C6.89919 5.30455 3.72508 3.65443 1.59932 1.14663C1.22941 1.75882 1.01699 2.47045 1.01699 3.23103C1.01699 4.66828 1.777 5.93694 2.93277 6.67965C2.22687 6.65789 1.56217 6.47144 0.981457 6.16146C0.981457 6.17933 0.981457 6.19564 0.981457 6.21351C0.981457 8.22177 2.46594 9.89675 4.43744 10.2767C4.07642 10.3714 3.6952 10.4219 3.30187 10.4219C3.02484 10.4219 2.75427 10.3955 2.49178 10.3481C3.04019 11.9944 4.63128 13.1931 6.51636 13.2265C5.04238 14.3382 3.18476 15.0009 1.1656 15.0009C0.81831 15.0009 0.475054 14.9815 0.137451 14.9427C2.04434 16.1181 4.30821 16.8041 6.7417 16.8041C14.6665 16.8041 18.9988 10.4895 18.9988 5.01321C18.9988 4.83375 18.9947 4.65507 18.9867 4.47716C19.829 3.89216 20.56 3.16266 21.1375 2.33216Z"
-              fill="#333333"
-            />
-          </svg>
-          <svg
-            className="scale-125"
-            width="20"
-            height="19"
-            viewBox="0 0 20 19"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5.67757 0.424316C2.62253 0.424316 0.137451 2.82609 0.137451 5.77675V13.421C0.137451 16.3709 2.62483 18.7704 5.68066 18.7704H13.5973C16.6524 18.7704 19.1375 16.3686 19.1375 13.418V5.77377C19.1375 2.82387 16.6501 0.424316 13.5942 0.424316H5.67757ZM15.1791 3.482C15.6161 3.482 15.9708 3.82446 15.9708 4.24642C15.9708 4.66838 15.6161 5.01084 15.1791 5.01084C14.7421 5.01084 14.3875 4.66838 14.3875 4.24642C14.3875 3.82446 14.7421 3.482 15.1791 3.482ZM9.63745 5.01084C12.2571 5.01084 14.3875 7.0679 14.3875 9.59736C14.3875 12.1268 12.2571 14.1839 9.63745 14.1839C7.01783 14.1839 4.88745 12.1268 4.88745 9.59736C4.88745 7.0679 7.01783 5.01084 9.63745 5.01084ZM9.63745 6.53968C8.7976 6.53968 7.99215 6.86183 7.39828 7.43526C6.80441 8.00868 6.47078 8.78642 6.47078 9.59736C6.47078 10.4083 6.80441 11.186 7.39828 11.7595C7.99215 12.3329 8.7976 12.655 9.63745 12.655C10.4773 12.655 11.2828 12.3329 11.8766 11.7595C12.4705 11.186 12.8041 10.4083 12.8041 9.59736C12.8041 8.78642 12.4705 8.00868 11.8766 7.43526C11.2828 6.86183 10.4773 6.53968 9.63745 6.53968Z"
-              fill="#333333"
-            />
-          </svg>
-        </div>
-        <div className="flex justify-center mt-5">
-          <svg
-            width="126"
-            height="10"
-            viewBox="0 0 126 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M63.1151 9.81191L67.6646 5.26231H125.517V5.05551H67.6646L63.1151 0.557617L58.6172 5.05551H0.558105V5.26231H58.6172L63.1151 9.81191ZM63.1151 0.867817L67.4578 5.15891L63.1151 9.50171L58.7723 5.15891L63.1151 0.867817Z"
-              fill="#555555"
-            />
-          </svg>
-        </div>
-
-        <div className="text-center w-full font-Tenor text-[17px] mt-4">
-          <p>hello@daria.design</p>
-          <p>+971 50 187</p>
-          <p>08:00 - 22:00 - Everyday</p>
-        </div>
-        <div className="flex justify-center mt-4">
-          <svg
-            width="126"
-            height="10"
-            viewBox="0 0 126 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M63.1151 9.81191L67.6646 5.26231H125.517V5.05551H67.6646L63.1151 0.557617L58.6172 5.05551H0.558105V5.26231H58.6172L63.1151 9.81191ZM63.1151 0.867817L67.4578 5.15891L63.1151 9.50171L58.7723 5.15891L63.1151 0.867817Z"
-              fill="#555555"
-            />
-          </svg>
-        </div>
-        <div className="flex font-Tenor justify-between mt-5 text-[18px] px-7">
-          <span>About</span>
-          <span>Contact</span>
-          <span>Blog</span>
-        </div>
-        <Footer />
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
