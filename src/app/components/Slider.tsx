@@ -1,83 +1,87 @@
-"use client"
-import Image from "next/image"
-import { useState, useEffect, useRef } from "react"
+"use client";
+import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 const Slider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
-  const [startX, setStartX] = useState(0)
-  const [translateX, setTranslateX] = useState(0)
-  const sliderRef = useRef<HTMLDivElement>(null)
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   const slides = [
     {
       title: "Modish Look",
-      description: "Find Your Perfect Look by Dressing Up with Daira Colors, Get the Special Price!",
+      description:
+        "Find Your Perfect Look by Dressing Up with Daira Colors, Get the Special Price!",
       buttonText: "SHOP COLOR SWATCHES",
       image: "/family-home.png",
       gradient: "linear-gradient(to bottom right, #F1BDC3, #a56a71)",
     },
     {
       title: "Summer Collection",
-      description: "Discover our vibrant summer collection with fresh colors and modern designs for every occasion!",
+      description:
+        "Discover our vibrant summer collection with fresh colors and modern designs for every occasion!",
       buttonText: "EXPLORE COLLECTION",
       image: "/family-home.png",
       gradient: "linear-gradient(to bottom right, #FFE5B4, #D2691E)",
     },
     {
       title: "Premium Quality",
-      description: "Experience luxury with our premium quality fabrics and exclusive designs",
+      description:
+        "Experience luxury with our premium quality fabrics and exclusive designs",
       buttonText: "VIEW PREMIUM LINE",
       image: "/family-home.png",
       gradient: "linear-gradient(to bottom right, #E6E6FA, #9370DB)",
     },
-  ]
+  ];
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length)
-  }
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-  }
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   const goToSlide = (index: number) => {
-    setCurrentSlide(index)
-  }
+    setCurrentSlide(index);
+  };
 
   useEffect(() => {
     if (!isDragging) {
       const interval = setInterval(() => {
-        nextSlide()
-      }, 4000)
-      return () => clearInterval(interval)
+        nextSlide();
+      }, 4000);
+      return () => clearInterval(interval);
     }
-  }, [currentSlide, isDragging])
+  }, [currentSlide, isDragging]);
 
   const handleStart = (clientX: number) => {
-    setIsDragging(true)
-    setStartX(clientX)
-  }
+    setIsDragging(true);
+    setStartX(clientX);
+  };
 
   const handleMove = (clientX: number) => {
-    if (!isDragging) return
-    const diff = clientX - startX
-    setTranslateX(diff)
-  }
+    if (!isDragging) return;
+    const diff = clientX - startX;
+    setTranslateX(diff);
+  };
 
   const handleEnd = () => {
-    if (!isDragging) return
-    setIsDragging(false)
+    if (!isDragging) return;
+    setIsDragging(false);
 
-    const threshold = 50
+    const threshold = 50;
     if (translateX > threshold) {
-      prevSlide()
+      prevSlide();
     } else if (translateX < -threshold) {
-      nextSlide()
+      nextSlide();
     }
 
-    setTranslateX(0)
-  }
+    setTranslateX(0);
+  };
 
   return (
     <>
@@ -87,7 +91,10 @@ const Slider = () => {
             ref={sliderRef}
             className="flex transition-transform duration-500 ease-in-out cursor-grab active:cursor-grabbing"
             style={{
-              transform: `translateX(${-currentSlide * 100 + (translateX / (sliderRef.current?.offsetWidth || 1)) * 100}%)`,
+              transform: `translateX(${
+                -currentSlide * 100 +
+                (translateX / (sliderRef.current?.offsetWidth || 1)) * 100
+              }%)`,
               transition: isDragging ? "none" : "transform 0.5s ease-in-out",
             }}
             onMouseDown={(e) => handleStart(e.clientX)}
@@ -112,9 +119,12 @@ const Slider = () => {
                     <p className="font-Sen text-[18px] mt-2.5 tracking-wider w-[90%] leading-[1.3] flex-1">
                       {slide.description}
                     </p>
-                    <button className="bg-black px-8 mt-4 mb-4 py-3 rounded-full text-[17px] self-start">
-                      {slide.buttonText}
-                    </button>
+
+                    <Link href="/products-collection">
+                      <button className="bg-black px-8 mt-4 mb-4 py-3 rounded-full text-[17px] self-start">
+                        {slide.buttonText}
+                      </button>
+                    </Link>
                   </div>
                   <div className="w-full h-[280px] relative overflow-hidden">
                     <Image
@@ -143,8 +153,8 @@ const Slider = () => {
         ))}
       </div>
     </>
-  )
-}
+  );
+};
 
 export default function Home() {
   return (
@@ -153,5 +163,5 @@ export default function Home() {
         <Slider />
       </div>
     </main>
-  )
+  );
 }
