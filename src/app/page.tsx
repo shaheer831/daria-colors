@@ -1,9 +1,16 @@
+"use client";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "./components/Footer";
 import Slider from "./components/Slider";
 import ShopifyBuyButton from "./components/ShopifyBuyButton";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const notify = () => {
+  toast.info("Comming Soon");
+};
 
 export default function Home() {
   return (
@@ -491,12 +498,28 @@ export default function Home() {
             </svg>
           </div>
           <div className="flex font-Tenor justify-between mt-5 text-[18px] px-8">
-            <span>About</span>
-            <span>Contact</span>
-            <span>Blog</span>
+            <button onClick={notify} className="cursor-pointer">
+              About
+            </button>
+            <button onClick={notify} className="cursor-pointer">
+              Contact
+            </button>
+            <button onClick={notify} className="cursor-pointer">
+              Blog
+            </button>
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="colored"
+      />
       <Footer />
     </>
   );
