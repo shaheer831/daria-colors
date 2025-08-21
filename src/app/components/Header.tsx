@@ -1,65 +1,82 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { X } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
+import Link from "next/link";
+import { X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 declare global {
   interface Window {
-    ShopifyCartComponent: any
-    ShopifyCart: any
+    ShopifyCartComponent: any;
+    ShopifyCart: any;
   }
 }
 
 const header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false)
-  }
+    setIsMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsMobileMenuOpen(false)
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false);
       }
-    }
+    };
 
     if (isMobileMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside)
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [isMobileMenuOpen])
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <div className="bg-[#F1F1F1] flex justify-between rounded-xl m-4 items-center px-5 pr-6 py-4">
       <div className="relative" ref={dropdownRef}>
-        <button onClick={toggleMobileMenu} className="w-[24px] hover:opacity-70 transition-opacity cursor-pointer">
+        <button
+          onClick={toggleMobileMenu}
+          className="w-[24px] hover:opacity-70 transition-opacity cursor-pointer"
+        >
           {isMobileMenuOpen ? (
             // X button for small screens when menu is open
-          <>
-            <X className="w-[24px] md:hidden" />
-            <svg className="w-[24px] hidden md:flex" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M1 14.9065H13M1 8.07539H22M10 1.2443H22"
-                stroke="#1B1919"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </>
+            <>
+              <X className="w-[24px] md:hidden" />
+              <svg
+                className="w-[24px] hidden md:flex"
+                viewBox="0 0 23 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 14.9065H13M1 8.07539H22M10 1.2443H22"
+                  stroke="#1B1919"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </>
           ) : (
             // Hamburger menu for all screens when menu is closed
-            <svg className="w-[24px]" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              className="w-[24px]"
+              viewBox="0 0 23 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 d="M1 14.9065H13M1 8.07539H22M10 1.2443H22"
                 stroke="#1B1919"
@@ -75,14 +92,14 @@ const header = () => {
           <div className="hidden md:block absolute top-full -left-2.5 mt-2 bg-white rounded-xl shadow-lg border border-gray-200 z-50 min-w-72">
             <nav className="p-6 font-Sen">
               <Link
-              href="/"
+                href="/"
                 onClick={closeMobileMenu}
                 className="block text-lg font-medium text-black hover:text-gray-600 transition-colors py-2"
               >
                 HOME
               </Link>
               <Link
-              href="/products-collection"
+                href="/products-collection"
                 onClick={closeMobileMenu}
                 className="block text-lg font-medium text-black hover:text-gray-600 transition-colors py-2"
               >
@@ -96,15 +113,21 @@ const header = () => {
                 FIND YOUR SEASON
               </Link>
               <Link
-                href="/about"
-                onClick={closeMobileMenu}
+                href="#"
+                onClick={() => {
+                  toast.info("coming soon");
+                  closeMobileMenu();
+                }}
                 className="block text-lg font-medium text-black hover:text-gray-600 transition-colors py-2"
               >
                 ABOUT US
               </Link>
               <Link
-                href="/contact"
-                onClick={closeMobileMenu}
+                href="#"
+                onClick={() => {
+                  toast.info("coming soon");
+                  closeMobileMenu();
+                }}
                 className="block text-lg font-medium text-black hover:text-gray-600 transition-colors py-2"
               >
                 CONTACT US
@@ -115,7 +138,13 @@ const header = () => {
       </div>
 
       <Link href="/">
-        <svg width="118" height="34" viewBox="0 0 112 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="118"
+          height="34"
+          viewBox="0 0 112 28"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M26.7463 14.0032C26.7462 9.02232 25.9083 5.90053 24.0045 3.99625C22.1008 2.09198 18.9798 1.25373 14 1.25373C9.02024 1.25373 5.89921 2.09198 3.99545 3.99625C2.09175 5.90053 1.25378 9.02232 1.25373 14.0032C1.25373 18.8494 2.04736 21.9366 3.84363 23.8535C5.63242 25.7622 8.55647 26.6582 13.2164 26.7462C13.5624 26.7528 13.8374 27.0385 13.831 27.3845C13.8245 27.7305 13.5388 28.0063 13.1927 27.9999C8.44175 27.9102 5.07666 27.0022 2.92945 24.7113C0.789914 22.4283 0 18.9186 0 14.0032C4.46135e-05 8.95277 0.833605 5.38586 3.10903 3.10983C5.38456 0.833724 8.95068 3.56549e-08 14 0C19.0493 0 22.6154 0.833724 24.891 3.10983C27.1664 5.38586 28 8.95277 28 14.0032C28 18.2381 27.4136 21.4234 25.8884 23.6837C24.3389 25.9798 21.8985 27.2129 18.4681 27.7216C18.1257 27.7722 17.8072 27.5357 17.7563 27.1935C17.7055 26.851 17.9419 26.5317 18.2844 26.4809C21.5054 26.0033 23.5634 24.8881 24.8493 22.9825C26.1597 21.0407 26.7463 18.1689 26.7463 14.0032Z"
             fill="black"
@@ -136,7 +165,10 @@ const header = () => {
             d="M100.445 16.0942C100.445 16.5616 100.364 17.011 100.202 17.4425C100.041 17.865 99.8068 18.238 99.5012 18.5616C99.2046 18.8852 98.8405 19.1414 98.409 19.3301C97.9866 19.5189 97.5102 19.6133 96.9798 19.6133C96.4405 19.6133 95.9506 19.5189 95.5101 19.3301C95.0787 19.1324 94.7101 18.8717 94.4045 18.5481C94.1079 18.2245 93.8742 17.8515 93.7034 17.429C93.5416 16.9975 93.4607 16.5526 93.4607 16.0942C93.4607 15.6267 93.5416 15.1818 93.7034 14.7593C93.8742 14.3278 94.1079 13.9503 94.4045 13.6267C94.7101 13.3031 95.0787 13.0469 95.5101 12.8582C95.9506 12.6604 96.4405 12.5615 96.9798 12.5615C97.5102 12.5615 97.9866 12.6604 98.409 12.8582C98.8405 13.0469 99.2046 13.3031 99.5012 13.6267C99.8068 13.9503 100.041 14.3278 100.202 14.7593C100.364 15.1818 100.445 15.6267 100.445 16.0942ZM99.1641 16.0942C99.1641 15.4649 99.0967 14.9571 98.9619 14.5705C98.827 14.175 98.6517 13.8694 98.436 13.6537C98.2203 13.438 97.9821 13.2941 97.7214 13.2222C97.4607 13.1413 97.209 13.1009 96.9663 13.1009C96.7236 13.1009 96.472 13.1413 96.2113 13.2222C95.9506 13.2941 95.7079 13.438 95.4832 13.6537C95.2674 13.8694 95.0877 14.175 94.9438 14.5705C94.809 14.9571 94.7416 15.4649 94.7416 16.0942C94.7416 16.7144 94.809 17.2222 94.9438 17.6178C95.0877 18.0043 95.2674 18.3054 95.4832 18.5211C95.7079 18.7369 95.9506 18.8852 96.2113 18.9661C96.472 19.038 96.7236 19.0739 96.9663 19.0739C97.209 19.0739 97.4607 19.038 97.7214 18.9661C97.9821 18.8852 98.2203 18.7369 98.436 18.5211C98.6517 18.3054 98.827 18.0043 98.9619 17.6178C99.0967 17.2222 99.1641 16.7144 99.1641 16.0942Z"
             fill="black"
           />
-          <path d="M91.436 10.0132V19.4515H90.2899V10.0132H91.436Z" fill="black" />
+          <path
+            d="M91.436 10.0132V19.4515H90.2899V10.0132H91.436Z"
+            fill="black"
+          />
           <path
             d="M88.2653 16.0942C88.2653 16.5616 88.1844 17.011 88.0226 17.4425C87.8608 17.865 87.6271 18.238 87.3215 18.5616C87.0248 18.8852 86.6608 19.1414 86.2293 19.3301C85.8069 19.5189 85.3304 19.6133 84.8001 19.6133C84.2608 19.6133 83.7709 19.5189 83.3304 19.3301C82.899 19.1324 82.5304 18.8717 82.2248 18.5481C81.9282 18.2245 81.6945 17.8515 81.5237 17.429C81.3619 16.9975 81.281 16.5526 81.281 16.0942C81.281 15.6267 81.3619 15.1818 81.5237 14.7593C81.6945 14.3278 81.9282 13.9503 82.2248 13.6267C82.5304 13.3031 82.899 13.0469 83.3304 12.8582C83.7709 12.6604 84.2608 12.5615 84.8001 12.5615C85.3304 12.5615 85.8069 12.6604 86.2293 12.8582C86.6608 13.0469 87.0248 13.3031 87.3215 13.6267C87.6271 13.9503 87.8608 14.3278 88.0226 14.7593C88.1844 15.1818 88.2653 15.6267 88.2653 16.0942ZM86.9844 16.0942C86.9844 15.4649 86.917 14.9571 86.7821 14.5705C86.6473 14.175 86.472 13.8694 86.2563 13.6537C86.0406 13.438 85.8024 13.2941 85.5417 13.2222C85.281 13.1413 85.0293 13.1009 84.7866 13.1009C84.5439 13.1009 84.2922 13.1413 84.0316 13.2222C83.7709 13.2941 83.5282 13.438 83.3035 13.6537C83.0877 13.8694 82.908 14.175 82.7641 14.5705C82.6293 14.9571 82.5619 15.4649 82.5619 16.0942C82.5619 16.7144 82.6293 17.2222 82.7641 17.6178C82.908 18.0043 83.0877 18.3054 83.3035 18.5211C83.5282 18.7369 83.7709 18.8852 84.0316 18.9661C84.2922 19.038 84.5439 19.0739 84.7866 19.0739C85.0293 19.0739 85.281 19.038 85.5417 18.9661C85.8024 18.8852 86.0406 18.7369 86.2563 18.5211C86.472 18.3054 86.6473 18.0043 86.7821 17.6178C86.917 17.2222 86.9844 16.7144 86.9844 16.0942Z"
             fill="black"
@@ -194,7 +226,7 @@ const header = () => {
               onClick={closeMobileMenu}
               className="text-2xl  text-black hover:text-gray-600 transition-colors py-2 border-b border-gray-200"
             >
-             HOME
+              HOME
             </Link>
             <Link
               href="/products-collection"
@@ -211,15 +243,21 @@ const header = () => {
               FIND YOUR SEASON
             </Link>
             <Link
-              href="/about"
-              onClick={closeMobileMenu}
+              href="#"
+              onClick={() => {
+                toast.info("coming soon");
+                closeMobileMenu();
+              }}
               className="text-2xl  text-black hover:text-gray-600 transition-colors py-2 border-b border-gray-200"
             >
               ABOUT US
             </Link>
             <Link
-              href="/contact"
-              onClick={closeMobileMenu}
+              href="#"
+              onClick={() => {
+                toast.info("coming soon");
+                closeMobileMenu();
+              }}
               className="text-2xl  text-black hover:text-gray-600 transition-colors py-2 border-b border-gray-200"
             >
               CONTACT US
@@ -228,7 +266,7 @@ const header = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default header
+export default header;

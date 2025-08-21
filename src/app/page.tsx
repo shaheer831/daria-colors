@@ -9,7 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const notify = () => {
-  toast.info("Comming Soon");
+  toast.info("Coming Soon");
 };
 
 export default function Home() {
