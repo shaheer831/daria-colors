@@ -127,6 +127,7 @@ const Upload = () => {
             accept="image/*"
             onChange={handleFileSelect}
             className="hidden"
+            disabled={isUploading}
           />
           <div className="flex flex-col items-center">
             {selectedFile && previewUrl ? (
