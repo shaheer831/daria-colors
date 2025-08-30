@@ -31,19 +31,41 @@ const Upload = () => {
     clearStoredData();
   }, []);
 
+  // Helper function to validate file format
+  const isValidImageFormat = (file: File): boolean => {
+    const allowedTypes = [
+      'image/jpeg',
+      'image/jpg', 
+      'image/png',
+      'image/webp'
+    ];
+    return allowedTypes.includes(file.type.toLowerCase());
+  };
+
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedFile(file);
-      setPreviewUrl(URL.createObjectURL(file));
+      if (isValidImageFormat(file)) {
+        setSelectedFile(file);
+        setPreviewUrl(URL.createObjectURL(file));
+      } else {
+        alert('Please select a valid image file (JPEG, PNG, JPG, or WebP format only)');
+        // Reset the input
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+      }
     }
   };
 
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
-    if (file && file.type.startsWith("image/")) {
+    if (file && isValidImageFormat(file)) {
       setSelectedFile(file);
+      setPreviewUrl(URL.createObjectURL(file));
+    } else if (file) {
+      alert('Please select a valid image file (JPEG, PNG, JPG, or WebP format only)');
     }
   };
 
@@ -184,7 +206,7 @@ const Upload = () => {
           <input
             ref={fileInputRef}
             type="file"
-            accept="image/*"
+            accept="image/jpeg,image/jpg,image/png,image/webp"
             onChange={handleFileSelect}
             className="hidden"
             disabled={isUploading}

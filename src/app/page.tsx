@@ -20,12 +20,12 @@ export default function Home() {
     const clearStoredData = async () => {
       try {
         await storageManager.clearManualData();
-        console.log('IndexedDB cleared on homepage load');
+        console.log("IndexedDB cleared on homepage load");
       } catch (error) {
-        console.error('Error clearing IndexedDB on homepage load:', error);
+        console.error("Error clearing IndexedDB on homepage load:", error);
       }
     };
-    
+
     clearStoredData();
   }, []);
 
@@ -72,18 +72,18 @@ export default function Home() {
                     priority
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 87vw, 87vw"
-                    className="scale-[1.2] -mt-12 ml-3 md:ml-11"
+                    className="object-contain scale-[1.13] lg:scale-[1.2] -mt-8 ml-2 md:scale-[1.2] md:-mt-12 md:ml-11"
                   />
                 </div>
-                <div className="absolute w-full h-full flex flex-col justify-center items-center gap-4">
+                <div className="absolute w-full h-full flex flex-col justify-center items-center top-20 gap-4">
                   <Link href="/products-collection">
-                    <button className="bg-[#D29FDC] hover:bg-[#af87bd] cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen px-7">
+                    <button className="bg-[#D29FDC] hover:bg-[#af87bd] cursor-pointer font-500 text-[16px] md:text-[19px] py-4 rounded-full font-Sen px-7 text-black tracking-normal leading-[100%]">
                       SHOP COLOR SWATCHES
                     </button>
                   </Link>
 
                   <Link href="/upload">
-                    <button className="bg-[#F7CACD] hover:bg-[#f19898] cursor-pointer font-500 text-[19px] py-4 rounded-full font-Sen px-6">
+                    <button className="bg-[#F7CACD] hover:bg-[#f19898] cursor-pointer font-500 text-[16px] md:text-[19px] py-4 rounded-full font-Sen px-6 tracking-normal leading-[100%]">
                       FIND YOUR SEASON
                     </button>
                   </Link>
