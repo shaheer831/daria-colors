@@ -88,7 +88,7 @@ const Question3Page = () => {
             src={image}
             alt="Face for color analysis"
             fill
-            className="object-contain grayscale hover:grayscale-0"
+            className="object-contain grayscale"
             priority
           />
           <div className="absolute bottom-0 left-0 right-0 h-12 flex">

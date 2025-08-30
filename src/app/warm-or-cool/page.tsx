@@ -56,7 +56,7 @@ const Question1Page = () => {
         </div>
 
         {/* Image with Color Overlay */}
-        <div className="border-2 border-dashed border-[#cccccc] rounded-2xl sm:rounded-[24px] bg-white mb-6 sm:mb-8 overflow-hidden relative w-full h-[270px]  [@media(min-width:415px)]:h-[300px]">
+        <div className="border-2 border-dashed border-[#cccccc] rounded-2xl sm:rounded-[24px] bg-white mb-6 sm:mb-8 overflow-hidden relative w-full h-[270px] [@media(min-width:415px)]:h-[300px]">
           <Image
             src={image}
             alt="Face for color analysis"
@@ -64,14 +64,18 @@ const Question1Page = () => {
             className="object-contain h-full"
             priority
           />
-          <div className="absolute [@media(min-width:415px)]:w-[110%] -translate-x-1/2 h-full top-0 left-1/2 flex justify-between">
-            {/* Left curved overlay - Responsive */}
-            <div className="">
+          {/* SVG overlays positioned to touch borders exactly - Mobile optimized */}
+          <div className="absolute -inset-[3px] sm:-inset-0.5 flex rounded-2xl sm:rounded-[24px] overflow-hidden">
+            {/* Left curved overlay - Blue */}
+            <div className="w-1/2 h-full relative overflow-hidden">
               <svg
-                className="h-[101%]"
+                className="absolute -inset-[3px] sm:-inset-0.5 w-[calc(100%+12px)] sm:w-[calc(100%+4px)] h-[calc(100%+12px)] sm:h-[calc(100%+4px)]"
+                width="100%"
+                height="100%"
                 viewBox="0 0 155 241"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
               >
                 <path
                   d="M27.8604 0.14452C27.8604 107.345 112.621 204.811 155.001 240.145H27.8604C8.50146 240.145 2.63398 225.811 0.0104379 218.645V29.6445C-0.473909 8.84452 16.0015 -1.35547 27.8604 0.14452Z"
@@ -80,13 +84,16 @@ const Question1Page = () => {
               </svg>
             </div>
 
-            {/* Right curved overlay - Responsive */}
-            <div className="">
+            {/* Right curved overlay - Orange */}
+            <div className="w-1/2 h-full relative overflow-hidden">
               <svg
-                className="h-[101%]"
+                className="absolute -inset-[3px] sm:-inset-0.5 w-[calc(100%+12px)] sm:w-[calc(100%+4px)] h-[calc(100%+12px)] sm:h-[calc(100%+4px)]"
+                width="100%"
+                height="100%"
                 viewBox="0 0 155 241"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
               >
                 <path
                   d="M127.141 0.14452C127.141 107.345 42.3802 204.811 -6.10352e-05 240.145H127.141C146.5 240.145 152.367 225.811 154.991 218.645V29.6445C155.475 8.84452 139 -1.35547 127.141 0.14452Z"

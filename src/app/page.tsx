@@ -7,12 +7,28 @@ import Slider from "./components/Slider";
 import ShopifyBuyButton from "./components/ShopifyBuyButton";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
+import { storageManager } from "../utilities/storage";
 
 const notify = () => {
   toast.info("Coming Soon");
 };
 
 export default function Home() {
+  // Clear IndexedDB on homepage load
+  useEffect(() => {
+    const clearStoredData = async () => {
+      try {
+        await storageManager.clearManualData();
+        console.log('IndexedDB cleared on homepage load');
+      } catch (error) {
+        console.error('Error clearing IndexedDB on homepage load:', error);
+      }
+    };
+    
+    clearStoredData();
+  }, []);
+
   return (
     <>
       <div className="min-h-screen px-4 py-8 overflow-x-hidden">

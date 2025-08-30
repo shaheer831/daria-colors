@@ -4,7 +4,7 @@ import Image from "next/image";
 import type React from "react";
 
 import { useRouter } from "next/navigation";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import api from "../../../utilities/axiosInstance";
 import Loader from "../components/loader";
@@ -16,6 +16,20 @@ const Upload = () => {
   const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  // Clear IndexedDB on upload page load
+  useEffect(() => {
+    const clearStoredData = async () => {
+      try {
+        await storageManager.clearManualData();
+        console.log('IndexedDB cleared on upload page load');
+      } catch (error) {
+        console.error('Error clearing IndexedDB on upload page load:', error);
+      }
+    };
+    
+    clearStoredData();
+  }, []);
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -45,28 +59,63 @@ const Upload = () => {
 
     setIsUploading(true);
     try {
-      const formData = new FormData();
-      formData.append("file", selectedFile);
-      formData.append("testType", "manual");
-
-      const response = await api.post("/image/upload", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-
-      if (response) {
-        const result = response.data;
-        await storageManager.storeManualData(result);
-        router.push("/warm-or-cool");
-      } else {
-        console.error("Failed to process image for manual test");
-        alert("Failed to process image. Please try again.");
-      }
+      // Store image locally in IndexedDB instead of uploading to backend
+      await storageManager.storeLocalImage(selectedFile);
+      
+      // Navigate to the next step
+      router.push("/warm-or-cool");
     } catch (error) {
-      console.error("Error processing image:", error);
-      alert("Error processing image. Please try again.");
+      console.error("Error storing image locally:", error);
+      alert("Error storing image. Please try again.");
     } finally {
       setIsUploading(false);
     }
+  };
+
+  // Helper function to compress image on canvas
+  const compressImage = (file: File, maxWidth = 800, quality = 0.8): Promise<File> => {
+    return new Promise((resolve) => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d')!;
+      const htmlImg = new window.Image(); // Use window.Image to avoid conflict with Next.js Image
+
+      htmlImg.onload = () => {
+        // Calculate new dimensions while maintaining aspect ratio
+        const ratio = Math.min(maxWidth / htmlImg.width, maxWidth / htmlImg.height);
+        const newWidth = htmlImg.width * ratio;
+        const newHeight = htmlImg.height * ratio;
+
+        // Set canvas dimensions
+        canvas.width = newWidth;
+        canvas.height = newHeight;
+
+        // Draw and compress image
+        ctx.drawImage(htmlImg, 0, 0, newWidth, newHeight);
+        
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              const compressedFile = new File([blob], file.name, {
+                type: 'image/jpeg',
+                lastModified: Date.now(),
+              });
+              resolve(compressedFile);
+            } else {
+              resolve(file); // Fallback to original file
+            }
+          },
+          'image/jpeg',
+          quality
+        );
+      };
+
+      htmlImg.onerror = () => {
+        console.error('Error loading image for compression');
+        resolve(file); // Fallback to original file on error
+      };
+
+      htmlImg.src = URL.createObjectURL(file);
+    });
   };
 
   const handleAITest = async () => {
@@ -77,9 +126,19 @@ const Upload = () => {
 
     setIsUploading(true);
     try {
+      // Store image locally in IndexedDB as well
+      await storageManager.storeLocalImage(selectedFile);
+      console.log('Image saved to IndexedDB for AI test');
+      
+      // Compress image before sending to API
+      const compressedFile = await compressImage(selectedFile, 800, 0.85);
+      
+      console.log(`Original size: ${(selectedFile.size / 1024 / 1024).toFixed(2)}MB`);
+      console.log(`Compressed size: ${(compressedFile.size / 1024 / 1024).toFixed(2)}MB`);
+      
       const formData = new FormData();
-      formData.append("file", selectedFile);
-      formData.append("testType", "ai");
+      formData.append("file", compressedFile);
+      // No longer need to append testType - backend now only handles AI tests
 
       const response = await api.post("/image/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },

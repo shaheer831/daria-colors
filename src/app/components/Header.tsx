@@ -51,24 +51,21 @@ const header = () => {
           className="w-[24px] hover:opacity-70 transition-opacity cursor-pointer"
         >
           {isMobileMenuOpen ? (
-            // X button for small screens when menu is open
-            <>
-              <X className="w-[24px] md:hidden" />
-              <svg
-                className="w-[24px] hidden md:flex"
-                viewBox="0 0 23 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 14.9065H13M1 8.07539H22M10 1.2443H22"
-                  stroke="#1B1919"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </>
+            // Hamburger menu for all screens when menu is open
+            <svg
+              className="w-[24px]"
+              viewBox="0 0 23 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 14.9065H13M1 8.07539H22M10 1.2443H22"
+                stroke="#1B1919"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           ) : (
             // Hamburger menu for all screens when menu is closed
             <svg
@@ -89,7 +86,7 @@ const header = () => {
         </button>
 
         {isMobileMenuOpen && (
-          <div className="hidden md:block absolute top-full -left-2.5 mt-2 bg-white rounded-xl shadow-lg border border-gray-200 z-50 min-w-72">
+          <div className="absolute top-full mt-2 bg-white rounded-xl shadow-lg border border-gray-200 z-50 min-w-72 -left-2.5 md:left-0">
             <nav className="p-6 font-Sen">
               <Link
                 href="/"
@@ -213,58 +210,6 @@ const header = () => {
         )}
       </button> */}
 
-      {/* Mobile Full-Screen Menu - Only on small screens */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-white z-50 flex flex-col md:hidden">
-          <button>
-            <X onClick={toggleMobileMenu} className="w-7 h-7 m-9 mx-8" />
-          </button>
-          {/* Navigation Menu - No Header */}
-          <nav className="flex-1 flex flex-col justify-center -mt-5 px-8 space-y-2 font-Sen">
-            <Link
-              href="/"
-              onClick={closeMobileMenu}
-              className="text-2xl  text-black hover:text-gray-600 transition-colors py-2 border-b border-gray-200"
-            >
-              HOME
-            </Link>
-            <Link
-              href="/products-collection"
-              onClick={closeMobileMenu}
-              className="text-2xl  text-black hover:text-gray-600 transition-colors py-2 border-b border-gray-200"
-            >
-              SHOP COLOR SWATCHES
-            </Link>
-            <Link
-              href="/upload"
-              onClick={closeMobileMenu}
-              className="text-2xl  text-black hover:text-gray-600 transition-colors py-2 border-b border-gray-200"
-            >
-              FIND YOUR SEASON
-            </Link>
-            <Link
-              href="#"
-              onClick={() => {
-                toast.info("coming soon");
-                closeMobileMenu();
-              }}
-              className="text-2xl  text-black hover:text-gray-600 transition-colors py-2 border-b border-gray-200"
-            >
-              ABOUT US
-            </Link>
-            <Link
-              href="#"
-              onClick={() => {
-                toast.info("coming soon");
-                closeMobileMenu();
-              }}
-              className="text-2xl  text-black hover:text-gray-600 transition-colors py-2 border-b border-gray-200"
-            >
-              CONTACT US
-            </Link>
-          </nav>
-        </div>
-      )}
     </div>
   );
 };
