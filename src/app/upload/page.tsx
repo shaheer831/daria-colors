@@ -8,6 +8,7 @@ import { useState, useRef } from "react";
 
 import api from "../../../utilities/axiosInstance";
 import Loader from "../components/loader";
+import { storageManager } from "../../utilities/storage";
 
 const Upload = () => {
   const router = useRouter();
@@ -54,7 +55,7 @@ const Upload = () => {
 
       if (response) {
         const result = response.data;
-        localStorage.setItem("manualData", JSON.stringify(result));
+        await storageManager.storeManualData(result);
         router.push("/warm-or-cool");
       } else {
         console.error("Failed to process image for manual test");

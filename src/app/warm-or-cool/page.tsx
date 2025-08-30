@@ -3,28 +3,26 @@ import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { storageManager } from "../../utilities/storage";
 
 const Question1Page = () => {
   const router = useRouter();
   const [image, setImage] = useState("/results-women.png");
   const [warmOrCool, setWarmOrCool] = useState<"blue" | "orange" | null>(null);
   useEffect(() => {
-    const storedResults = localStorage.getItem("manualData");
-    if (storedResults) {
+    const loadStoredData = async () => {
       try {
-        if (storedResults === "[object Object]") {
-          console.warn(
-            "Invalid data format in localStorage. Please try uploading again."
-          );
-          return;
+        const storedResults = await storageManager.getManualData();
+        if (storedResults && storedResults.backgroundRemovedImage) {
+          setImage(storedResults.backgroundRemovedImage);
         }
-        const parsedResults = JSON.parse(storedResults);
-        setImage(parsedResults.backgroundRemovedImage);
       } catch (error) {
-        console.error("Error parsing AI results:", error);
-        localStorage.removeItem("manualData");
+        console.error("Error loading stored data:", error);
+        await storageManager.clearManualData();
       }
-    }
+    };
+    
+    loadStoredData();
   }, []);
 
   const handleNext = () => {

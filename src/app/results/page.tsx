@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import ShopifyBuyButton from "../components/shopify-btn";
+import { storageManager } from "../../utilities/storage";
 
 interface Result {
   name: string;
@@ -37,43 +38,48 @@ const ResultsPage = () => {
   const [image, setImage] = useState("/results-women.png");
 
   useEffect(() => {
-    const storedResults = localStorage.getItem("Result");
-    if (storedResults) {
+    const loadResults = async () => {
       try {
-        if (storedResults === "[object Object]") {
-          console.warn(
-            "Invalid data format in localStorage. Please try uploading again."
-          );
-          return;
-        }
-        const parsedResults = JSON.parse(storedResults);
-        console.log("[v0] Successfully parsed AI results:", parsedResults);
-        if (parsedResults.backgroundRemovedImage) {
-          setImage(parsedResults.backgroundRemovedImage);
-        } else {
-          const storedResults = localStorage.getItem("manualData");
-          if (storedResults) {
-            try {
-              if (storedResults === "[object Object]") {
-                console.warn(
-                  "Invalid data format in localStorage. Please try uploading again."
-                );
-                return;
-              }
-              const parsedResults = JSON.parse(storedResults);
-              setImage(parsedResults.backgroundRemovedImage);
-            } catch (error) {
-              console.error("Error parsing AI results:", error);
-              localStorage.removeItem("manualData");
+        // First check for AI results
+        const storedResults = localStorage.getItem("Result");
+        if (storedResults) {
+          try {
+            if (storedResults === "[object Object]") {
+              console.warn(
+                "Invalid data format in localStorage. Please try uploading again."
+              );
+              return;
             }
+            const parsedResults = JSON.parse(storedResults);
+            console.log("[v0] Successfully parsed AI results:", parsedResults);
+            
+            if (parsedResults.backgroundRemovedImage) {
+              setImage(parsedResults.backgroundRemovedImage);
+            } else {
+              // If no image in AI results, try to get from manual data
+              const manualData = await storageManager.getManualData();
+              if (manualData && manualData.backgroundRemovedImage) {
+                setImage(manualData.backgroundRemovedImage);
+              }
+            }
+            setResult(parsedResults);
+          } catch (error) {
+            console.error("Error parsing AI results:", error);
+            localStorage.removeItem("Result");
+          }
+        } else {
+          // No AI results, try manual data for image only
+          const manualData = await storageManager.getManualData();
+          if (manualData && manualData.backgroundRemovedImage) {
+            setImage(manualData.backgroundRemovedImage);
           }
         }
-        setResult(parsedResults);
       } catch (error) {
-        console.error("Error parsing AI results:", error);
-        localStorage.removeItem("aiResults");
+        console.error("Error loading results:", error);
       }
-    }
+    };
+    
+    loadResults();
   }, []);
 
   const displayName = result?.name || "Light Summer";
